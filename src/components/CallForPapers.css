@@ -1,0 +1,55 @@
+.cfp-section {
+  background-color: var(--bg-color);
+  text-align: center;
+}
+
+.cfp-intro {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.cfp-topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+.topic-card {
+  border-top: 4px solid var(--accent-cyan);
+}
+
+.topic-card h4 {
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.topic-card ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+  color: var(--text-muted);
+}
+
+.topic-card li {
+  margin-bottom: 0.5rem;
+}
+
+.cfp-cta {
+  background: var(--bg-secondary);
+  padding: 3rem;
+  border-radius: 15px;
+  box-shadow: var(--shadow-sm);
+  display: inline-block;
+  margin-top: 2rem;
+}
+
+.cfp-cta p {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--secondary-blue);
+}

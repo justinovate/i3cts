@@ -1,0 +1,74 @@
+.venue-section {
+  background-color: var(--bg-secondary);
+}
+
+.venue-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.venue-info {
+  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  color: var(--white);
+  padding: 3rem;
+  border-radius: 15px;
+}
+
+.venue-info h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--white);
+}
+
+.venue-info p {
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.venue-amenities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.amenity {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.venue-map {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 15px;
+  display: flex;
+}
+
+.map-placeholder {
+  width: 100%;
+  min-height: 400px;
+  background: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+.map-icon {
+  font-size: 4rem;
+  color: var(--accent-cyan);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 992px) {
+  .venue-grid {
+    grid-template-columns: 1fr;
+  }
+}
