@@ -4,63 +4,90 @@
   z-index: 1;
 }
 
+.about-intro-subtitle {
+  max-width: 800px;
+  margin: -1.5rem auto 3rem;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3.5rem;
   align-items: center;
 }
 
 .about-text {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   margin-bottom: 1.5rem;
   color: var(--text-muted);
+  line-height: 1.65;
 }
 
 .about-cards {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .theme-card {
   display: flex;
-  align-items: flex-start;
-  gap: 1.5rem;
-  padding: 1.5rem;
-  background: var(--bg-color);
-  border: 1px solid rgba(0, 86, 179, 0.1);
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .theme-card:hover {
   border-color: var(--accent-cyan);
+  transform: translateX(6px);
+  background: rgba(18, 26, 40, 0.85);
+  box-shadow: 0 8px 25px rgba(0, 210, 255, 0.12);
 }
 
 .icon-wrapper {
-  width: 60px;
-  height: 60px;
+  width: 52px;
+  height: 52px;
   flex-shrink: 0;
-  background: linear-gradient(135deg, rgba(0, 86, 179, 0.1), rgba(0, 210, 255, 0.1));
+  background: linear-gradient(135deg, rgba(0, 210, 255, 0.12), rgba(59, 130, 246, 0.12));
+  border: 1px solid rgba(0, 210, 255, 0.25);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
+  color: var(--accent-cyan);
+  transition: transform 0.3s ease;
+}
+
+.theme-card:hover .icon-wrapper {
+  transform: scale(1.1);
   color: var(--primary-blue);
 }
 
-.theme-card h3 {
-  margin-bottom: 0.5rem;
-  color: var(--secondary-blue);
+.theme-card-content h3 {
+  margin-bottom: 0.25rem;
+  color: var(--text-main);
+  font-size: 1.12rem;
+  line-height: 1.3;
 }
 
-.theme-card p {
+.theme-card-content p {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0;
 }
 
 @media (max-width: 992px) {
   .about-grid {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 }

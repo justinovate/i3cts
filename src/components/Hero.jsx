@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import Countdown from './Countdown';
 import './Hero.css';
+import conferenceLogo from '../assets/i3cts-logo.png';
+import { EASYCHAIR_URL } from '../constants';
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -29,19 +31,29 @@ const Hero = () => {
       </div>
       
       <div className="container hero-content animate-fade-in">
-        <div className="hero-badge">April 8–10, 2027 • Manila, Philippines</div>
+        <div className="hero-logo-container">
+          <img src={conferenceLogo} alt="I3CTS Official Logo" className="hero-logo" />
+        </div>
+
         <h1 className="hero-title">
-          International Conference on <br />
-          <span className="text-gradient">Consumer, Computing, and Communications</span> <br />
-          Technology Systems (I3CTS)
+          <span className="hero-title-main">I3CTS</span> <span className="hero-title-year">2027</span>
         </h1>
+
+        <h2 className="hero-full-title">
+          INTERNATIONAL CONFERENCE ON CONSUMER, COMPUTING, & COMMUNICATIONS TECHNOLOGY SYSTEMS
+        </h2>
+
         <p className="hero-tagline">
-          Advancing Innovation in Consumer and Communication Technologies
+          Advancing Scientific Innovation & Computational Excellence
         </p>
-        
+
+        <div className="hero-badge">
+          <i className="fas fa-calendar-alt"></i> April 8–10, 2027 • Manila, Philippines
+        </div>
+
         <div className="hero-buttons">
-          <a href="https://edas.info/login.php?rurl=aHR0cHM6Ly9lZGFzLmluZm8vTjM0ODMzP2M9MzQ4MzM%3D" target="_blank" rel="noopener noreferrer" className="btn btn-highlight btn-lg">
-            Submit Paper via EDAS
+          <a href={EASYCHAIR_URL} target="_blank" rel="noopener noreferrer" className="btn btn-highlight btn-lg">
+            Submit Paper via EasyChair
           </a>
           <a href="#about" className="btn btn-secondary btn-lg">
             Learn More

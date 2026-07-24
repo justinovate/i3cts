@@ -11,10 +11,24 @@
   margin-bottom: 3rem;
 }
 
+.footer-logo-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
 .footer-logo {
   font-size: 1.8rem;
   color: var(--white);
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+}
+
+.footer-logo-image {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 210, 255, 0.4));
 }
 
 .footer-brand p {

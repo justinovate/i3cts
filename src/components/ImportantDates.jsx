@@ -2,7 +2,9 @@ import './ImportantDates.css';
 
 const ImportantDates = () => {
   const dates = [
-    { label: "Paper Submission Deadline", date: "October 15, 2026", status: "upcoming" },
+    { label: "Paper Submission Opens", date: "August 15, 2026", status: "upcoming" },
+    { label: "Paper Submission Deadline (2-Month Window)", date: "October 15, 2026", status: "upcoming" },
+    { label: "Extension Deadline (Optional 1 Month)", date: "November 15, 2026", status: "upcoming" },
     { label: "Notification of Acceptance", date: "December 20, 2026", status: "upcoming" },
     { label: "Camera-Ready Deadline", date: "January 30, 2027", status: "upcoming" },
     { label: "Conference Dates", date: "April 8–10, 2027", status: "highlight" }
@@ -24,6 +26,7 @@ const ImportantDates = () => {
             </div>
           ))}
         </div>
+        <p className="timeline-note">Note: Extension period is activated only when formally announced by the conference committee.</p>
       </div>
     </section>
   );

@@ -76,6 +76,13 @@
   font-weight: 500;
 }
 
+.timeline-note {
+  margin-top: 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
 @media (max-width: 768px) {
   .timeline::before {
     left: 20px;

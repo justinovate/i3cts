@@ -24,10 +24,30 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   font-family: var(--font-heading);
   font-weight: 800;
   font-size: 1.5rem;
   color: var(--primary-blue);
+}
+
+.logo-image {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 210, 255, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-image {
+  transform: scale(1.08);
+}
+
+.logo-text {
+  line-height: 1;
+  letter-spacing: -0.02em;
 }
 
 .logo-highlight {
@@ -37,16 +57,27 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.35rem;
+}
+
+.nav-links a {
+  white-space: nowrap;
 }
 
 .nav-links a:not(.btn) {
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
 }
 
 .nav-links a:not(.btn):hover {
   color: var(--primary-blue);
+}
+
+.nav-btn {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.88rem;
+  line-height: 1.2;
+  border-radius: 20px;
 }
 
 .theme-toggle {

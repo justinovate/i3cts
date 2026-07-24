@@ -1,11 +1,15 @@
 import './Footer.css';
+import conferenceLogo from '../assets/i3cts-logo.png';
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="container footer-grid">
         <div className="footer-brand">
-          <h3 className="footer-logo">I3CTS 2027</h3>
+          <div className="footer-logo-header">
+            <img src={conferenceLogo} alt="I3CTS Logo" className="footer-logo-image" />
+            <h3 className="footer-logo">I3CTS 2027</h3>
+          </div>
           <p>International Conference on Consumer, Computing, and Communications Technology Systems.</p>
           <div className="social-icons">
             <a href="#" className="social-icon"><i className="fab fa-twitter"></i></a>
@@ -21,6 +25,8 @@ const Footer = () => {
             <li><a href="#about">About</a></li>
             <li><a href="#dates">Important Dates</a></li>
             <li><a href="#cfp">Call for Papers</a></li>
+            <li><a href="#committees">Committees</a></li>
+            <li><a href="#partners">Partner Schools</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>

@@ -4,34 +4,58 @@ const Venue = () => {
   return (
     <section className="section venue-section" id="venue">
       <div className="container">
-        <h2 className="section-title">Venue</h2>
+        <h2 className="section-title">Conference Venue</h2>
         
         <div className="venue-grid">
           <div className="venue-info glass-card">
-            <h3>Manila, Philippines</h3>
-            <p>
-              The 2027 International Conference on Consumer, Computing, and Communications Technology Systems will be held in the vibrant city of Manila, Philippines. Known for its rich history, diverse culture, and bustling technology sector, Manila offers an unforgettable backdrop for I3CTS.
+            <h3>Diamond Hotel Philippines</h3>
+            <p className="venue-description">
+              I3CTS 2027 will take place in the historical heart of Manila along the scenic Manila Bay waterfront.
+              Diamond Hotel Philippines provides world-class conference facilities, state-of-the-art audiovisual support,
+              and convenient proximity to cultural landmarks and international transportation hubs.
             </p>
+            
+            <div className="venue-address-block">
+              <p>
+                <strong><i className="fas fa-map-marker-alt"></i> Address:</strong><br />
+                Diamond Hotel Philippines<br />
+                Roxas Boulevard cor. Dr. J. Quintos St., Malate<br />
+                Manila, 1000 Metro Manila, Philippines
+              </p>
+              <p>
+                <strong><i className="fas fa-plane"></i> Accessibility:</strong><br />
+                Approximately 20 minutes from Ninoy Aquino International Airport (NAIA).
+              </p>
+            </div>
+
             <p>
-              <strong>Conference Center:</strong> (TBA Placeholder) <br/>
-              <strong>Address:</strong> Manila Metro Area, Philippines
+              <a 
+                href="https://maps.google.com/?q=Diamond+Hotel+Philippines+Manila" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="venue-map-link btn btn-secondary"
+              >
+                Open in Google Maps <i className="fas fa-external-link-alt"></i>
+              </a>
             </p>
             
             <div className="venue-amenities">
-              <span className="amenity"><i className="fas fa-wifi"></i> Free Wi-Fi</span>
-              <span className="amenity"><i className="fas fa-parking"></i> Parking Available</span>
-              <span className="amenity"><i className="fas fa-subway"></i> Near Transit</span>
+              <span className="amenity"><i className="fas fa-wifi"></i> High-Speed Wi-Fi</span>
+              <span className="amenity"><i className="fas fa-parking"></i> On-Site Parking</span>
+              <span className="amenity"><i className="fas fa-utensils"></i> Catering & Dining</span>
+              <span className="amenity"><i className="fas fa-wheelchair"></i> Accessible Venue</span>
             </div>
           </div>
           
           <div className="venue-map glass-card">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247141.2585250499!2d120.97011993427306!3d14.596495689086118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ca03571ec38b%3A0x69d1d5751069c11f!2sManila%2C%20Metro%20Manila%2C%20Philippines!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+              src="https://www.google.com/maps?q=Diamond+Hotel+Philippines+Manila&output=embed" 
               width="100%" 
               height="100%" 
               style={{ border: 0, minHeight: '400px', borderRadius: '15px' }} 
               allowFullScreen="" 
               loading="lazy" 
+              title="Diamond Hotel Philippines Map Location"
               referrerPolicy="no-referrer-when-downgrade">
             </iframe>
           </div>
