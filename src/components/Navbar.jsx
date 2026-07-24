@@ -6,10 +6,10 @@ import { EASYCHAIR_URL } from '../constants';
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('light');
 
   useEffect(() => {
-    document.documentElement.className = theme === 'light' ? 'light-theme' : '';
+    document.documentElement.className = theme === 'dark' ? 'dark-theme' : 'light-theme';
   }, [theme]);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const Navbar = () => {
   }, []);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
-  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+  const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light');
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>

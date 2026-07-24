@@ -1,7 +1,6 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import LogoBreakdown from './components/LogoBreakdown';
 import ImportantDates from './components/ImportantDates';
 import Venue from './components/Venue';
 import CallForPapers from './components/CallForPapers';
@@ -22,7 +21,6 @@ function App() {
       <Speakers />
       <Committees />
       <Venue />
-      <LogoBreakdown />
       <Partners />
       <Contact />
       <Footer />
