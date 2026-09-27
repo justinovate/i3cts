@@ -110,11 +110,12 @@ const CallForPapers = () => {
           Click on any track card below to view extended sub-topics and submission guidelines.
         </p>
 
+        {/* Tracks Grid */}
         <div className="cfp-topics-grid">
           {tracks.map((track) => (
             <div
               key={track.id}
-              className="glass-card topic-card interactive-track-card"
+              className="topic-card interactive-track-card"
               onClick={() => setSelectedTrack(track)}
               role="button"
               tabIndex={0}
@@ -144,18 +145,145 @@ const CallForPapers = () => {
           ))}
         </div>
 
-        <div className="glass-card submission-guidelines">
-          <h3><i className="fas fa-file-invoice"></i> General Submission Guidelines</h3>
-          <ul>
-            <li>All submitted papers must represent original, unpublished work not under review elsewhere.</li>
-            <li>Submissions must adhere to standard IEEE/I3CTS double-column conference formatting guidelines.</li>
-            <li>The standard submission window remains open for two full months from the opening date.</li>
-            <li>Peer review follows a rigorous double-blind evaluation process by the international technical program committee.</li>
-          </ul>
+        {/* Open 2-Column Split: Guidelines & Templates */}
+        <div className="cfp-split-container">
+          {/* Left: Guidelines */}
+          <div className="cfp-guidelines-column">
+            <div className="column-title-box">
+              <i className="fas fa-file-invoice column-icon"></i>
+              <h3>Submission Guidelines</h3>
+            </div>
+            <p className="guidelines-desc">
+              All submitted papers must represent original, unpublished research work formatted according to standard IEEE proceedings standards.
+            </p>
+
+            <ul className="guidelines-list">
+              <li>
+                <div className="list-icon-bullet"><i className="fas fa-check"></i></div>
+                <div>
+                  <strong>Originality & Integrity</strong>
+                  <p>Submissions must not be currently under review or published in any other journal or conference.</p>
+                </div>
+              </li>
+              <li>
+                <div className="list-icon-bullet"><i className="fas fa-check"></i></div>
+                <div>
+                  <strong>Formatting Standard</strong>
+                  <p>Papers must follow the standard double-column IEEE format (6-page limit for full papers).</p>
+                </div>
+              </li>
+              <li>
+                <div className="list-icon-bullet"><i className="fas fa-check"></i></div>
+                <div>
+                  <strong>Double-Blind Review</strong>
+                  <p>Peer review is conducted by an international technical committee using a double-blind process.</p>
+                </div>
+              </li>
+            </ul>
+
+            <div className="template-notice-pill">
+              <i className="fas fa-exclamation-circle"></i>
+              <span><strong>Note:</strong> All placeholder and guidance text must be removed from your paper prior to final submission.</span>
+            </div>
+          </div>
+
+          {/* Right: Paper Templates */}
+          <div className="cfp-templates-column">
+            <div className="column-title-box">
+              <i className="fas fa-download column-icon"></i>
+              <h3>Paper Templates</h3>
+            </div>
+
+            <div className="template-cards-stack">
+              {/* MS Word Option */}
+              <div className="resource-row">
+                <div className="resource-brand word">
+                  <i className="fas fa-file-word"></i>
+                </div>
+                <div className="resource-info">
+                  <h4>Microsoft Word (.docx)</h4>
+                  <p>Standard double-column MS Word template.</p>
+                </div>
+                <div className="resource-downloads">
+                  <a 
+                    href="/templates/conference-template-letter.docx" 
+                    download="conference-template-letter.docx"
+                    className="download-pill"
+                    title="Download US Letter format"
+                  >
+                    Letter <i className="fas fa-download"></i>
+                  </a>
+                  <a 
+                    href="/templates/conference-template-a4.docx" 
+                    download="conference-template-a4.docx"
+                    className="download-pill"
+                    title="Download A4 format"
+                  >
+                    A4 <i className="fas fa-download"></i>
+                  </a>
+                </div>
+              </div>
+
+              {/* LaTeX Option */}
+              <div className="resource-row">
+                <div className="resource-brand latex">
+                  <i className="fas fa-file-code"></i>
+                </div>
+                <div className="resource-info">
+                  <h4>LaTeX Package</h4>
+                  <p>IEEEtran class files & bibliography starter.</p>
+                </div>
+                <div className="resource-downloads">
+                  <a 
+                    href="/templates/conference-latex-template.zip" 
+                    download="conference-latex-template.zip"
+                    className="download-pill"
+                  >
+                    Template ZIP <i className="fas fa-download"></i>
+                  </a>
+                  <a 
+                    href="https://mirrors.mit.edu/CTAN/macros/latex/contrib/IEEEtran/IEEEtran_HOWTO.pdf" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="download-pill link-pill"
+                  >
+                    Guide <i className="fas fa-external-link-alt"></i>
+                  </a>
+                </div>
+              </div>
+
+              {/* Overleaf Cloud Option */}
+              <div className="resource-row">
+                <div className="resource-brand overleaf">
+                  <i className="fas fa-leaf"></i>
+                </div>
+                <div className="resource-info">
+                  <h4>Overleaf Online</h4>
+                  <p>Edit directly in your browser with Overleaf.</p>
+                </div>
+                <div className="resource-downloads">
+                  <a 
+                    href="https://www.overleaf.com/gallery/tagged/ieee-official" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="download-pill overleaf-pill"
+                  >
+                    Open Overleaf <i className="fas fa-external-link-alt"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="ieee-link-subtle">
+              Templates courtesy of <a href="https://www.ieee.org/conferences/publishing/templates.html" target="_blank" rel="noopener noreferrer">IEEE Publishing Portal <i className="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
         </div>
 
-        <div className="cfp-cta">
-          <p>Ready to present your research at I3CTS 2027?</p>
+        {/* Call to Action Button */}
+        <div className="cfp-cta-banner">
+          <h3>Ready to Submit Your Research?</h3>
+          <p>Standard submission window is open. Submit your paper via EasyChair below.</p>
           <a href={EASYCHAIR_URL} target="_blank" rel="noopener noreferrer" className="btn btn-highlight btn-lg">
             Submit Paper via EasyChair <i className="fas fa-paper-plane"></i>
           </a>

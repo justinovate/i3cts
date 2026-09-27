@@ -6,11 +6,10 @@ import { EASYCHAIR_URL } from '../constants';
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [theme, setTheme] = useState('light');
 
   useEffect(() => {
-    document.documentElement.className = theme === 'dark' ? 'dark-theme' : 'light-theme';
-  }, [theme]);
+    document.documentElement.className = 'light-theme';
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +24,6 @@ const Navbar = () => {
   }, []);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
-  const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light');
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
@@ -46,9 +44,6 @@ const Navbar = () => {
           <a href="#venue" onClick={() => setMenuOpen(false)}>Venue</a>
           <a href="#speakers" onClick={() => setMenuOpen(false)}>Speakers</a>
           <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
-          <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle Theme">
-            {theme === 'dark' ? <i className="fas fa-sun"></i> : <i className="fas fa-moon"></i>}
-          </button>
           <a href={EASYCHAIR_URL} target="_blank" rel="noopener noreferrer" className="btn btn-highlight nav-btn">
             Submit Paper
           </a>

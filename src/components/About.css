@@ -45,30 +45,31 @@
 }
 
 .theme-card:hover {
-  border-color: var(--accent-cyan);
-  transform: translateX(6px);
-  background: rgba(18, 26, 40, 0.85);
-  box-shadow: 0 8px 25px rgba(0, 210, 255, 0.12);
+  border-color: var(--primary-blue);
+  transform: translateY(-3px);
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 86, 179, 0.1);
 }
 
 .icon-wrapper {
   width: 52px;
   height: 52px;
   flex-shrink: 0;
-  background: linear-gradient(135deg, rgba(0, 210, 255, 0.12), rgba(59, 130, 246, 0.12));
-  border: 1px solid rgba(0, 210, 255, 0.25);
+  background: rgba(0, 86, 179, 0.08);
+  border: 1px solid rgba(0, 86, 179, 0.2);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.35rem;
-  color: var(--accent-cyan);
+  color: var(--primary-blue);
   transition: transform 0.3s ease;
 }
 
 .theme-card:hover .icon-wrapper {
-  transform: scale(1.1);
-  color: var(--primary-blue);
+  transform: scale(1.08);
+  background: var(--primary-blue);
+  color: #ffffff;
 }
 
 .theme-card-content h3 {
