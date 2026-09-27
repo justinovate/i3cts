@@ -95,6 +95,42 @@ const tracks = [
       submissionTypes: 'Full Papers (6 pages), Case Studies, and Innovative Demonstration Reports.',
       targetAudience: 'Engineering educators, instructional designers, academic administrators, and EdTech developers.'
     }
+  },
+  {
+    id: 5,
+    title: 'Geoscience, Remote Sensing, Aerospace and Space Systems (GRASS)',
+    icon: 'fa-satellite',
+    shortTopics: [
+      'Earth Observation & Remote Sensing',
+      'GIS & Geospatial Computing',
+      'Satellite & Space Communications',
+      'CubeSats, Small Satellites & Space Systems'
+    ],
+    detailedInfo: {
+      overview: 'The proposed track aims to provide a platform for researchers, engineers, students, and practitioners working at the intersection of computing, communications, Earth observation, aerospace engineering, and space systems.',
+      topics: [
+        'Earth Observation and Remote Sensing',
+        'Geographic Information Systems (GIS) and Geospatial Computing',
+        'AI and Machine Learning for Remote Sensing and Geoscience',
+        'Satellite Image and Signal Processing',
+        'Satellite and Space Communications',
+        'CubeSats, Small Satellites, and Nanosatellite Systems',
+        'Spacecraft and Aerospace Systems Engineering',
+        'Satellite Payloads, Sensors, and Instrumentation',
+        'Ground Stations and Ground Segment Technologies',
+        'UAVs and Remote Sensing Platforms',
+        'Space-Based IoT and Sensor Networks',
+        'Space Situational Awareness',
+        'Navigation, Positioning, and Timing',
+        'Computational Modeling for Geoscience and Space Applications',
+        'Disaster Risk Reduction and Environmental Monitoring using Space Technologies',
+        'Climate, Weather, and Atmospheric Applications',
+        'AI, Edge Computing, and Autonomous Systems for Space Applications',
+        'Emerging and Quantum Technologies for Earth and Space Systems'
+      ],
+      submissionTypes: 'Full Research Papers (6 pages), Mission Reports, and Technical Demonstrations.',
+      targetAudience: 'Aerospace engineers, GIS specialists, remote sensing researchers, and space systems developers.'
+    }
   }
 ];
 
@@ -106,7 +142,7 @@ const CallForPapers = () => {
       <div className="container">
         <h2 className="section-title">Call for Papers & Submission Tracks</h2>
         <p className="cfp-intro">
-          I3CTS 2027 invites original, high-quality research papers across four core thematic tracks.
+          I3CTS 2027 invites original, high-quality research papers across five core thematic tracks.
           Click on any track card below to view extended sub-topics and submission guidelines.
         </p>
 

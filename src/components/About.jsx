@@ -6,7 +6,7 @@ const About = () => {
       <div className="container">
         <h2 className="section-title">About the Conference</h2>
         <p className="about-intro-subtitle">
-          Fostering Interdisciplinary Breakthroughs across Computing Systems, Consumer Electronics, and Network Infrastructure.
+          Fostering Interdisciplinary Breakthroughs across Computing Systems, Consumer Electronics, Network Infrastructure, and Space Systems.
         </p>
         
         <div className="about-grid">
@@ -15,7 +15,7 @@ const About = () => {
               The <strong>International Conference on Consumer, Computing, and Communications Technology Systems (I3CTS 2027)</strong> brings together premier academic researchers, industry scientists, and technical practitioners to share breakthroughs across hardware architectures, intelligent software systems, and next-generation telecommunications.
             </p>
             <p className="about-text">
-              Hosted in Manila, Philippines, I3CTS 2027 serves as a vital peer-reviewed forum for presenting state-of-the-art research, exploring emerging industry standards, and addressing critical technical challenges facing future computational and communication ecosystems.
+              Hosted in Manila, Philippines, I3CTS 2027 serves as a vital peer-reviewed forum for presenting state-of-the-art research, exploring emerging industry standards, and addressing critical technical challenges facing future computational, communication, and aerospace ecosystems.
             </p>
           </div>
           
@@ -57,6 +57,16 @@ const About = () => {
               <div className="theme-card-content">
                 <h3>Education & Pedagogy</h3>
                 <p>Digital learning platforms, STEM curriculum innovation, and AI in education.</p>
+              </div>
+            </div>
+
+            <div className="glass-card theme-card">
+              <div className="icon-wrapper">
+                <i className="fas fa-satellite"></i>
+              </div>
+              <div className="theme-card-content">
+                <h3>Geoscience & Space (GRASS)</h3>
+                <p>Remote sensing, GIS, satellite communications, CubeSats, and aerospace systems.</p>
               </div>
             </div>
           </div>
