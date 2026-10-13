@@ -61,7 +61,7 @@ const committeeGroups = [
       },
       {
         role: 'Social Media',
-        name: 'Glenn Justin Batis',
+        name: 'Glen Justine Batis',
         affiliation: 'Bulacan State University'
       },
       {
