@@ -2,7 +2,6 @@ import './Committees.css';
 
 const committeeGroups = [
   {
-    sectionCode: 'SEC // 01',
     title: 'General Leadership & Organizing Committee',
     members: [
       {
@@ -23,7 +22,6 @@ const committeeGroups = [
     ]
   },
   {
-    sectionCode: 'SEC // 02',
     title: 'Technical Program Committee',
     members: [
       {
@@ -39,7 +37,6 @@ const committeeGroups = [
     ]
   },
   {
-    sectionCode: 'SEC // 03',
     title: 'Publication Committee',
     members: [
       {
@@ -50,7 +47,6 @@ const committeeGroups = [
     ]
   },
   {
-    sectionCode: 'SEC // 04',
     title: 'Publicity & Media Committee',
     members: [
       {
@@ -76,7 +72,6 @@ const committeeGroups = [
     ]
   },
   {
-    sectionCode: 'SEC // 05',
     title: 'Program & Logistics Committee',
     members: [
       {
@@ -104,12 +99,9 @@ const Committees = () => {
 
         <div className="committee-directory">
           {committeeGroups.map((group) => (
-            <div className="committee-group" key={group.sectionCode}>
+            <div className="committee-group" key={group.title}>
               <div className="committee-group-header">
-                <div className="group-header-meta">
-                  <span className="group-code">{group.sectionCode}</span>
-                  <h3 className="group-title">{group.title}</h3>
-                </div>
+                <h3 className="group-title">{group.title}</h3>
                 <div className="group-hairline-accent" aria-hidden="true" />
               </div>
 
@@ -121,7 +113,7 @@ const Committees = () => {
                   return (
                     <div
                       className={`roster-entry ${isNameTba ? 'is-tba' : ''}`}
-                      key={`${group.sectionCode}-${member.role}-${idx}`}
+                      key={`${group.title}-${member.role}-${idx}`}
                       role="listitem"
                     >
                       <span className="entry-role-tag">{member.role}</span>
