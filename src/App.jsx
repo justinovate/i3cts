@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     const targets = document.querySelectorAll(
-      '.section-title, .about-intro-subtitle, .about-stepper-open, .objectives-matrix, .timeline-item, .cfp-intro, .topic-card, .speakers-notice-banner, .speaker-card, .committee-card, .venue-info, .venue-map'
+      '.section-title, .about-intro-subtitle, .about-stepper-open, .objectives-matrix, .timeline-item, .cfp-intro, .topic-card, .speakers-notice-banner, .speaker-card, .committee-group, .roster-entry, .venue-info, .venue-map'
     );
 
     targets.forEach((el) => {
