@@ -160,45 +160,41 @@ const About = () => {
             <span className="objectives-badge">Core Mission</span>
             <h3 className="objectives-title">Primary Objectives</h3>
           </div>
-          <div className="objectives-grid">
-            <div className="glass-card objective-card">
-              <div className="objective-icon-wrapper">
-                <i className="fas fa-bolt"></i>
-              </div>
-              <div className="objective-content">
-                <h4>Promoting Synergy and Innovation</h4>
-                <p>To explore the convergence of Artificial Intelligence, advanced algorithms, and communications technology to drive innovation across core technical pillars.</p>
-              </div>
+          <div className="objectives-matrix" role="list">
+            {/* Quadrant 01 */}
+            <div className="matrix-quadrant" role="listitem">
+              <span className="matrix-index" aria-hidden="true">01</span>
+              <h4 className="matrix-title">Promoting Synergy and Innovation</h4>
+              <p className="matrix-body">
+                To explore the convergence of Artificial Intelligence, advanced algorithms, and communications technology to drive innovation across core technical pillars.
+              </p>
             </div>
 
-            <div className="glass-card objective-card">
-              <div className="objective-icon-wrapper">
-                <i className="fas fa-handshake"></i>
-              </div>
-              <div className="objective-content">
-                <h4>Bridging Academia and Industry</h4>
-                <p>To serve as a collaborative bridge where academic researchers can showcase theoretical advancements, and industry leaders can present real-world requirements, commercial applications, and market trends.</p>
-              </div>
+            {/* Quadrant 02 */}
+            <div className="matrix-quadrant" role="listitem">
+              <span className="matrix-index" aria-hidden="true">02</span>
+              <h4 className="matrix-title">Bridging Academia and Industry</h4>
+              <p className="matrix-body">
+                To serve as a collaborative bridge where academic researchers can showcase theoretical advancements, and industry leaders can present real-world requirements, commercial applications, and market trends.
+              </p>
             </div>
 
-            <div className="glass-card objective-card">
-              <div className="objective-icon-wrapper">
-                <i className="fas fa-shield-alt"></i>
-              </div>
-              <div className="objective-content">
-                <h4>Addressing Emerging Technological Challenges</h4>
-                <p>To tackle critical issues related to system scalability, network security, data privacy, and resource optimization in consumer technology, communication infrastructure, educational technology and space systems.</p>
-              </div>
+            {/* Quadrant 03 */}
+            <div className="matrix-quadrant" role="listitem">
+              <span className="matrix-index" aria-hidden="true">03</span>
+              <h4 className="matrix-title">Addressing Emerging Technological Challenges</h4>
+              <p className="matrix-body">
+                To tackle critical issues related to system scalability, network security, data privacy, and resource optimization in consumer technology, communication infrastructure, educational technology and space systems.
+              </p>
             </div>
 
-            <div className="glass-card objective-card">
-              <div className="objective-icon-wrapper">
-                <i className="fas fa-globe-americas"></i>
-              </div>
-              <div className="objective-content">
-                <h4>Fostering Global Collaboration</h4>
-                <p>To facilitate international networking, cross-border research partnerships, and knowledge exchange among multidisciplinary experts, engineers, and students.</p>
-              </div>
+            {/* Quadrant 04 */}
+            <div className="matrix-quadrant" role="listitem">
+              <span className="matrix-index" aria-hidden="true">04</span>
+              <h4 className="matrix-title">Fostering Global Collaboration</h4>
+              <p className="matrix-body">
+                To facilitate international networking, cross-border research partnerships, and knowledge exchange among multidisciplinary experts, engineers, and students.
+              </p>
             </div>
           </div>
         </div>
