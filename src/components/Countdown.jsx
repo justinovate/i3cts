@@ -27,32 +27,23 @@ const Countdown = () => {
   }, []);
 
   return (
-    <div className="countdown-wrapper schematic-box animate-fade-in">
-      <span className="corner-mark top-left"></span>
-      <span className="corner-mark top-right"></span>
-      <span className="corner-mark bottom-left"></span>
-      <span className="corner-mark bottom-right"></span>
-
-      <div className="countdown-hud-header">
-        <span className="hud-mono-tag">// T-MINUS EVENT COUNTDOWN</span>
-      </div>
-
+    <div className="countdown-wrapper animate-fade-in">
       <div className="countdown-container">
-        <div className="countdown-item glass-card">
+        <div className="countdown-item">
           <span className="countdown-value">{timeLeft.days}</span>
-          <span className="countdown-label">Days</span>
+          <span className="countdown-label">DAYS</span>
         </div>
-        <div className="countdown-item glass-card">
+        <div className="countdown-item">
           <span className="countdown-value">{timeLeft.hours}</span>
-          <span className="countdown-label">Hours</span>
+          <span className="countdown-label">HOURS</span>
         </div>
-        <div className="countdown-item glass-card">
+        <div className="countdown-item">
           <span className="countdown-value">{timeLeft.minutes}</span>
-          <span className="countdown-label">Minutes</span>
+          <span className="countdown-label">MINUTES</span>
         </div>
-        <div className="countdown-item glass-card">
+        <div className="countdown-item">
           <span className="countdown-value">{timeLeft.seconds}</span>
-          <span className="countdown-label">Seconds</span>
+          <span className="countdown-label">SECONDS</span>
         </div>
       </div>
     </div>

@@ -9,7 +9,6 @@
   margin: 0 auto;
 }
 
-/* PCB Circuit Trace Line */
 .timeline::before {
   content: '';
   position: absolute;
@@ -17,10 +16,10 @@
   bottom: 0;
   left: 50%;
   width: 2px;
-  background: linear-gradient(180deg, rgba(2, 132, 199, 0.7) 0%, rgba(0, 153, 230, 0.8) 50%, rgba(2, 132, 199, 0.25) 100%);
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.6) 0%, rgba(56, 189, 248, 0.7) 60%, rgba(37, 99, 235, 0.15) 100%);
   transform: translateX(-50%);
   transform-origin: top;
-  animation: traceDraw 1.2s var(--ease-blueprint) forwards;
+  animation: traceDraw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes traceDraw {
@@ -34,7 +33,7 @@
 
 .timeline-item {
   position: relative;
-  margin-bottom: 3rem;
+  margin-bottom: 2.75rem;
   width: 50%;
   padding-right: 3rem;
 }
@@ -45,78 +44,69 @@
   padding-left: 3rem;
 }
 
-/* Circuit Milestone Node with Radar Pulse Ring */
 .timeline-marker {
   position: absolute;
   top: 24px;
-  right: -10px;
-  width: 20px;
-  height: 20px;
+  right: -9px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: var(--bg-secondary);
-  border: 3px solid var(--blueprint-blue);
+  background: #ffffff;
+  border: 3px solid #2563eb;
   z-index: 2;
-  transition: all 0.3s var(--ease-blueprint);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   animation: pulseRing 2.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
 }
 
 .timeline-item:nth-child(even) .timeline-marker {
   right: auto;
-  left: -10px;
+  left: -9px;
 }
 
 .timeline-content {
-  padding: 1.6rem;
+  padding: 1.5rem 1.75rem;
   position: relative;
-  border: 1px solid rgba(2, 132, 199, 0.16);
-  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
   background: #ffffff;
-  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.04);
-  transition: transform 0.3s var(--ease-blueprint), border-color 0.3s var(--ease-blueprint), box-shadow 0.3s var(--ease-blueprint);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .timeline-content:hover {
   transform: translateY(-3px);
-  border-color: var(--blueprint-blue);
-  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.12);
-}
-
-.timeline-meta {
-  margin-bottom: 0.4rem;
-  font-size: 0.72rem;
+  border-color: #2563eb;
+  box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.08);
 }
 
 .timeline-date {
-  color: var(--primary-blue);
-  font-size: 1.3rem;
+  color: #2563eb;
+  font-size: 1.25rem;
   margin-bottom: 0.35rem;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 
 .timeline-label {
-  color: var(--text-muted);
+  color: #475569;
   font-weight: 500;
   font-size: 0.95rem;
+  line-height: 1.45;
 }
 
 /* Highlighted Milestone (Conference Dates) */
 .timeline-item.highlight .timeline-marker {
-  border-color: #ff9e00;
-  background: #ff9e00;
-  box-shadow: 0 0 0 4px rgba(255, 158, 0, 0.2);
+  border-color: #f59e0b;
+  background: #f59e0b;
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.2);
 }
 
 .timeline-item.highlight .timeline-content {
-  border-color: rgba(255, 158, 0, 0.4);
-  background: linear-gradient(135deg, rgba(255, 158, 0, 0.04) 0%, rgba(255, 255, 255, 1) 100%);
+  border-color: #fde68a;
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.3) 0%, #ffffff 100%);
 }
 
 .timeline-item.highlight .timeline-date {
-  color: #d97706;
-}
-
-.timeline-item.highlight .timeline-meta {
   color: #d97706;
 }
 
@@ -137,7 +127,7 @@
     padding-right: 0;
   }
   .timeline-marker {
-    left: 10px !important;
+    left: 11px !important;
     right: auto !important;
   }
 }

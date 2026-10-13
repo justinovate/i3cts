@@ -31,10 +31,6 @@ const Hero = () => {
       </div>
       
       <div className="container hero-content animate-fade-in">
-        <div className="hero-hud-coords hud-mono-tag">
-          [SYS.ID: I3CTS-2027 // MNL.PH: 14.5995° N, 120.9842° E]
-        </div>
-
         <div className="hero-logo-container">
           <img src={conferenceLogo} alt="I3CTS Official Logo" className="hero-logo" />
         </div>
@@ -51,11 +47,7 @@ const Hero = () => {
           Advancing Scientific Innovation & Computational Excellence
         </p>
 
-        <div className="hero-badge schematic-box">
-          <span className="corner-mark top-left"></span>
-          <span className="corner-mark top-right"></span>
-          <span className="corner-mark bottom-left"></span>
-          <span className="corner-mark bottom-right"></span>
+        <div className="hero-badge">
           <i className="fas fa-calendar-alt"></i> April 8–10, 2027 • Manila, Philippines
         </div>
 

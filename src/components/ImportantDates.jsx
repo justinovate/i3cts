@@ -5,26 +5,22 @@ const ImportantDates = () => {
     { 
       label: "Paper Submission Deadline", 
       date: "Jan. 25, 2027", 
-      status: "upcoming",
-      refCode: "REF: MILESTONE-01 // SUBMISSION"
+      status: "upcoming"
     },
     { 
       label: "Notification of Acceptance", 
       date: "Feb. 18, 2027", 
-      status: "upcoming",
-      refCode: "REF: MILESTONE-02 // NOTIFICATION"
+      status: "upcoming"
     },
     { 
       label: "Camera Ready Paper", 
       date: "March 25, 2027", 
-      status: "upcoming",
-      refCode: "REF: MILESTONE-03 // CAMERA-READY"
+      status: "upcoming"
     },
     { 
       label: "Conference Dates", 
       date: "April 8–10, 2027", 
-      status: "highlight",
-      refCode: "REF: MILESTONE-04 // CONVENE"
+      status: "highlight"
     }
   ];
 
@@ -37,12 +33,7 @@ const ImportantDates = () => {
           {dates.map((item, index) => (
             <div className={`timeline-item ${item.status} stagger-reveal`} key={index}>
               <div className="timeline-marker"></div>
-              <div className="glass-card timeline-content schematic-box">
-                <span className="corner-mark top-left"></span>
-                <span className="corner-mark top-right"></span>
-                <span className="corner-mark bottom-left"></span>
-                <span className="corner-mark bottom-right"></span>
-                <div className="timeline-meta hud-mono-tag">{item.refCode}</div>
+              <div className="glass-card timeline-content">
                 <h3 className="timeline-date">{item.date}</h3>
                 <p className="timeline-label">{item.label}</p>
               </div>

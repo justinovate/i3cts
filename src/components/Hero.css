@@ -45,9 +45,10 @@
 .grid-overlay {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
-                    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-  background-size: 30px 30px;
+  background-image: radial-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 .hero-content {
@@ -109,31 +110,23 @@
   max-width: 650px;
 }
 
-.hero-hud-coords {
-  margin-bottom: 1.25rem;
-  padding: 0.35rem 0.85rem;
-  background: rgba(2, 132, 199, 0.06);
-  border: 1px solid rgba(2, 132, 199, 0.2);
-  border-radius: 4px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 1.4rem;
-  background: rgba(0, 86, 179, 0.06);
-  border: 1px solid rgba(2, 132, 199, 0.22);
-  border-radius: 6px;
-  font-weight: 600;
+  gap: 0.6rem;
+  padding: 0.5rem 1.4rem;
+  background: rgba(37, 99, 235, 0.06);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 9999px;
+  font-weight: 500;
   font-size: 0.92rem;
-  color: var(--primary-blue);
-  margin-bottom: 2.25rem;
-  box-shadow: var(--shadow-sm);
-  position: relative;
+  color: #1d4ed8;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.hero-badge i {
+  color: #2563eb;
 }
 
 .hero-buttons {

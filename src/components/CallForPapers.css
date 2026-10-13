@@ -15,7 +15,7 @@
 .cfp-topics-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 1.75rem;
   margin-bottom: 3.5rem;
   text-align: left;
 }
@@ -32,148 +32,124 @@
   }
 }
 
+/* Modern Track Cards */
 .topic-card {
   background: #ffffff;
-  border: 1px solid rgba(2, 132, 199, 0.16);
+  border: 1px solid #e5e7eb;
   border-radius: 16px;
-  padding: 1.85rem 1.75rem;
-  box-shadow: var(--shadow-sm);
+  padding: 30px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   position: relative;
-  overflow: hidden;
-  transition: transform 0.3s var(--ease-blueprint), border-color 0.3s var(--ease-blueprint), box-shadow 0.3s var(--ease-blueprint);
-}
-
-.interactive-track-card {
-  border-top: 4px solid var(--accent-cyan);
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  text-align: left;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.interactive-track-card {
+  cursor: pointer;
   outline: none;
 }
 
 .interactive-track-card:hover,
 .interactive-track-card:focus-visible {
-  transform: translateY(-6px);
-  border-top-color: var(--primary-blue);
-  border-color: rgba(2, 132, 199, 0.45);
-  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.12);
-}
-
-/* Blueprint Watermark Illustration inside Track Cards */
-.track-blueprint-watermark {
-  position: absolute;
-  right: -10px;
-  bottom: -10px;
-  width: 170px;
-  height: 170px;
-  pointer-events: none;
-  opacity: 0.05;
-  color: var(--blueprint-blue);
-  transition: transform 0.4s var(--ease-blueprint), opacity 0.4s var(--ease-blueprint);
-  z-index: 0;
-}
-
-.interactive-track-card:hover .track-blueprint-watermark {
-  transform: scale(1.06);
-  opacity: 0.13;
-}
-
-.track-blueprint-svg {
-  width: 100%;
-  height: 100%;
+  transform: translateY(-4px);
+  border-color: #2563eb;
+  box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.08);
 }
 
 .track-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.65rem;
-  position: relative;
-  z-index: 1;
+  margin-bottom: 1.25rem;
 }
 
 .track-badge {
   font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.28rem 0.75rem;
-  border-radius: 20px;
-  background: rgba(0, 86, 179, 0.08);
-  color: var(--primary-blue);
-  border: 1px solid rgba(0, 86, 179, 0.2);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 9999px;
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #dbeafe;
 }
 
 .track-icon {
-  font-size: 1.45rem;
-  color: var(--primary-blue);
-  transition: transform 0.3s var(--ease-blueprint), color 0.3s ease;
+  font-size: 1.25rem;
+  color: #64748b;
+  transition: color 0.25s ease, transform 0.25s ease;
 }
 
 .interactive-track-card:hover .track-icon {
-  transform: scale(1.15);
-  color: var(--accent-cyan);
+  color: #2563eb;
+  transform: scale(1.08);
 }
 
-/* Technical Monospace Index Label */
-.track-ref-label {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
+.track-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--blueprint-blue);
-  opacity: 0.85;
-  margin-bottom: 0.5rem;
-  position: relative;
-  z-index: 1;
-}
-
-.topic-card h4 {
-  color: var(--text-main);
+  color: #0f172a;
   margin-bottom: 1rem;
-  font-size: 1.25rem;
   line-height: 1.35;
-  position: relative;
-  z-index: 1;
 }
 
 .track-topics-preview {
-  padding-left: 1.25rem;
-  list-style-type: disc;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-  position: relative;
-  z-index: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .track-topics-preview li {
-  margin-bottom: 0.6rem;
-  font-size: 0.94rem;
-  line-height: 1.42;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #475569;
+  position: relative;
+  padding-left: 1.1rem;
+}
+
+.track-topics-preview li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #94a3b8;
+  font-size: 1.1rem;
+  line-height: 1.3;
 }
 
 .track-card-footer {
   margin-top: auto;
-  padding-top: 0.85rem;
-  border-top: 1px dashed rgba(2, 132, 199, 0.18);
-  position: relative;
-  z-index: 1;
+  padding-top: 1rem;
+  border-top: 1px solid #f1f5f9;
 }
 
-.click-more-hint {
+.explore-track-link {
   font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--primary-blue);
+  font-weight: 500;
+  color: #2563eb;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  transition: gap 0.2s var(--ease-blueprint), color 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.interactive-track-card:hover .click-more-hint {
-  gap: 0.75rem;
-  color: var(--accent-cyan);
+.explore-track-link i {
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.interactive-track-card:hover .explore-track-link {
+  color: #1d4ed8;
+}
+
+.interactive-track-card:hover .explore-track-link i {
+  transform: translateX(4px);
 }
 
 /* Open 2-Column Split: Guidelines & Templates */
@@ -195,13 +171,14 @@
 
 .column-icon {
   font-size: 1.5rem;
-  color: var(--primary-blue);
+  color: #2563eb;
 }
 
 .column-title-box h3 {
   font-size: 1.4rem;
-  color: var(--primary-blue);
+  color: #0f172a;
   margin: 0;
+  font-weight: 700;
 }
 
 .guidelines-desc {
@@ -228,8 +205,8 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: rgba(0, 86, 179, 0.1);
-  color: var(--primary-blue);
+  background: #eff6ff;
+  color: #2563eb;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -239,14 +216,14 @@
 }
 
 .guidelines-list strong {
-  color: var(--text-main);
+  color: #0f172a;
   font-size: 0.98rem;
   display: block;
   margin-bottom: 0.2rem;
 }
 
 .guidelines-list p {
-  color: var(--text-muted);
+  color: #475569;
   font-size: 0.9rem;
   line-height: 1.45;
   margin: 0;
@@ -261,11 +238,11 @@
   border-radius: 10px;
   padding: 0.75rem 1rem;
   font-size: 0.88rem;
-  color: var(--text-main);
+  color: #0f172a;
 }
 
 .template-notice-pill i {
-  color: #ff9e00;
+  color: #f59e0b;
   font-size: 1rem;
   margin-top: 0.15rem;
   flex-shrink: 0;
@@ -281,20 +258,20 @@
 
 .resource-row {
   background: #ffffff;
-  border: 1px solid rgba(2, 132, 199, 0.16);
+  border: 1px solid #e5e7eb;
   border-radius: 14px;
   padding: 1.15rem 1.35rem;
   display: flex;
   align-items: center;
   gap: 1rem;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.25s var(--ease-blueprint), border-color 0.25s var(--ease-blueprint), box-shadow 0.25s var(--ease-blueprint);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .resource-row:hover {
   transform: translateY(-2px);
-  border-color: var(--primary-blue);
-  box-shadow: 0 8px 20px rgba(0, 86, 179, 0.08);
+  border-color: #2563eb;
+  box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.08);
 }
 
 .resource-brand {
@@ -329,13 +306,14 @@
 
 .resource-info h4 {
   font-size: 1.02rem;
-  color: var(--text-main);
+  color: #0f172a;
   margin-bottom: 0.2rem;
+  font-weight: 600;
 }
 
 .resource-info p {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: #64748b;
   margin: 0;
 }
 
@@ -353,14 +331,14 @@
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
-  background: rgba(0, 86, 179, 0.08);
-  color: var(--primary-blue);
-  border: 1px solid rgba(0, 86, 179, 0.2);
-  transition: all 0.2s var(--ease-blueprint);
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #dbeafe;
+  transition: all 0.2s ease;
 }
 
 .download-pill:hover {
-  background: var(--primary-blue);
+  background: #2563eb;
   color: #ffffff;
 }
 
@@ -388,11 +366,11 @@
 
 .ieee-link-subtle {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: #64748b;
 }
 
 .ieee-link-subtle a {
-  color: var(--primary-blue);
+  color: #2563eb;
   font-weight: 600;
 }
 
@@ -400,29 +378,29 @@
   text-decoration: underline;
 }
 
+/* Call to Action Banner */
 .cfp-cta-banner {
   background: #ffffff;
-  border: 1px solid rgba(2, 132, 199, 0.2);
-  border-top: 4px solid var(--accent-highlight);
+  border: 1px solid #e2e8f0;
   padding: 2.75rem 2rem;
   border-radius: 20px;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
   margin: 0 auto;
   max-width: 850px;
   text-align: center;
-  position: relative;
 }
 
 .cfp-cta-banner h3 {
-  font-size: 1.45rem;
-  color: var(--text-main);
-  margin: 0.4rem 0 0.5rem;
+  font-size: 1.55rem;
+  color: #0f172a;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 
 .cfp-cta-banner p {
   font-size: 1rem;
-  color: var(--text-muted);
-  margin-bottom: 1.6rem;
+  color: #475569;
+  margin-bottom: 1.75rem;
 }
 
 @media (max-width: 992px) {

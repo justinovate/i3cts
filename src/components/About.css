@@ -8,9 +8,9 @@
   max-width: 850px;
   margin: -1.5rem auto 3rem;
   text-align: center;
-  font-size: 1.12rem;
+  font-size: 1.1rem;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .about-grid {
@@ -38,59 +38,60 @@
   align-items: center;
   gap: 1.25rem;
   padding: 1.25rem 1.5rem;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
   border-radius: 14px;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .theme-card:hover {
-  border-color: var(--primary-blue);
+  border-color: #2563eb;
   transform: translateY(-3px);
-  background: #ffffff;
-  box-shadow: 0 10px 25px rgba(0, 86, 179, 0.1);
+  box-shadow: 0 10px 24px -5px rgba(15, 23, 42, 0.08);
 }
 
 .icon-wrapper {
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   flex-shrink: 0;
-  background: rgba(0, 86, 179, 0.08);
-  border: 1px solid rgba(0, 86, 179, 0.2);
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
-  color: var(--primary-blue);
-  transition: transform 0.3s ease;
+  font-size: 1.25rem;
+  color: #2563eb;
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
 }
 
 .theme-card:hover .icon-wrapper {
-  transform: scale(1.08);
-  background: var(--primary-blue);
+  transform: scale(1.06);
+  background: #2563eb;
   color: #ffffff;
 }
 
 .theme-card-content h3 {
   margin-bottom: 0.25rem;
-  color: var(--text-main);
-  font-size: 1.12rem;
+  color: #0f172a;
+  font-size: 1.1rem;
   line-height: 1.3;
+  font-weight: 600;
 }
 
 .theme-card-content p {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  line-height: 1.4;
+  color: #64748b;
+  font-size: 0.88rem;
+  line-height: 1.45;
   margin-bottom: 0;
 }
 
 /* Primary Objectives Styling */
 .about-objectives {
   margin-top: 4.5rem;
-  padding-top: 3rem;
-  border-top: 1px dashed var(--glass-border);
+  padding-top: 3.5rem;
+  border-top: 1px solid #e2e8f0;
 }
 
 .objectives-header {
@@ -100,21 +101,22 @@
 
 .objectives-badge {
   display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.78rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 0.35rem 0.9rem;
-  border-radius: 20px;
-  background: rgba(0, 86, 179, 0.08);
-  color: var(--primary-blue);
-  border: 1px solid rgba(0, 86, 179, 0.2);
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #dbeafe;
   margin-bottom: 0.75rem;
 }
 
 .objectives-title {
   font-size: 1.85rem;
-  color: var(--text-main);
+  color: #0f172a;
+  font-weight: 700;
   margin-bottom: 0;
 }
 
@@ -130,48 +132,50 @@
   gap: 1.25rem;
   padding: 1.75rem;
   background: #ffffff;
-  border: 1px solid var(--glass-border);
+  border: 1px solid #e5e7eb;
   border-radius: 16px;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .objective-card:hover {
   transform: translateY(-4px);
-  border-color: var(--primary-blue);
-  box-shadow: 0 12px 28px rgba(0, 86, 179, 0.1);
+  border-color: #2563eb;
+  box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.08);
 }
 
 .objective-icon-wrapper {
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   flex-shrink: 0;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(0, 86, 179, 0.1), rgba(0, 210, 255, 0.1));
-  border: 1px solid rgba(0, 86, 179, 0.2);
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
-  color: var(--primary-blue);
-  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  color: #2563eb;
+  transition: all 0.25s ease;
 }
 
 .objective-card:hover .objective-icon-wrapper {
-  background: var(--primary-blue);
+  background: #2563eb;
   color: #ffffff;
-  transform: scale(1.08);
+  transform: scale(1.06);
 }
 
 .objective-content h4 {
-  font-size: 1.15rem;
-  color: var(--text-main);
-  margin-bottom: 0.5rem;
+  font-size: 1.12rem;
+  color: #0f172a;
+  margin-bottom: 0.45rem;
   line-height: 1.35;
+  font-weight: 600;
 }
 
 .objective-content p {
   font-size: 0.92rem;
-  color: var(--text-muted);
+  color: #475569;
   line-height: 1.55;
   margin-bottom: 0;
 }

@@ -1,26 +1,23 @@
 :root {
-  --primary-blue: #0056b3;
-  --secondary-blue: #003d82;
-  --accent-cyan: #0099e6;
+  --primary-blue: #2563eb;
+  --secondary-blue: #1d4ed8;
+  --accent-cyan: #0284c7;
   --accent-highlight: #ff9e00;
-  --blueprint-blue: #0284c7;
-  --blueprint-line: rgba(2, 132, 199, 0.18);
-  --blueprint-grid-minor: rgba(2, 132, 199, 0.035);
-  --blueprint-grid-major: rgba(2, 132, 199, 0.065);
   --bg-color: #f8fafc;
   --bg-secondary: #ffffff;
   --text-main: #0f172a;
   --text-muted: #475569;
   --white: #ffffff;
-  --glass-bg: #ffffff;
-  --glass-border: rgba(2, 132, 199, 0.16);
-  --shadow-sm: 0 4px 6px rgba(2, 132, 199, 0.04);
-  --shadow-md: 0 10px 25px -5px rgba(2, 132, 199, 0.08);
-  --shadow-glow: 0 10px 25px -5px rgba(2, 132, 199, 0.14);
-  --font-heading: 'Inter', sans-serif;
-  --font-body: 'Roboto', sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Roboto Mono', monospace;
-  --ease-blueprint: cubic-bezier(0.16, 1, 0.3, 1);
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --card-border-hover: #2563eb;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  --shadow-hover: 0 12px 24px -6px rgba(15, 23, 42, 0.08);
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --ease-fluid: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -33,28 +30,24 @@ body {
   font-family: var(--font-body);
   color: var(--text-main);
   background-color: var(--bg-color);
-  background-image: 
-    linear-gradient(var(--blueprint-grid-minor) 1px, transparent 1px),
-    linear-gradient(90deg, var(--blueprint-grid-minor) 1px, transparent 1px),
-    linear-gradient(var(--blueprint-grid-major) 1px, transparent 1px),
-    linear-gradient(90deg, var(--blueprint-grid-major) 1px, transparent 1px);
-  background-size: 10px 10px, 10px 10px, 50px 50px, 50px 50px;
-  background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
   line-height: 1.6;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   margin-bottom: 1rem;
+  letter-spacing: -0.02em;
 }
 
 a {
   text-decoration: none;
   color: inherit;
-  transition: color 0.3s var(--ease-blueprint);
+  transition: color 0.2s var(--ease-fluid);
 }
 
 ul {
@@ -69,190 +62,116 @@ ul {
 }
 
 .section {
-  padding: 5rem 0;
+  padding: 5.5rem 0;
 }
 
 .section-title {
   text-align: center;
-  font-size: 2.5rem;
-  color: var(--primary-blue);
-  margin-bottom: 3rem;
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 2.75rem;
   position: relative;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .section-title::after {
   content: '';
   display: block;
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-blue), var(--accent-cyan));
-  margin: 0.5rem auto 0;
+  width: 48px;
+  height: 3px;
+  background: var(--primary-blue);
+  margin: 0.6rem auto 0;
   border-radius: 2px;
 }
 
+/* Modern Action Buttons */
 .btn {
   display: inline-block;
-  padding: 0.8rem 2rem;
-  border-radius: 30px;
+  padding: 0.8rem 1.85rem;
+  border-radius: 9999px;
   font-family: var(--font-heading);
   font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.3s var(--ease-blueprint);
-  border: none;
+  transition: transform 0.2s var(--ease-fluid), filter 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  border: 1px solid transparent;
   text-align: center;
 }
 
+.btn:hover {
+  transform: scale(1.02);
+  filter: brightness(1.04);
+}
+
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
+  background: var(--primary-blue);
   color: var(--white);
-  box-shadow: 0 4px 15px rgba(0, 86, 179, 0.25);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 86, 179, 0.35);
+  background: var(--secondary-blue);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
 }
 
 .btn-secondary {
-  background-color: transparent;
-  color: var(--primary-blue);
-  border: 2px solid var(--primary-blue);
+  background-color: #ffffff;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .btn-secondary:hover {
-  background-color: var(--primary-blue);
-  color: var(--white);
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+  color: var(--primary-blue);
 }
 
-/* Submit Paper Button with Luminous Sheen / Shimmer */
+/* High-Contrast Submit Paper Button */
 .btn-highlight {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, #FF9E00 0%, #FF6B00 100%);
+  background: linear-gradient(135deg, #ff9e00 0%, #ff6b00 100%);
   color: #ffffff;
-  box-shadow: 0 4px 15px rgba(255, 158, 0, 0.35);
+  box-shadow: 0 4px 16px rgba(255, 158, 0, 0.35);
   border: none;
 }
 
-.btn-highlight::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -80%;
-  width: 45%;
-  height: 200%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-  transform: rotate(25deg);
-  pointer-events: none;
-  transition: none;
-}
-
 .btn-highlight:hover {
-  background: linear-gradient(135deg, #FFAB1A 0%, #FF7A1A 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(255, 158, 0, 0.55);
-}
-
-.btn-highlight:hover::after {
-  left: 140%;
-  transition: left 0.75s ease-in-out;
+  background: linear-gradient(135deg, #ffa81a 0%, #ff751a 100%);
+  box-shadow: 0 6px 22px rgba(255, 158, 0, 0.5);
 }
 
 /* Modern Clean Cards */
 .glass-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 15px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
   padding: 2rem;
-  box-shadow: var(--shadow-md);
-  transition: transform 0.3s var(--ease-blueprint), box-shadow 0.3s var(--ease-blueprint), border-color 0.3s var(--ease-blueprint);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s var(--ease-fluid), box-shadow 0.25s var(--ease-fluid), border-color 0.25s var(--ease-fluid);
 }
 
 .glass-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-glow);
-  border-color: var(--blueprint-blue);
-}
-
-/* Corner Drafting Registration Marks */
-.schematic-box {
-  position: relative;
-}
-
-.corner-mark {
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  border-color: rgba(2, 132, 199, 0.4);
-  pointer-events: none;
-  transition: all 0.3s var(--ease-blueprint);
-}
-
-.corner-mark.top-left {
-  top: 7px;
-  left: 7px;
-  border-top: 2px solid;
-  border-left: 2px solid;
-}
-
-.corner-mark.top-right {
-  top: 7px;
-  right: 7px;
-  border-top: 2px solid;
-  border-right: 2px solid;
-}
-
-.corner-mark.bottom-left {
-  bottom: 7px;
-  left: 7px;
-  border-bottom: 2px solid;
-  border-left: 2px solid;
-}
-
-.corner-mark.bottom-right {
-  bottom: 7px;
-  right: 7px;
-  border-bottom: 2px solid;
-  border-right: 2px solid;
-}
-
-.schematic-box:hover .corner-mark {
-  border-color: var(--blueprint-blue);
-  width: 12px;
-  height: 12px;
-}
-
-/* Monospace Blueprint Technical Badges */
-.hud-mono-tag {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--blueprint-blue);
-  opacity: 0.85;
+  box-shadow: var(--shadow-hover);
+  border-color: var(--card-border-hover);
 }
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.8s var(--ease-blueprint) forwards;
+  animation: fadeIn 0.7s var(--ease-fluid) forwards;
 }
 
-@keyframes blueprintReveal {
+/* Clean Staggered Entrance Reveals */
+@keyframes cardEntrance {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -262,7 +181,7 @@ ul {
 
 .stagger-reveal {
   opacity: 0;
-  animation: blueprintReveal 0.6s var(--ease-blueprint) forwards;
+  animation: cardEntrance 0.5s var(--ease-fluid) forwards;
 }
 
 .stagger-reveal:nth-child(1) { animation-delay: 0ms; }
@@ -275,15 +194,15 @@ ul {
 @keyframes pulseRing {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.45);
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
   }
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 10px rgba(2, 132, 199, 0);
+    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(2, 132, 199, 0);
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
   }
 }
 
@@ -295,17 +214,18 @@ ul {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .btn-highlight::after {
-    display: none;
-  }
 }
 
 /* Responsive */
 @media (max-width: 768px) {
+  .section {
+    padding: 4rem 0;
+  }
   .section-title {
-    font-size: 2rem;
+    font-size: 1.85rem;
+    margin-bottom: 2.25rem;
   }
   .container {
-    padding: 0 1rem;
+    padding: 0 1.25rem;
   }
 }
