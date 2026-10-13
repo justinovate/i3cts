@@ -1,94 +1,230 @@
+import { useState, useEffect, useRef, useCallback } from 'react';
 import './About.css';
 
+const slides = [
+  {
+    id: 1,
+    title: 'Overview',
+    badge: 'PILLAR OVERVIEW',
+    icon: 'fas fa-layer-group',
+    content: (
+      <>
+        The International Conference on Consumer, Computing, and Communications Technology Systems is a premier academic and professional forum designed to bring together researchers, engineers, industry practitioners, and scholars. It explores and accelerates convergent innovations across five critical pillars: <strong className="text-emphasis">Computing Systems</strong>, <strong className="text-emphasis">Consumer Electronics and Technology Network Infrastructure</strong>, <strong className="text-emphasis">Educational Technology</strong>, and <strong className="text-emphasis">Space Systems</strong>.
+      </>
+    ),
+  },
+  {
+    id: 2,
+    title: 'Convergence',
+    badge: 'CONVERGENT ECOSYSTEMS',
+    icon: 'fas fa-network-wired',
+    content: (
+      <>
+        The conference centers on the rapidly evolving intersection between consumer-facing technologies, advanced computing frameworks, and next-generation communication systems. As the world shifts toward <strong className="text-emphasis">hyper-connectivity, automation, and intelligent ecosystems</strong>, this event explores how foundational computing architectures and modern communication networks (such as <strong className="text-emphasis">5G/6G, IoT, and cloud-edge systems</strong>) power modern consumer electronics, smart environments, and data-driven applications.
+      </>
+    ),
+  },
+  {
+    id: 3,
+    title: 'Special Session',
+    badge: 'SPECIAL SESSION FEATURE',
+    icon: 'fas fa-satellite',
+    content: (
+      <>
+        A key highlight of the event is a Special Session on <strong className="text-emphasis">Geoscience & Space</strong>, which examines how distributed sensor telemetry, satellite communications, and edge-computed Earth observation data integrate into broader technological frameworks. This specialized track bridges terrestrial infrastructure with space-borne systems and addresses critical challenges in remote sensing, resilient orbital communications, and environmental monitoring.
+      </>
+    ),
+  },
+  {
+    id: 4,
+    title: 'Platform Scope',
+    badge: 'ACADEMIC & PROFESSIONAL SCOPE',
+    icon: 'fas fa-globe-americas',
+    content: (
+      <>
+        Overall, the conference provides a hybrid or physical platform for presenting cutting-edge research, sharing technological breakthroughs, and discussing practical implementation challenges across these convergent domains.
+      </>
+    ),
+  },
+];
+
 const About = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const [animKey, setAnimKey] = useState(0);
+
+  const sectionRef = useRef(null);
+
+  // Pause auto-advancement whenever About section is scrolled out of view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.25 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % slides.length);
+    setAnimKey((k) => k + 1);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    setAnimKey((k) => k + 1);
+  }, []);
+
+  const goToSlide = (index) => {
+    if (index === currentIndex) return;
+    setCurrentIndex(index);
+    setAnimKey((k) => k + 1);
+  };
+
+  const isPaused = !isInView || isHovered;
+
+  // Keyboard navigation support
+  const handleKeyDown = (e) => {
+    if (e.key === 'ArrowRight') {
+      nextSlide();
+    } else if (e.key === 'ArrowLeft') {
+      prevSlide();
+    }
+  };
+
+  const currentSlide = slides[currentIndex];
+
   return (
-    <section className="section about-section" id="about">
+    <section className="section about-section" id="about" ref={sectionRef}>
       <div className="container">
         <h2 className="section-title">About the Conference</h2>
         <p className="about-intro-subtitle">
           Promote Interdisciplinary Breakthroughs across Computing Systems, Consumer Electronics, Network Infrastructure, Education Technology and Space Systems.
         </p>
-        
-        <div className="about-grid">
-          {/* Editorial Typography Column (Left) */}
-          <div className="about-content">
-            {/* 1. Lead Paragraph (Editorial Hook) */}
-            <p className="about-lead-text">
-              The International Conference on Consumer, Computing, and Communications Technology Systems is a premier academic and professional forum designed to bring together researchers, engineers, industry practitioners, and scholars. It explores and accelerates convergent innovations across five critical pillars: <span className="text-emphasis">Computing Systems</span>, <span className="text-emphasis">Consumer Electronics and Technology Network Infrastructure</span>, <span className="text-emphasis">Educational Technology</span>, and <span className="text-emphasis">Space Systems</span>.
-            </p>
 
-            {/* 2. Core Body Copy */}
-            <p className="about-body-text">
-              The conference centers on the rapidly evolving intersection between consumer-facing technologies, advanced computing frameworks, and next-generation communication systems. As the world shifts toward <span className="text-emphasis">hyper-connectivity, automation, and intelligent ecosystems</span>, this event explores how foundational computing architectures and modern communication networks (such as <span className="text-emphasis">5G/6G, IoT, and cloud-edge systems</span>) power modern consumer electronics, smart environments, and data-driven applications.
-            </p>
+        {/* Centered Single-Focus Story Stepper Card */}
+        <div
+          className="about-stepper-container"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onTouchStart={() => setIsHovered(true)}
+          onTouchEnd={() => setIsHovered(false)}
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="About the Conference narrative stepper"
+        >
+          <div className="about-stepper-card">
+            {/* Top Bar: Badge, Step Indicator & Arrow Navigation */}
+            <div className="stepper-header">
+              <span className="stepper-badge">
+                <i className={currentSlide.icon} aria-hidden="true" />
+                <span>{currentSlide.badge}</span>
+              </span>
 
-            {/* 3. Special Session Feature Card */}
-            <div className="about-highlight-card">
-              <div className="highlight-badge-row">
-                <span className="highlight-badge">
-                  <i className="fas fa-satellite"></i> SPECIAL SESSION HIGHLIGHT
+              <div className="stepper-controls">
+                <span className="stepper-counter" aria-live="polite">
+                  {String(currentIndex + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
                 </span>
-              </div>
-              <p className="highlight-card-text">
-                A key highlight of the event is a Special Session on Geoscience & Space, which examines how distributed sensor telemetry, satellite communications, and edge-computed Earth observation data integrate into broader technological frameworks. This specialized track bridges terrestrial infrastructure with space-borne systems and addresses critical challenges in remote sensing, resilient orbital communications, and environmental monitoring.
-              </p>
-            </div>
 
-            {/* 4. Conclusion Note */}
-            <p className="about-conclusion-text">
-              Overall, the conference provides a hybrid or physical platform for presenting cutting-edge research, sharing technological breakthroughs, and discussing practical implementation challenges across these convergent domains.
-            </p>
-          </div>
-          
-          {/* 5 Right-Column Pillar Cards */}
-          <div className="about-cards">
-            <div className="theme-card">
-              <div className="icon-wrapper">
-                <i className="fas fa-microchip"></i>
-              </div>
-              <div className="theme-card-content">
-                <h3>Consumer Tech</h3>
-                <p>Exploring the latest in smart devices, IoT, and consumer electronics design.</p>
-              </div>
-            </div>
-            
-            <div className="theme-card">
-              <div className="icon-wrapper">
-                <i className="fas fa-laptop-code"></i>
-              </div>
-              <div className="theme-card-content">
-                <h3>Computing Systems</h3>
-                <p>Advancements in AI, edge computing, and distributed architectures.</p>
-              </div>
-            </div>
-            
-            <div className="theme-card">
-              <div className="icon-wrapper">
-                <i className="fas fa-network-wired"></i>
-              </div>
-              <div className="theme-card-content">
-                <h3>Communications</h3>
-                <p>Next-gen wireless networks, 6G protocols, and secure communication.</p>
+                <div className="stepper-nav-buttons">
+                  <button
+                    type="button"
+                    className="stepper-arrow-btn"
+                    onClick={prevSlide}
+                    aria-label="Previous paragraph"
+                    title="Previous paragraph"
+                  >
+                    <i className="fas fa-chevron-left" aria-hidden="true" />
+                  </button>
+                  <button
+                    type="button"
+                    className="stepper-arrow-btn"
+                    onClick={nextSlide}
+                    aria-label="Next paragraph"
+                    title="Next paragraph"
+                  >
+                    <i className="fas fa-chevron-right" aria-hidden="true" />
+                  </button>
+                </div>
               </div>
             </div>
 
-            <div className="theme-card">
-              <div className="icon-wrapper">
-                <i className="fas fa-graduation-cap"></i>
-              </div>
-              <div className="theme-card-content">
-                <h3>Education & Pedagogy</h3>
-                <p>Digital learning platforms, STEM curriculum innovation, and AI in education.</p>
+            {/* Active Paragraph Content with Smooth Crossfade */}
+            <div className="stepper-content-viewport">
+              <div
+                key={`slide-${currentIndex}-${animKey}`}
+                className="stepper-slide-content"
+                aria-live="polite"
+              >
+                <p className="stepper-body-text">
+                  {currentSlide.content}
+                </p>
               </div>
             </div>
 
-            <div className="theme-card">
-              <div className="icon-wrapper">
-                <i className="fas fa-satellite"></i>
+            {/* Bottom Progress Bars & Quick Nav Pills */}
+            <div className="stepper-progress-section">
+              <div
+                className="stepper-progress-row"
+                role="tablist"
+                aria-label="Story paragraph progress"
+              >
+                {slides.map((slide, idx) => {
+                  const isActive = idx === currentIndex;
+                  const isCompleted = idx < currentIndex;
+
+                  return (
+                    <button
+                      key={`pill-${slide.id}`}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      aria-label={`Go to slide ${idx + 1}: ${slide.title}`}
+                      className={`stepper-progress-pill ${isActive ? 'is-active' : ''} ${isCompleted ? 'is-completed' : ''}`}
+                      onClick={() => goToSlide(idx)}
+                    >
+                      <span
+                        key={isActive ? `active-fill-${idx}-${animKey}` : `idle-fill-${idx}`}
+                        className={`stepper-progress-fill ${
+                          isActive
+                            ? `active ${isPaused ? 'is-paused' : ''}`
+                            : isCompleted
+                            ? 'completed'
+                            : ''
+                        }`}
+                        onAnimationEnd={() => {
+                          if (isActive && !isPaused) {
+                            nextSlide();
+                          }
+                        }}
+                      />
+                    </button>
+                  );
+                })}
               </div>
-              <div className="theme-card-content">
-                <h3>Geoscience & Space (GRASS)</h3>
-                <p>Remote sensing, GIS, satellite communications, CubeSats, and aerospace systems.</p>
+
+              {/* Progress Labels */}
+              <div className="stepper-labels-row">
+                {slides.map((slide, idx) => (
+                  <button
+                    key={`label-${slide.id}`}
+                    type="button"
+                    className={`stepper-label-btn ${idx === currentIndex ? 'is-active' : ''}`}
+                    onClick={() => goToSlide(idx)}
+                  >
+                    <span className="stepper-label-num">{idx + 1}.</span>
+                    <span className="stepper-label-name">{slide.title}</span>
+                  </button>
+                ))}
               </div>
             </div>
           </div>
