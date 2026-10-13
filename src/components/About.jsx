@@ -10,23 +10,39 @@ const About = () => {
         </p>
         
         <div className="about-grid">
+          {/* Editorial Typography Column (Left) */}
           <div className="about-content">
-            <p className="about-text">
-              The International Conference on Consumer, Computing, and Communications Technology Systems is a premier academic and professional forum designed to bring together researchers, engineers, industry practitioners, and scholars. It explores and accelerates convergent innovations across five critical pillars: Computing Systems, Consumer Electronics and Technology Network Infrastructure, Educational Technology, and Space Systems.
+            {/* 1. Lead Paragraph (Editorial Hook) */}
+            <p className="about-lead-text">
+              The International Conference on Consumer, Computing, and Communications Technology Systems is a premier academic and professional forum designed to bring together researchers, engineers, industry practitioners, and scholars. It explores and accelerates convergent innovations across five critical pillars: <span className="text-emphasis">Computing Systems</span>, <span className="text-emphasis">Consumer Electronics and Technology Network Infrastructure</span>, <span className="text-emphasis">Educational Technology</span>, and <span className="text-emphasis">Space Systems</span>.
             </p>
-            <p className="about-text">
-              The conference centers on the rapidly evolving intersection between consumer-facing technologies, advanced computing frameworks, and next-generation communication systems. As the world shifts toward hyper-connectivity, automation, and intelligent ecosystems, this event explores how foundational computing architectures and modern communication networks (such as 5G/6G, IoT, and cloud-edge systems) power modern consumer electronics, smart environments, and data-driven applications.
+
+            {/* 2. Core Body Copy */}
+            <p className="about-body-text">
+              The conference centers on the rapidly evolving intersection between consumer-facing technologies, advanced computing frameworks, and next-generation communication systems. As the world shifts toward <span className="text-emphasis">hyper-connectivity, automation, and intelligent ecosystems</span>, this event explores how foundational computing architectures and modern communication networks (such as <span className="text-emphasis">5G/6G, IoT, and cloud-edge systems</span>) power modern consumer electronics, smart environments, and data-driven applications.
             </p>
-            <p className="about-text">
-              A key highlight of the event is a Special Session on Geoscience & Space, which examines how distributed sensor telemetry, satellite communications, and edge-computed Earth observation data integrate into broader technological frameworks. This specialized track bridges terrestrial infrastructure with space-borne systems and addresses critical challenges in remote sensing, resilient orbital communications, and environmental monitoring.
-            </p>
-            <p className="about-text">
+
+            {/* 3. Special Session Feature Card */}
+            <div className="about-highlight-card">
+              <div className="highlight-badge-row">
+                <span className="highlight-badge">
+                  <i className="fas fa-satellite"></i> SPECIAL SESSION HIGHLIGHT
+                </span>
+              </div>
+              <p className="highlight-card-text">
+                A key highlight of the event is a Special Session on Geoscience & Space, which examines how distributed sensor telemetry, satellite communications, and edge-computed Earth observation data integrate into broader technological frameworks. This specialized track bridges terrestrial infrastructure with space-borne systems and addresses critical challenges in remote sensing, resilient orbital communications, and environmental monitoring.
+              </p>
+            </div>
+
+            {/* 4. Conclusion Note */}
+            <p className="about-conclusion-text">
               Overall, the conference provides a hybrid or physical platform for presenting cutting-edge research, sharing technological breakthroughs, and discussing practical implementation challenges across these convergent domains.
             </p>
           </div>
           
+          {/* 5 Right-Column Pillar Cards */}
           <div className="about-cards">
-            <div className="glass-card theme-card">
+            <div className="theme-card">
               <div className="icon-wrapper">
                 <i className="fas fa-microchip"></i>
               </div>
@@ -36,7 +52,7 @@ const About = () => {
               </div>
             </div>
             
-            <div className="glass-card theme-card">
+            <div className="theme-card">
               <div className="icon-wrapper">
                 <i className="fas fa-laptop-code"></i>
               </div>
@@ -46,7 +62,7 @@ const About = () => {
               </div>
             </div>
             
-            <div className="glass-card theme-card">
+            <div className="theme-card">
               <div className="icon-wrapper">
                 <i className="fas fa-network-wired"></i>
               </div>
@@ -56,7 +72,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="glass-card theme-card">
+            <div className="theme-card">
               <div className="icon-wrapper">
                 <i className="fas fa-graduation-cap"></i>
               </div>
@@ -66,7 +82,7 @@ const About = () => {
               </div>
             </div>
 
-            <div className="glass-card theme-card">
+            <div className="theme-card">
               <div className="icon-wrapper">
                 <i className="fas fa-satellite"></i>
               </div>
