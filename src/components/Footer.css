@@ -104,11 +104,67 @@
 }
 
 .footer-bottom {
-  text-align: center;
   padding: 1.5rem 0;
   border-top: 1px solid #e2e8f0;
   color: #94a3b8;
   font-size: 0.88rem;
+}
+
+.footer-bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.copyright-text {
+  margin: 0;
+}
+
+/* =========================================================================
+   Understated Secret Liftoff Simulation / Debug Trigger
+   ========================================================================= */
+.liftoff-simulation-toggle {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-family: var(--font-mono, monospace);
+  color: #94a3b8;
+  opacity: 0.35;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.liftoff-simulation-toggle:hover {
+  opacity: 1;
+  color: #2563eb;
+  border-color: rgba(37, 99, 235, 0.4);
+  background: rgba(37, 99, 235, 0.05);
+}
+
+.liftoff-simulation-toggle.is-active {
+  opacity: 0.9;
+  color: #059669;
+  border-color: rgba(16, 185, 129, 0.45);
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.liftoff-simulation-toggle .sim-icon {
+  font-size: 0.82rem;
+}
+
+@media (max-width: 640px) {
+  .footer-bottom-inner {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 @media (max-width: 768px) {

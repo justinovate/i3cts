@@ -1,7 +1,7 @@
 import './Footer.css';
 import conferenceLogo from '../assets/i3cts-logo.png';
 
-const Footer = () => {
+const Footer = ({ isSimulatedLive = false, onToggleSimulation }) => {
   return (
     <footer className="footer">
       <div className="container footer-grid">
@@ -12,9 +12,9 @@ const Footer = () => {
           </div>
           <p>International Conference on Consumer, Computing, and Communications Technology Systems.</p>
           <div className="social-icons">
-            <a href="#" className="social-icon"><i className="fab fa-twitter"></i></a>
-            <a href="#" className="social-icon"><i className="fab fa-linkedin-in"></i></a>
-            <a href="#" className="social-icon"><i className="fab fa-facebook-f"></i></a>
+            <a href="#" className="social-icon" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
+            <a href="#" className="social-icon" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
+            <a href="#" className="social-icon" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
           </div>
         </div>
         
@@ -42,7 +42,21 @@ const Footer = () => {
       </div>
       
       <div className="footer-bottom">
-        <p>&copy; 2027 I3CTS Conference. All rights reserved.</p>
+        <div className="container footer-bottom-inner">
+          <p className="copyright-text">&copy; 2027 I3CTS Conference. All rights reserved.</p>
+          {onToggleSimulation && (
+            <button
+              type="button"
+              className={`liftoff-simulation-toggle ${isSimulatedLive ? 'is-active' : ''}`}
+              onClick={onToggleSimulation}
+              title={isSimulatedLive ? 'Reset Liftoff Simulation' : 'Simulate Event-Day Liftoff'}
+              aria-label={isSimulatedLive ? 'Reset countdown to default' : 'Simulate conference event-day liftoff'}
+            >
+              <span className="sim-icon">{isSimulatedLive ? '↺' : '⚡'}</span>
+              <span>{isSimulatedLive ? 'Reset Countdown' : 'Simulate Liftoff'}</span>
+            </button>
+          )}
+        </div>
       </div>
     </footer>
   );

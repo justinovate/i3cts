@@ -7,92 +7,231 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  mask-image: radial-gradient(circle at center, black 45%, transparent 80%);
-  -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 80%);
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
 }
 
 .blueprint-svg {
   width: 100%;
   height: 100%;
-  min-width: 1050px;
-  min-height: 700px;
+  min-width: 1100px;
+  min-height: 750px;
   object-fit: cover;
-  animation: neuralMeshDrift 30s ease-in-out infinite alternate;
   transform-origin: 50% 50%;
 }
 
-/* Subtle Technical Reference Orbital Arcs */
-.neural-orbit-trace {
+/* Base Hairline Blueprint Stroke Styling */
+.blueprint-hairline-circle,
+.blueprint-hairline-line,
+.blueprint-orbit-path,
+.blueprint-hull-outline,
+.blueprint-bulkhead-ring,
+.blueprint-fin-profile,
+.blueprint-fin-spar,
+.blueprint-dorsal-ridge,
+.blueprint-stringer,
+.blueprint-probe-line,
+.blueprint-truss-strut,
+.blueprint-nozzle-bell,
+.blueprint-nozzle-exit,
+.blueprint-thrust-vector,
+.blueprint-dimension-line,
+.blueprint-witness-cap,
+.blueprint-witness-extension,
+.blueprint-witness-tick,
+.cubesat-chassis,
+.cubesat-solar-panel,
+.cubesat-grid,
+.cubesat-antenna,
+.cubesat-antenna-stem,
+.cubesat-divider {
   fill: none;
-  stroke: rgba(37, 99, 235, 0.08);
-  stroke-width: 1px;
-}
-
-.neural-signal-ring {
-  fill: none;
-  stroke: rgba(37, 99, 235, 0.07);
-  stroke-width: 1px;
-}
-
-.neural-signal-ring.dashed {
-  stroke-dasharray: 4 8;
-  opacity: 0.6;
-}
-
-/* Delicate Neural Synapse Vectors */
-.neural-edge {
   stroke: rgba(37, 99, 235, 0.12);
-  stroke-width: 1px;
-  stroke-linecap: round;
-  transition: stroke 0.3s ease;
+  stroke-width: 1.1px;
 }
 
-/* Vertices / Compute Nodes */
-.node-vertex {
-  fill: rgba(37, 99, 235, 0.28);
-  stroke: rgba(37, 99, 235, 0.4);
-  stroke-width: 0.5px;
-  transition: transform 0.3s ease;
-}
-
-.node-glow-ring {
+/* Centerline Engineering Drafting Axis */
+.blueprint-centerline {
   fill: none;
-  stroke: rgba(37, 99, 235, 0.14);
+  stroke: rgba(37, 99, 235, 0.10);
+  stroke-width: 0.9px;
+  stroke-dasharray: 12 4 3 4;
+}
+
+/* Dashed Drafting Variations */
+.dashed {
+  stroke-dasharray: 4 6;
+  opacity: 0.8;
+}
+
+/* Orbit Path Accent */
+.blueprint-orbit-path {
+  stroke: rgba(37, 99, 235, 0.06);
   stroke-width: 1px;
-  animation: hubPulse 4s ease-in-out infinite alternate;
 }
 
-@keyframes neuralMeshDrift {
+/* Vertices & Alignment Points */
+.blueprint-vertex {
+  fill: rgba(37, 99, 235, 0.35);
+  stroke: rgba(37, 99, 235, 0.6);
+  stroke-width: 0.8px;
+}
+
+/* Monospace Technical Drafting Annotations */
+.blueprint-schematic-text,
+.blueprint-dimension-label,
+.blueprint-annotation-text {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 8px;
+  fill: rgba(37, 99, 235, 0.28);
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  user-select: none;
+}
+
+.blueprint-dimension-label {
+  font-size: 8.5px;
+  letter-spacing: 0.12em;
+  fill: rgba(37, 99, 235, 0.35);
+}
+
+/* =========================================================================
+   Resting Ambient Floating Motion (22s Loop)
+   ========================================================================= */
+.blueprint-rocket-schematic {
+  transform-origin: 600px 500px;
+  animation: rocketRestingFloat 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes rocketRestingFloat {
   0% {
-    transform: scale(1) translate(0, 0) rotate(0deg);
-  }
-  33% {
-    transform: scale(1.025) translate(8px, -6px) rotate(0.8deg);
-  }
-  66% {
-    transform: scale(0.99) translate(-6px, 8px) rotate(-0.6deg);
+    transform: translateY(0px);
   }
   100% {
-    transform: scale(1.015) translate(4px, 4px) rotate(0.4deg);
+    transform: translateY(-12px);
   }
 }
 
-@keyframes hubPulse {
+/* =========================================================================
+   Exhaust Thrust Plume (Hidden in resting, active on liftoff)
+   ========================================================================= */
+.rocket-thrust-plume {
+  opacity: 0;
+  transform: scaleY(0.3);
+  transform-origin: 600px 735px;
+  transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.thrust-plume-fill {
+  transition: opacity 1.2s ease;
+}
+
+.shock-diamond {
+  fill: url(#shockDiamondGrad);
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 0.8px;
+  opacity: 0.7;
+  animation: shockDiamondPulse 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes shockDiamondPulse {
   0% {
-    transform: scale(0.9);
-    opacity: 0.4;
+    transform: scale(0.96);
+    opacity: 0.55;
   }
   100% {
-    transform: scale(1.2);
-    opacity: 0.9;
+    transform: scale(1.04);
+    opacity: 0.85;
   }
 }
 
+.thrust-streamline {
+  stroke: rgba(56, 189, 248, 0.3);
+  stroke-width: 1px;
+  stroke-dasharray: 6 8;
+  animation: streamlineFlow 0.8s linear infinite;
+}
+
+.thrust-streamline.center {
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 1.2px;
+}
+
+@keyframes streamlineFlow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+/* =========================================================================
+   Launch Origin Radial Ambient Glow
+   ========================================================================= */
+.launch-origin-glow {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translate(-50%, 50%) scale(0.6);
+  width: 520px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.32) 0%, rgba(56, 189, 248, 0.16) 45%, transparent 75%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 2s cubic-bezier(0.16, 1, 0.3, 1), transform 2.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+  filter: blur(40px);
+}
+
+/* =========================================================================
+   Event-Day / Simulated Liftoff State Execution
+   ========================================================================= */
+.is-liftoff .blueprint-rocket-schematic {
+  animation: none;
+  transform: translateY(-160px) scale(1.04);
+  transition: transform 3.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.is-liftoff .rocket-thrust-plume {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.is-liftoff .launch-origin-glow {
+  opacity: 1;
+  transform: translate(-50%, 50%) scale(1.3);
+  animation: launchPadGlowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes launchPadGlowPulse {
+  0% {
+    opacity: 0.75;
+    transform: translate(-50%, 50%) scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 50%) scale(1.4);
+  }
+}
+
+/* =========================================================================
+   Accessibility: Reduced Motion
+   ========================================================================= */
 @media (prefers-reduced-motion: reduce) {
-  .blueprint-svg {
+  .blueprint-rocket-schematic {
     animation: none !important;
   }
-  .node-glow-ring {
+  .shock-diamond,
+  .thrust-streamline,
+  .launch-origin-glow {
     animation: none !important;
+  }
+  .is-liftoff .blueprint-rocket-schematic {
+    transition: none !important;
+    transform: translateY(-160px) scale(1.04);
   }
 }

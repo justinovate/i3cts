@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -12,6 +12,11 @@ import Committees from './components/Committees';
 import Footer from './components/Footer';
 
 function App() {
+  const [isSimulatedLive, setIsSimulatedLive] = useState(false);
+  const targetTime = new Date('2027-04-08T00:00:00').getTime();
+  const isActualLive = Date.now() >= targetTime;
+  const isLive = isActualLive || isSimulatedLive;
+
   useEffect(() => {
     const targets = document.querySelectorAll(
       '.section-title, .about-intro-subtitle, .about-lead-text, .about-body-text, .about-highlight-card, .about-meta-card, .timeline-item, .cfp-intro, .topic-card, .speakers-notice-banner, .speaker-card, .committee-card, .venue-info, .venue-map'
@@ -43,10 +48,11 @@ function App() {
 
     return () => observer.disconnect();
   }, []);
+
   return (
     <>
       <Navbar />
-      <Hero />
+      <Hero isLive={isLive} />
       <About />
       <ImportantDates />
       <CallForPapers />
@@ -56,7 +62,10 @@ function App() {
       {/* Temporarily commented out until details are finalized */}
       {/* <Partners /> */}
       {/* <Contact /> */}
-      <Footer />
+      <Footer
+        isSimulatedLive={isSimulatedLive}
+        onToggleSimulation={() => setIsSimulatedLive((prev) => !prev)}
+      />
     </>
   );
 }

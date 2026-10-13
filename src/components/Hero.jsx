@@ -5,7 +5,7 @@ import './Hero.css';
 import conferenceLogo from '../assets/i3cts-logo.png';
 import { EASYCHAIR_URL } from '../constants';
 
-const Hero = () => {
+const Hero = ({ isLive = false }) => {
   const heroRef = useRef(null);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Hero = () => {
         <div className="gradient-sphere sphere-1"></div>
         <div className="gradient-sphere sphere-2"></div>
         <div className="grid-overlay"></div>
-        <BlueprintBackground />
+        <BlueprintBackground isLive={isLive} />
       </div>
       
       <div className="container hero-content animate-fade-in">
@@ -62,7 +62,7 @@ const Hero = () => {
           </a>
         </div>
         
-        <Countdown />
+        <Countdown isLive={isLive} />
       </div>
     </header>
   );
