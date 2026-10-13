@@ -1,233 +1,157 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './About.css';
 
-const slides = [
-  {
-    id: 1,
-    title: 'Overview',
-    badge: 'PILLAR OVERVIEW',
-    icon: 'fas fa-layer-group',
-    content: (
-      <>
-        The International Conference on Consumer, Computing, and Communications Technology Systems is a premier academic and professional forum designed to bring together researchers, engineers, industry practitioners, and scholars. It explores and accelerates convergent innovations across five critical pillars: <strong className="text-emphasis">Computing Systems</strong>, <strong className="text-emphasis">Consumer Electronics and Technology Network Infrastructure</strong>, <strong className="text-emphasis">Educational Technology</strong>, and <strong className="text-emphasis">Space Systems</strong>.
-      </>
-    ),
-  },
-  {
-    id: 2,
-    title: 'Convergence',
-    badge: 'CONVERGENT ECOSYSTEMS',
-    icon: 'fas fa-network-wired',
-    content: (
-      <>
-        The conference centers on the rapidly evolving intersection between consumer-facing technologies, advanced computing frameworks, and next-generation communication systems. As the world shifts toward <strong className="text-emphasis">hyper-connectivity, automation, and intelligent ecosystems</strong>, this event explores how foundational computing architectures and modern communication networks (such as <strong className="text-emphasis">5G/6G, IoT, and cloud-edge systems</strong>) power modern consumer electronics, smart environments, and data-driven applications.
-      </>
-    ),
-  },
-  {
-    id: 3,
-    title: 'Special Session',
-    badge: 'SPECIAL SESSION FEATURE',
-    icon: 'fas fa-satellite',
-    content: (
-      <>
-        A key highlight of the event is a Special Session on <strong className="text-emphasis">Geoscience & Space</strong>, which examines how distributed sensor telemetry, satellite communications, and edge-computed Earth observation data integrate into broader technological frameworks. This specialized track bridges terrestrial infrastructure with space-borne systems and addresses critical challenges in remote sensing, resilient orbital communications, and environmental monitoring.
-      </>
-    ),
-  },
-  {
-    id: 4,
-    title: 'Platform Scope',
-    badge: 'ACADEMIC & PROFESSIONAL SCOPE',
-    icon: 'fas fa-globe-americas',
-    content: (
-      <>
-        Overall, the conference provides a hybrid or physical platform for presenting cutting-edge research, sharing technological breakthroughs, and discussing practical implementation challenges across these convergent domains.
-      </>
-    ),
-  },
+const chapters = [
+  { id: 'chapter-overview', num: '01', label: 'OVERVIEW' },
+  { id: 'chapter-convergence', num: '02', label: 'CONVERGENCE' },
+  { id: 'chapter-special-session', num: '03', label: 'SPECIAL SESSION' },
+  { id: 'chapter-scope', num: '04', label: 'SCOPE' },
 ];
 
 const About = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isInView, setIsInView] = useState(false);
-  const [animKey, setAnimKey] = useState(0);
+  const [activeChapter, setActiveChapter] = useState(0);
+  const chapterRefs = useRef([]);
 
-  const sectionRef = useRef(null);
-
-  // Pause auto-advancement whenever About section is scrolled out of view
+  // Scroll spy via IntersectionObserver to track the active reading block
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = chapterRefs.current.indexOf(entry.target);
+            if (index !== -1) {
+              setActiveChapter(index);
+            }
+          }
+        });
       },
-      { threshold: 0.25 }
+      {
+        rootMargin: '-15% 0px -55% 0px',
+        threshold: 0.1,
+      }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    chapterRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
 
     return () => observer.disconnect();
   }, []);
 
-  const nextSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % slides.length);
-    setAnimKey((k) => k + 1);
-  }, []);
-
-  const prevSlide = useCallback(() => {
-    setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-    setAnimKey((k) => k + 1);
-  }, []);
-
-  const goToSlide = (index) => {
-    if (index === currentIndex) return;
-    setCurrentIndex(index);
-    setAnimKey((k) => k + 1);
-  };
-
-  const isPaused = !isInView || isHovered;
-
-  // Keyboard navigation support
-  const handleKeyDown = (e) => {
-    if (e.key === 'ArrowRight') {
-      nextSlide();
-    } else if (e.key === 'ArrowLeft') {
-      prevSlide();
+  const scrollToChapter = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      const yOffset = -120;
+      const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
-  const currentSlide = slides[currentIndex];
-
   return (
-    <section className="section about-section" id="about" ref={sectionRef}>
+    <section className="section about-section" id="about">
       <div className="container">
         <h2 className="section-title">About the Conference</h2>
         <p className="about-intro-subtitle">
           Promote Interdisciplinary Breakthroughs across Computing Systems, Consumer Electronics, Network Infrastructure, Education Technology and Space Systems.
         </p>
 
-        {/* Centered Single-Focus Story Stepper Card */}
-        <div
-          className="about-stepper-container"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          onTouchStart={() => setIsHovered(true)}
-          onTouchEnd={() => setIsHovered(false)}
-          onKeyDown={handleKeyDown}
-          tabIndex={0}
-          role="region"
-          aria-roledescription="carousel"
-          aria-label="About the Conference narrative stepper"
-        >
-          <div className="about-stepper-card">
-            {/* Top Bar: Badge, Step Indicator & Arrow Navigation */}
-            <div className="stepper-header">
-              <span className="stepper-badge">
-                <i className={currentSlide.icon} aria-hidden="true" />
-                <span>{currentSlide.badge}</span>
-              </span>
-
-              <div className="stepper-controls">
-                <span className="stepper-counter" aria-live="polite">
-                  {String(currentIndex + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
-                </span>
-
-                <div className="stepper-nav-buttons">
-                  <button
-                    type="button"
-                    className="stepper-arrow-btn"
-                    onClick={prevSlide}
-                    aria-label="Previous paragraph"
-                    title="Previous paragraph"
-                  >
-                    <i className="fas fa-chevron-left" aria-hidden="true" />
-                  </button>
-                  <button
-                    type="button"
-                    className="stepper-arrow-btn"
-                    onClick={nextSlide}
-                    aria-label="Next paragraph"
-                    title="Next paragraph"
-                  >
-                    <i className="fas fa-chevron-right" aria-hidden="true" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Active Paragraph Content with Smooth Crossfade */}
-            <div className="stepper-content-viewport">
-              <div
-                key={`slide-${currentIndex}-${animKey}`}
-                className="stepper-slide-content"
-                aria-live="polite"
-              >
-                <p className="stepper-body-text">
-                  {currentSlide.content}
-                </p>
-              </div>
-            </div>
-
-            {/* Bottom Progress Bars & Quick Nav Pills */}
-            <div className="stepper-progress-section">
-              <div
-                className="stepper-progress-row"
-                role="tablist"
-                aria-label="Story paragraph progress"
-              >
-                {slides.map((slide, idx) => {
-                  const isActive = idx === currentIndex;
-                  const isCompleted = idx < currentIndex;
-
-                  return (
-                    <button
-                      key={`pill-${slide.id}`}
-                      type="button"
-                      role="tab"
-                      aria-selected={isActive}
-                      aria-label={`Go to slide ${idx + 1}: ${slide.title}`}
-                      className={`stepper-progress-pill ${isActive ? 'is-active' : ''} ${isCompleted ? 'is-completed' : ''}`}
-                      onClick={() => goToSlide(idx)}
-                    >
-                      <span
-                        key={isActive ? `active-fill-${idx}-${animKey}` : `idle-fill-${idx}`}
-                        className={`stepper-progress-fill ${
-                          isActive
-                            ? `active ${isPaused ? 'is-paused' : ''}`
-                            : isCompleted
-                            ? 'completed'
-                            : ''
-                        }`}
-                        onAnimationEnd={() => {
-                          if (isActive && !isPaused) {
-                            nextSlide();
-                          }
-                        }}
-                      />
-                    </button>
-                  );
-                })}
+        {/* Open Editorial Canvas Layout (No Cards / No Slides) */}
+        <div className="editorial-layout">
+          {/* Left Column: Sticky Chapter Index Rail */}
+          <aside className="editorial-rail" aria-label="Reading chapters">
+            <div className="editorial-sticky-nav">
+              <div className="editorial-nav-header">
+                <span className="editorial-nav-title">READING INDEX</span>
+                <span className="editorial-nav-dot" />
               </div>
 
-              {/* Progress Labels */}
-              <div className="stepper-labels-row">
-                {slides.map((slide, idx) => (
+              <nav className="editorial-nav-list">
+                {chapters.map((ch, idx) => (
                   <button
-                    key={`label-${slide.id}`}
+                    key={ch.id}
                     type="button"
-                    className={`stepper-label-btn ${idx === currentIndex ? 'is-active' : ''}`}
-                    onClick={() => goToSlide(idx)}
+                    onClick={() => scrollToChapter(ch.id)}
+                    className={`editorial-nav-item ${activeChapter === idx ? 'is-active' : ''}`}
+                    aria-current={activeChapter === idx ? 'true' : 'false'}
                   >
-                    <span className="stepper-label-num">{idx + 1}.</span>
-                    <span className="stepper-label-name">{slide.title}</span>
+                    <span className="nav-item-indicator" aria-hidden="true" />
+                    <span className="nav-item-num">{ch.num}</span>
+                    <span className="nav-item-divider">//</span>
+                    <span className="nav-item-label">{ch.label}</span>
                   </button>
                 ))}
-              </div>
+              </nav>
             </div>
-          </div>
+          </aside>
+
+          {/* Right Column: Editorial Reading Flow */}
+          <main className="editorial-reading-flow">
+            {/* 01 // OVERVIEW */}
+            <article
+              id="chapter-overview"
+              ref={(el) => (chapterRefs.current[0] = el)}
+              className={`editorial-block ${activeChapter === 0 ? 'is-focal' : ''}`}
+            >
+              <div className="editorial-block-tag">
+                <span className="tag-num">01</span>
+                <span className="tag-divider">//</span>
+                <span className="tag-label">OVERVIEW</span>
+              </div>
+              <p className="editorial-text-overview">
+                The International Conference on Consumer, Computing, and Communications Technology Systems is a premier academic and professional forum designed to bring together researchers, engineers, industry practitioners, and scholars. It explores and accelerates convergent innovations across five critical pillars: <strong className="text-emphasis">Computing Systems</strong>, <strong className="text-emphasis">Consumer Electronics and Technology Network Infrastructure</strong>, <strong className="text-emphasis">Educational Technology</strong>, and <strong className="text-emphasis">Space Systems</strong>.
+              </p>
+            </article>
+
+            {/* 02 // CONVERGENCE */}
+            <article
+              id="chapter-convergence"
+              ref={(el) => (chapterRefs.current[1] = el)}
+              className={`editorial-block ${activeChapter === 1 ? 'is-focal' : ''}`}
+            >
+              <div className="editorial-block-tag">
+                <span className="tag-num">02</span>
+                <span className="tag-divider">//</span>
+                <span className="tag-label">CONVERGENCE & ECOSYSTEMS</span>
+              </div>
+              <p className="editorial-text-convergence">
+                The conference centers on the rapidly evolving intersection between consumer-facing technologies, advanced computing frameworks, and next-generation communication systems. As the world shifts toward <strong className="text-emphasis">hyper-connectivity, automation, and intelligent ecosystems</strong>, this event explores how foundational computing architectures and modern communication networks (such as <strong className="text-emphasis">5G/6G, IoT, and cloud-edge systems</strong>) power modern consumer electronics, smart environments, and data-driven applications.
+              </p>
+            </article>
+
+            {/* 03 // SPECIAL SESSION */}
+            <article
+              id="chapter-special-session"
+              ref={(el) => (chapterRefs.current[2] = el)}
+              className={`editorial-block ${activeChapter === 2 ? 'is-focal' : ''}`}
+            >
+              <div className="editorial-block-tag">
+                <span className="tag-num">03</span>
+                <span className="tag-divider">//</span>
+                <span className="tag-label">SPECIAL SESSION FEATURE</span>
+              </div>
+              <div className="editorial-text-special">
+                <p>
+                  A key highlight of the event is a Special Session on <strong className="text-emphasis">Geoscience & Space</strong>, which examines how distributed sensor telemetry, satellite communications, and edge-computed Earth observation data integrate into broader technological frameworks. This specialized track bridges terrestrial infrastructure with space-borne systems and addresses critical challenges in remote sensing, resilient orbital communications, and environmental monitoring.
+                </p>
+              </div>
+            </article>
+
+            {/* 04 // SCOPE */}
+            <article
+              id="chapter-scope"
+              ref={(el) => (chapterRefs.current[3] = el)}
+              className={`editorial-block ${activeChapter === 3 ? 'is-focal' : ''}`}
+            >
+              <div className="editorial-block-tag">
+                <span className="tag-num">04</span>
+                <span className="tag-divider">//</span>
+                <span className="tag-label">PLATFORM SCOPE</span>
+              </div>
+              <p className="editorial-text-scope">
+                Overall, the conference provides a hybrid or physical platform for presenting cutting-edge research, sharing technological breakthroughs, and discussing practical implementation challenges across these convergent domains.
+              </p>
+            </article>
+          </main>
         </div>
 
         {/* Primary Objectives */}

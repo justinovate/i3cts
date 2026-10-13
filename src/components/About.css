@@ -6,7 +6,7 @@
 
 .about-intro-subtitle {
   max-width: 850px;
-  margin: -1.5rem auto 3.5rem;
+  margin: -1.5rem auto 4rem;
   text-align: center;
   font-size: 1.125rem;
   color: #475569;
@@ -15,129 +15,201 @@
 }
 
 /* =========================================================================
-   Centered Single-Focus Story Stepper Container
+   Open Editorial Canvas Layout (Linear / Stripe Press Inspired)
    ========================================================================= */
-.about-stepper-container {
-  max-width: 860px;
+.editorial-layout {
+  max-width: 1140px;
   margin: 0 auto;
-  outline: none;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 4.5rem;
+  align-items: start;
 }
 
-.about-stepper-card {
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  border-radius: 20px;
-  padding: 44px 48px 36px;
-  box-shadow: 0 4px 24px -2px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
-  position: relative;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+/* =========================================================================
+   Left Column: Sticky Chapter Index Rail
+   ========================================================================= */
+.editorial-rail {
+  position: sticky;
+  top: 120px;
+  align-self: start;
 }
 
-.about-stepper-card:hover {
-  border-color: rgba(37, 99, 235, 0.3);
-  box-shadow: 0 12px 32px -4px rgba(15, 23, 42, 0.08);
+.editorial-sticky-nav {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0.25rem;
 }
 
-/* Stepper Header */
-.stepper-header {
+.editorial-nav-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-  gap: 1rem;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
 }
 
-.stepper-badge {
-  display: inline-flex;
+.editorial-nav-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.editorial-nav-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #2563eb;
+  opacity: 0.7;
+}
+
+.editorial-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: relative;
+}
+
+.editorial-nav-item {
+  background: transparent;
+  border: none;
+  padding: 0.65rem 0.75rem 0.65rem 1rem;
+  display: flex;
   align-items: center;
   gap: 0.55rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.38rem 0.95rem;
-  border-radius: 9999px;
-  background: #eff6ff;
-  color: #2563eb;
-  border: 1px solid #dbeafe;
-}
-
-.stepper-badge i {
-  font-size: 0.82rem;
-  color: #2563eb;
-}
-
-.stepper-controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.stepper-counter {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #64748b;
-  letter-spacing: 0.08em;
-}
-
-.stepper-nav-buttons {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.stepper-arrow-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #cbd5e1;
-  color: #475569;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
+  text-align: left;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  border-radius: 6px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: #94a3b8;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
 }
 
-.stepper-arrow-btn:hover {
-  background: #2563eb;
-  color: #ffffff;
-  border-color: #2563eb;
-  transform: scale(1.06);
-}
-
-/* Paragraph Content Viewport */
-.stepper-content-viewport {
-  min-height: 155px;
-  display: flex;
-  align-items: center;
-}
-
-.stepper-slide-content {
-  animation: slideFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  width: 100%;
-}
-
-@keyframes slideFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.stepper-body-text {
-  font-size: 1.125rem;
-  line-height: 1.78;
+.editorial-nav-item:hover {
   color: #334155;
+  background: rgba(37, 99, 235, 0.04);
+}
+
+.editorial-nav-item.is-active {
+  color: #2563eb;
+  font-weight: 600;
+  background: rgba(37, 99, 235, 0.06);
+}
+
+/* Vertical Hairline Active Indicator */
+.nav-item-indicator {
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 2.5px;
+  background: #2563eb;
+  border-radius: 2px;
+  opacity: 0;
+  transform: scaleY(0.4);
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-nav-item.is-active .nav-item-indicator {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.nav-item-num {
+  font-size: 0.72rem;
+  opacity: 0.75;
+}
+
+.nav-item-divider {
+  opacity: 0.35;
+}
+
+.nav-item-label {
+  font-weight: 600;
+}
+
+/* =========================================================================
+   Right Column: Editorial Reading Flow
+   ========================================================================= */
+.editorial-reading-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 4.25rem;
+}
+
+.editorial-block {
+  opacity: 0.38;
+  transform: translateY(4px);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  scroll-margin-top: 130px;
+}
+
+.editorial-block:hover,
+.editorial-block.is-focal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.editorial-block-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #2563eb;
+  margin-bottom: 0.85rem;
+  user-select: none;
+}
+
+.editorial-block-tag .tag-divider {
+  opacity: 0.4;
+}
+
+/* Paragraph 1: Large Editorial Lead-In */
+.editorial-text-overview {
+  font-size: 1.35rem;
+  line-height: 1.75;
+  font-weight: 500;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Paragraph 2: High-Legibility Editorial Text */
+.editorial-text-convergence {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #334155;
+  margin: 0;
+}
+
+/* Paragraph 3: Special Session with Open Left Accent Line */
+.editorial-text-special {
+  border-left: 2px solid #2563eb;
+  padding-left: 1.65rem;
+  margin: 0.5rem 0 0;
+}
+
+.editorial-text-special p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #1e293b;
+  margin: 0;
+}
+
+/* Paragraph 4: Subdued Concluding Scope */
+.editorial-text-scope {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #475569;
   margin: 0;
 }
 
@@ -147,116 +219,11 @@
 }
 
 /* =========================================================================
-   Progress Bars & Navigation Pills
-   ========================================================================= */
-.stepper-progress-section {
-  margin-top: 2.25rem;
-  padding-top: 1.75rem;
-  border-top: 1px solid rgba(226, 232, 240, 0.75);
-}
-
-.stepper-progress-row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.85rem;
-}
-
-.stepper-progress-pill {
-  flex: 1;
-  height: 4px;
-  background: #e2e8f0;
-  border-radius: 9999px;
-  overflow: hidden;
-  cursor: pointer;
-  position: relative;
-  border: none;
-  padding: 0;
-  transition: height 0.2s ease, background-color 0.2s ease;
-}
-
-.stepper-progress-pill:hover {
-  height: 6px;
-}
-
-.stepper-progress-pill.is-active {
-  height: 5px;
-}
-
-.stepper-progress-fill {
-  display: block;
-  height: 100%;
-  width: 0%;
-  background: #2563eb;
-  border-radius: 9999px;
-  transition: width 0.2s ease;
-}
-
-.stepper-progress-fill.completed {
-  width: 100%;
-}
-
-.stepper-progress-fill.active {
-  animation: stepperProgressFill 9s linear forwards;
-}
-
-.stepper-progress-fill.active.is-paused {
-  animation-play-state: paused;
-}
-
-@keyframes stepperProgressFill {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-/* Progress Labels Row */
-.stepper-labels-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.stepper-label-btn {
-  background: transparent;
-  border: none;
-  padding: 0.25rem 0.4rem;
-  font-family: var(--font-heading);
-  font-size: 0.78rem;
-  color: #64748b;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  border-radius: 6px;
-  transition: color 0.2s ease, background-color 0.2s ease;
-}
-
-.stepper-label-btn:hover {
-  color: #2563eb;
-  background: rgba(37, 99, 235, 0.05);
-}
-
-.stepper-label-btn.is-active {
-  color: #2563eb;
-  font-weight: 700;
-}
-
-.stepper-label-num {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.75rem;
-  opacity: 0.75;
-}
-
-/* =========================================================================
    Primary Objectives Section
    ========================================================================= */
 .about-objectives {
-  margin-top: 4.5rem;
-  padding-top: 3.5rem;
+  margin-top: 5.5rem;
+  padding-top: 4rem;
   border-top: 1px solid #e2e8f0;
 }
 
@@ -349,28 +316,47 @@
 /* =========================================================================
    Responsive Design
    ========================================================================= */
-@media (max-width: 768px) {
-  .about-stepper-card {
-    padding: 30px 22px 24px;
-    border-radius: 16px;
+@media (max-width: 992px) {
+  .editorial-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
 
-  .stepper-header {
+  .editorial-rail {
+    position: static;
+    margin-bottom: 1rem;
+  }
+
+  .editorial-nav-list {
+    flex-direction: row;
     flex-wrap: wrap;
-    margin-bottom: 1.5rem;
+    gap: 0.5rem;
   }
 
-  .stepper-body-text {
-    font-size: 1rem;
-    line-height: 1.65;
+  .editorial-nav-item {
+    padding: 0.45rem 0.8rem;
+    background: #f1f5f9;
+    border-radius: 9999px;
+    font-size: 0.72rem;
   }
 
-  .stepper-content-viewport {
-    min-height: 220px;
-  }
-
-  .stepper-labels-row {
+  .nav-item-indicator {
     display: none;
+  }
+
+  .editorial-reading-flow {
+    gap: 3rem;
+  }
+
+  .editorial-text-overview {
+    font-size: 1.2rem;
+    line-height: 1.68;
+  }
+
+  .editorial-text-convergence,
+  .editorial-text-special p {
+    font-size: 1.05rem;
+    line-height: 1.7;
   }
 
   .objectives-grid {
@@ -381,11 +367,9 @@
 
 /* Accessibility: Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .stepper-slide-content {
-    animation: none !important;
-  }
-  .stepper-progress-fill.active {
-    animation: none !important;
-    width: 100% !important;
+  .editorial-block {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
