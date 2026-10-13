@@ -15,207 +15,189 @@
 }
 
 /* =========================================================================
-   Open Editorial Canvas Layout (Linear / Stripe Press Inspired)
+   Open Editorial Stepper (No Card Container, No Made-Up Titles)
    ========================================================================= */
-.editorial-layout {
-  max-width: 1140px;
+.about-stepper-open {
+  max-width: 860px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 4.5rem;
-  align-items: start;
-}
-
-/* =========================================================================
-   Left Column: Sticky Chapter Index Rail
-   ========================================================================= */
-.editorial-rail {
-  position: sticky;
-  top: 120px;
-  align-self: start;
-}
-
-.editorial-sticky-nav {
-  display: flex;
-  flex-direction: column;
-  padding-left: 0.25rem;
-}
-
-.editorial-nav-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1.25rem;
-}
-
-.editorial-nav-title {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #64748b;
-}
-
-.editorial-nav-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #2563eb;
-  opacity: 0.7;
-}
-
-.editorial-nav-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
   position: relative;
-}
-
-.editorial-nav-item {
   background: transparent;
   border: none;
-  padding: 0.65rem 0.75rem 0.65rem 1rem;
+  box-shadow: none;
+  outline: none;
+}
+
+.about-stepper-open:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 8px;
+  border-radius: 8px;
+}
+
+/* Top Bar: Counter & Navigation Buttons */
+.stepper-header {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
-  text-align: left;
-  cursor: pointer;
-  position: relative;
-  border-radius: 6px;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+}
+
+.stepper-header-spacer {
+  flex: 1;
+}
+
+.stepper-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.stepper-counter {
   font-family: var(--font-mono, monospace);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
   letter-spacing: 0.12em;
-  color: #94a3b8;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #64748b;
   user-select: none;
 }
 
-.editorial-nav-item:hover {
-  color: #334155;
-  background: rgba(37, 99, 235, 0.04);
-}
-
-.editorial-nav-item.is-active {
-  color: #2563eb;
-  font-weight: 600;
-  background: rgba(37, 99, 235, 0.06);
-}
-
-/* Vertical Hairline Active Indicator */
-.nav-item-indicator {
-  position: absolute;
-  left: 0;
-  top: 15%;
-  bottom: 15%;
-  width: 2.5px;
-  background: #2563eb;
-  border-radius: 2px;
-  opacity: 0;
-  transform: scaleY(0.4);
-  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.editorial-nav-item.is-active .nav-item-indicator {
-  opacity: 1;
-  transform: scaleY(1);
-}
-
-.nav-item-num {
-  font-size: 0.72rem;
-  opacity: 0.75;
-}
-
-.nav-item-divider {
-  opacity: 0.35;
-}
-
-.nav-item-label {
-  font-weight: 600;
-}
-
-/* =========================================================================
-   Right Column: Editorial Reading Flow
-   ========================================================================= */
-.editorial-reading-flow {
+.stepper-nav-buttons {
   display: flex;
-  flex-direction: column;
-  gap: 4.25rem;
+  align-items: center;
+  gap: 0.45rem;
 }
 
-.editorial-block {
-  opacity: 0.38;
-  transform: translateY(4px);
-  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  scroll-margin-top: 130px;
+.stepper-arrow-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(203, 213, 225, 0.85);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #475569;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
 }
 
-.editorial-block:hover,
-.editorial-block.is-focal {
-  opacity: 1;
+.stepper-arrow-btn:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+  background: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.15);
+}
+
+.stepper-arrow-btn:active {
   transform: translateY(0);
 }
 
-.editorial-block-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-family: var(--font-mono, monospace);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: #2563eb;
-  margin-bottom: 0.85rem;
-  user-select: none;
+/* Paragraph Content Viewport & Uniform Typography */
+.stepper-content-viewport {
+  min-height: 130px;
+  display: flex;
+  align-items: flex-start;
 }
 
-.editorial-block-tag .tag-divider {
-  opacity: 0.4;
+.stepper-slide-content {
+  width: 100%;
+  animation: stepperFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Paragraph 1: Large Editorial Lead-In */
-.editorial-text-overview {
-  font-size: 1.35rem;
-  line-height: 1.75;
-  font-weight: 500;
-  color: #0f172a;
-  margin: 0;
-  letter-spacing: -0.01em;
-}
-
-/* Paragraph 2: High-Legibility Editorial Text */
-.editorial-text-convergence {
-  font-size: 1.15rem;
-  line-height: 1.8;
+.stepper-body-text {
+  font-size: clamp(1.08rem, 1.8vw, 1.18rem);
+  line-height: 1.85;
   color: #334155;
+  font-weight: 400;
   margin: 0;
+  letter-spacing: -0.005em;
 }
 
-/* Paragraph 3: Special Session with Open Left Accent Line */
-.editorial-text-special {
-  border-left: 2px solid #2563eb;
-  padding-left: 1.65rem;
-  margin: 0.5rem 0 0;
+/* Bottom Progress Bars */
+.stepper-progress-section {
+  margin-top: 2.5rem;
+  padding-top: 0.5rem;
 }
 
-.editorial-text-special p {
-  font-size: 1.15rem;
-  line-height: 1.8;
-  color: #1e293b;
-  margin: 0;
+.stepper-progress-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  width: 100%;
 }
 
-/* Paragraph 4: Subdued Concluding Scope */
-.editorial-text-scope {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: #475569;
-  margin: 0;
+.stepper-progress-pill {
+  background: rgba(226, 232, 240, 0.85);
+  border: none;
+  height: 4px;
+  border-radius: 9999px;
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.2s ease;
 }
 
-.text-emphasis {
-  font-weight: 600;
-  color: #0f172a;
+/* Larger hit target for accessibility */
+.stepper-progress-pill::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+}
+
+.stepper-progress-pill:hover {
+  background: rgba(203, 213, 225, 1);
+}
+
+.stepper-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  border-radius: 9999px;
+  background: #2563eb;
+  transition: width 0.15s ease;
+}
+
+.stepper-progress-fill.active {
+  animation: stepperProgress 7s linear forwards;
+}
+
+.stepper-progress-fill.active.is-paused {
+  animation-play-state: paused;
+}
+
+.stepper-progress-fill.completed {
+  width: 100%;
+  background: #3b82f6;
+}
+
+@keyframes stepperProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes stepperFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* =========================================================================
@@ -331,55 +313,13 @@
    Responsive Design
    ========================================================================= */
 @media (max-width: 992px) {
-  .editorial-layout {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .editorial-rail {
-    position: static;
-    margin-bottom: 1rem;
-  }
-
-  .editorial-nav-list {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .editorial-nav-item {
-    padding: 0.45rem 0.8rem;
-    background: #f1f5f9;
-    border-radius: 9999px;
-    font-size: 0.72rem;
-  }
-
-  .nav-item-indicator {
-    display: none;
-  }
-
-  .editorial-reading-flow {
-    gap: 3rem;
-  }
-
-  .editorial-text-overview {
-    font-size: 1.2rem;
-    line-height: 1.68;
-  }
-
-  .editorial-text-convergence,
-  .editorial-text-special p {
-    font-size: 1.05rem;
-    line-height: 1.7;
-  }
-
   .objectives-matrix {
     grid-template-columns: 1fr;
     border-radius: 12px;
   }
 
   .matrix-quadrant {
-    padding: 2rem 1.5rem;
+    padding: 2.25rem 2rem;
     border-right: none !important;
     border-bottom: 1px solid rgba(226, 232, 240, 0.85);
   }
@@ -389,11 +329,48 @@
   }
 }
 
-/* Accessibility: Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  .editorial-block {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+@media (max-width: 640px) {
+  .stepper-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .stepper-counter {
+    font-size: 0.78rem;
+  }
+
+  .stepper-arrow-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 0.7rem;
+  }
+
+  .stepper-body-text {
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+
+  .stepper-progress-row {
+    gap: 0.5rem;
+  }
+
+  .stepper-progress-pill {
+    height: 3.5px;
+  }
+
+  .matrix-quadrant {
+    padding: 1.75rem 1.25rem;
   }
 }
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .stepper-slide-content {
+    animation: none !important;
+  }
+
+  .stepper-progress-fill.active {
+    animation: none !important;
+    width: 100% !important;
+  }
+}
+
