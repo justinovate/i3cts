@@ -1,80 +1,80 @@
-.countdown-wrapper {
-  margin-top: 3rem;
-  padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  border-radius: 20px;
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
-  display: inline-block;
-}
-
-.countdown-container {
-  display: flex;
+.countdown-telemetry-wrapper {
+  margin-top: 1.75rem;
+  display: inline-flex;
   justify-content: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
 }
 
-.countdown-item {
+.telemetry-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.95rem;
+  padding: 10px 28px;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.75);
+  border-radius: 9999px;
+  box-shadow: 0 2px 10px -2px rgba(15, 23, 42, 0.04);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.telemetry-pill:hover {
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 16px -2px rgba(37, 99, 235, 0.08);
+}
+
+.telemetry-unit {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100px;
-  height: 100px;
-  padding: 0.75rem;
-  background: #ffffff;
-  border: 1px solid rgba(226, 232, 240, 0.85);
-  border-radius: 16px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+  min-width: 44px;
 }
 
-.countdown-item:hover {
-  transform: translateY(-3px);
-  border-color: rgba(37, 99, 235, 0.3);
-  box-shadow: 0 12px 24px -6px rgba(37, 99, 235, 0.1);
-}
-
-.countdown-value {
-  font-family: var(--font-heading);
-  font-size: 2.2rem;
+.telemetry-value {
+  font-family: var(--font-mono);
+  font-size: 1.45rem;
   font-weight: 700;
-  color: #2563eb;
+  color: #1e293b;
   line-height: 1.1;
+  font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
 }
 
-.countdown-label {
+.telemetry-label {
   font-family: var(--font-heading);
-  font-size: 0.72rem;
+  font-size: 0.625rem;
   color: #64748b;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-top: 0.35rem;
+  letter-spacing: 0.12em;
   font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+
+.telemetry-separator {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #94a3b8;
+  line-height: 1;
+  margin-top: -0.35rem;
+  user-select: none;
 }
 
 @media (max-width: 600px) {
-  .countdown-wrapper {
-    padding: 1.25rem 1rem;
-    width: 100%;
+  .telemetry-pill {
+    padding: 8px 18px;
+    gap: 0.55rem;
   }
-  .countdown-container {
-    gap: 0.65rem;
+  .telemetry-unit {
+    min-width: 36px;
   }
-  .countdown-item {
-    width: 72px;
-    height: 76px;
-    padding: 0.5rem;
+  .telemetry-value {
+    font-size: 1.2rem;
   }
-  .countdown-value {
-    font-size: 1.45rem;
+  .telemetry-label {
+    font-size: 0.58rem;
   }
-  .countdown-label {
-    font-size: 0.62rem;
-    letter-spacing: 0.05em;
+  .telemetry-separator {
+    font-size: 1rem;
   }
 }

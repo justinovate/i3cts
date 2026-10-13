@@ -7,7 +7,7 @@ const Countdown = () => {
   useEffect(() => {
     const targetDate = new Date('April 8, 2027 00:00:00').getTime();
 
-    const interval = setInterval(() => {
+    const calculateTime = () => {
       const now = new Date().getTime();
       const difference = targetDate - now;
 
@@ -19,31 +19,37 @@ const Countdown = () => {
           seconds: Math.floor((difference % (1000 * 60)) / 1000),
         });
       } else {
-        clearInterval(interval);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
-    }, 1000);
+    };
+
+    calculateTime();
+    const interval = setInterval(calculateTime, 1000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="countdown-wrapper animate-fade-in">
-      <div className="countdown-container">
-        <div className="countdown-item">
-          <span className="countdown-value">{timeLeft.days}</span>
-          <span className="countdown-label">DAYS</span>
+    <div className="countdown-telemetry-wrapper animate-fade-in" role="timer" aria-label="Conference countdown">
+      <div className="telemetry-pill">
+        <div className="telemetry-unit">
+          <span className="telemetry-value">{String(timeLeft.days).padStart(2, '0')}</span>
+          <span className="telemetry-label">DAYS</span>
         </div>
-        <div className="countdown-item">
-          <span className="countdown-value">{timeLeft.hours}</span>
-          <span className="countdown-label">HOURS</span>
+        <span className="telemetry-separator" aria-hidden="true">:</span>
+        <div className="telemetry-unit">
+          <span className="telemetry-value">{String(timeLeft.hours).padStart(2, '0')}</span>
+          <span className="telemetry-label">HRS</span>
         </div>
-        <div className="countdown-item">
-          <span className="countdown-value">{timeLeft.minutes}</span>
-          <span className="countdown-label">MINUTES</span>
+        <span className="telemetry-separator" aria-hidden="true">:</span>
+        <div className="telemetry-unit">
+          <span className="telemetry-value">{String(timeLeft.minutes).padStart(2, '0')}</span>
+          <span className="telemetry-label">MIN</span>
         </div>
-        <div className="countdown-item">
-          <span className="countdown-value">{timeLeft.seconds}</span>
-          <span className="countdown-label">SECONDS</span>
+        <span className="telemetry-separator" aria-hidden="true">:</span>
+        <div className="telemetry-unit">
+          <span className="telemetry-value">{String(timeLeft.seconds).padStart(2, '0')}</span>
+          <span className="telemetry-label">SEC</span>
         </div>
       </div>
     </div>
