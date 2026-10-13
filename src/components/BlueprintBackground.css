@@ -20,9 +20,10 @@
   transform-origin: 50% 50%;
 }
 
-/* Base Hairline Blueprint Stroke Styling (Restored 0.12 Opacity) */
+/* Base Hairline Blueprint Stroke Styling */
 .blueprint-hairline-circle,
 .blueprint-hairline-line,
+.blueprint-orbit-path,
 .blueprint-hull-outline,
 .blueprint-bulkhead-ring,
 .blueprint-fin-profile,
@@ -46,7 +47,7 @@
 .cubesat-divider {
   fill: none;
   stroke: rgba(37, 99, 235, 0.12);
-  stroke-width: 1px;
+  stroke-width: 1.1px;
 }
 
 /* Centerline Engineering Drafting Axis */
@@ -65,15 +66,15 @@
 
 /* Orbit Path Accent */
 .blueprint-orbit-path {
-  stroke: rgba(37, 99, 235, 0.08);
+  stroke: rgba(37, 99, 235, 0.06);
   stroke-width: 1px;
 }
 
 /* Vertices & Alignment Points */
 .blueprint-vertex {
-  fill: rgba(37, 99, 235, 0.25);
-  stroke: rgba(37, 99, 235, 0.45);
-  stroke-width: 0.7px;
+  fill: rgba(37, 99, 235, 0.35);
+  stroke: rgba(37, 99, 235, 0.6);
+  stroke-width: 0.8px;
 }
 
 /* Monospace Technical Drafting Annotations */
@@ -82,7 +83,7 @@
 .blueprint-annotation-text {
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
   font-size: 8px;
-  fill: rgba(37, 99, 235, 0.16);
+  fill: rgba(37, 99, 235, 0.28);
   letter-spacing: 0.08em;
   font-weight: 500;
   user-select: none;
@@ -91,7 +92,7 @@
 .blueprint-dimension-label {
   font-size: 8.5px;
   letter-spacing: 0.12em;
-  fill: rgba(37, 99, 235, 0.20);
+  fill: rgba(37, 99, 235, 0.35);
 }
 
 /* =========================================================================
