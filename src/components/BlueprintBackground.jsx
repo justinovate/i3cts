@@ -1,5 +1,57 @@
 import './BlueprintBackground.css';
 
+const nodes = [
+  { id: 0, x: 600, y: 400, r: 3.5, hub: true },
+  { id: 1, x: 520, y: 340, r: 2.5 },
+  { id: 2, x: 680, y: 330, r: 2.5 },
+  { id: 3, x: 690, y: 460, r: 2.5 },
+  { id: 4, x: 510, y: 450, r: 2.5 },
+  { id: 5, x: 600, y: 270, r: 3 },
+  { id: 6, x: 600, y: 520, r: 3 },
+  { id: 7, x: 410, y: 290, r: 2.5 },
+  { id: 8, x: 420, y: 480, r: 2.5 },
+  { id: 9, x: 780, y: 280, r: 3, hub: true },
+  { id: 10, x: 800, y: 490, r: 2.5 },
+  { id: 11, x: 710, y: 190, r: 2 },
+  { id: 12, x: 490, y: 190, r: 2 },
+  { id: 13, x: 480, y: 590, r: 2 },
+  { id: 14, x: 720, y: 590, r: 2 },
+  { id: 15, x: 320, y: 230, r: 2.5 },
+  { id: 16, x: 300, y: 400, r: 3, hub: true },
+  { id: 17, x: 310, y: 560, r: 2 },
+  { id: 18, x: 880, y: 210, r: 2.5 },
+  { id: 19, x: 910, y: 390, r: 3, hub: true },
+  { id: 20, x: 890, y: 560, r: 2 },
+  { id: 21, x: 600, y: 140, r: 2 },
+  { id: 22, x: 600, y: 660, r: 2 },
+  { id: 23, x: 220, y: 310, r: 2 },
+  { id: 24, x: 980, y: 290, r: 2 },
+  { id: 25, x: 970, y: 490, r: 2 },
+  { id: 26, x: 230, y: 490, r: 2 }
+];
+
+const connections = [
+  // Center Hub Links
+  [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6],
+  // Inner Ring
+  [1, 2], [2, 3], [3, 4], [4, 1],
+  // Middle Layer Connections
+  [1, 7], [1, 5], [1, 12],
+  [2, 9], [2, 5], [2, 11],
+  [3, 10], [3, 6], [3, 14],
+  [4, 8], [4, 6], [4, 13],
+  [5, 11], [5, 12], [5, 21],
+  [6, 13], [6, 14], [6, 22],
+  // Constellation Outer Links
+  [7, 15], [7, 16], [7, 12],
+  [8, 16], [8, 17], [8, 13],
+  [9, 18], [9, 19], [9, 11],
+  [10, 19], [10, 20], [10, 14],
+  [15, 23], [16, 23], [16, 26], [17, 26],
+  [18, 24], [19, 24], [19, 25], [20, 25],
+  [11, 21], [12, 21], [13, 22], [14, 22]
+];
+
 const BlueprintBackground = () => {
   return (
     <div className="blueprint-bg-container" aria-hidden="true">
@@ -9,144 +61,66 @@ const BlueprintBackground = () => {
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid slice"
       >
-        <g className="schematic-group">
-          {/* Main Coordinate Datum Axes (Centered at 600, 400) */}
-          <line
-            x1="120" y1="400" x2="1080" y2="400"
-            pathLength="100"
-            className="schematic-path"
-          />
-          <line
-            x1="600" y1="80" x2="600" y2="720"
-            pathLength="100"
-            className="schematic-path"
-          />
-
-          {/* Radial Geometry Rays */}
-          <line
-            x1="410" y1="210" x2="790" y2="590"
-            pathLength="100"
-            className="schematic-path delay-1"
-          />
-          <line
-            x1="340" y1="550" x2="860" y2="250"
-            pathLength="100"
-            className="schematic-path delay-1"
-          />
-
-          {/* Concentric Optics & Radar Rings */}
-          <circle
-            cx="600" cy="400" r="55"
-            pathLength="100"
-            className="schematic-path schematic-accent"
-          />
-          <circle
-            cx="600" cy="400" r="125"
-            pathLength="100"
-            className="schematic-path delay-1"
-          />
-          <circle
-            cx="600" cy="400" r="200"
-            pathLength="100"
-            className="schematic-path delay-2"
-          />
-          <circle
-            cx="600" cy="400" r="285"
-            pathLength="100"
-            className="schematic-path delay-3"
-          />
-
-          {/* Dashed Secondary Technical Ring */}
-          <circle
-            cx="600" cy="400" r="160"
-            className="schematic-dashed"
-            fill="none"
-            stroke="rgba(37, 99, 235, 0.10)"
-            strokeWidth="1.2"
-          />
-
-          {/* Planetary & Orbital Ellipses (Space & GRASS Pillar) */}
+        <g className="neural-mesh-group">
+          {/* Subtle Technical Reference Orbital Arcs */}
           <ellipse
-            cx="600" cy="400" rx="380" ry="155"
-            transform="rotate(-18 600 400)"
-            pathLength="100"
-            className="schematic-path delay-1"
+            cx="600" cy="400" rx="420" ry="175"
+            transform="rotate(-15 600 400)"
+            className="neural-orbit-trace"
           />
           <ellipse
-            cx="600" cy="400" rx="335" ry="210"
+            cx="600" cy="400" rx="360" ry="230"
             transform="rotate(32 600 400)"
-            pathLength="100"
-            className="schematic-path delay-2"
+            className="neural-orbit-trace"
+          />
+          <circle
+            cx="600" cy="400" r="140"
+            className="neural-signal-ring"
+          />
+          <circle
+            cx="600" cy="400" r="280"
+            className="neural-signal-ring dashed"
           />
 
-          {/* Optical Lenses / Refractor Curves */}
-          <path
-            d="M 490 220 Q 560 400 490 580"
-            pathLength="100"
-            className="schematic-path delay-2"
-          />
-          <path
-            d="M 710 220 Q 640 400 710 580"
-            pathLength="100"
-            className="schematic-path delay-2"
-          />
-
-          {/* Satellite Payload Wireframe at (850, 270) */}
-          <rect
-            x="840" y="260" width="20" height="20" rx="2"
-            pathLength="100"
-            className="schematic-path schematic-accent delay-3"
-          />
-          {/* Solar Panel Wings */}
-          <line
-            x1="816" y1="270" x2="840" y2="270"
-            pathLength="100"
-            className="schematic-path delay-3"
-          />
-          <line
-            x1="860" y1="270" x2="884" y2="270"
-            pathLength="100"
-            className="schematic-path delay-3"
-          />
-          <rect
-            x="816" y="264" width="18" height="12" rx="1"
-            pathLength="100"
-            className="schematic-path delay-3"
-          />
-          <rect
-            x="866" y="264" width="18" height="12" rx="1"
-            pathLength="100"
-            className="schematic-path delay-3"
-          />
-
-          {/* Telemetry Vector Beam from Satellite to Origin */}
-          <line
-            x1="850" y1="280" x2="600" y2="400"
-            pathLength="100"
-            className="schematic-path delay-3"
-            strokeDasharray="3 3"
-          />
-
-          {/* Axis Calibration Tick Marks */}
-          <g className="schematic-ticks">
-            <line x1="470" y1="395" x2="470" y2="405" pathLength="100" className="schematic-path delay-1" />
-            <line x1="535" y1="395" x2="535" y2="405" pathLength="100" className="schematic-path delay-1" />
-            <line x1="665" y1="395" x2="665" y2="405" pathLength="100" className="schematic-path delay-1" />
-            <line x1="730" y1="395" x2="730" y2="405" pathLength="100" className="schematic-path delay-1" />
-            <line x1="795" y1="395" x2="795" y2="405" pathLength="100" className="schematic-path delay-1" />
-            <line x1="595" y1="270" x2="605" y2="270" pathLength="100" className="schematic-path delay-1" />
-            <line x1="595" y1="335" x2="605" y2="335" pathLength="100" className="schematic-path delay-1" />
-            <line x1="595" y1="465" x2="605" y2="465" pathLength="100" className="schematic-path delay-1" />
-            <line x1="595" y1="530" x2="605" y2="530" pathLength="100" className="schematic-path delay-1" />
+          {/* Neural Synapse Vector Connecting Lines */}
+          <g className="neural-lines">
+            {connections.map(([fromId, toId], idx) => {
+              const from = nodes[fromId];
+              const to = nodes[toId];
+              return (
+                <line
+                  key={`line-${idx}`}
+                  x1={from.x}
+                  y1={from.y}
+                  x2={to.x}
+                  y2={to.y}
+                  className="neural-edge"
+                />
+              );
+            })}
           </g>
 
-          {/* Telemetry Coordinate Nodes */}
-          <circle cx="600" cy="400" r="3.5" className="schematic-dot" />
-          <circle cx="850" cy="270" r="3" className="schematic-dot" />
-          <circle cx="410" cy="210" r="2.5" className="schematic-dot" />
-          <circle cx="790" cy="590" r="2.5" className="schematic-dot" />
-          <circle cx="260" cy="350" r="3" className="schematic-dot" />
-          <circle cx="940" cy="450" r="3" className="schematic-dot" />
+          {/* Compute / Synapse Nodes */}
+          <g className="neural-nodes">
+            {nodes.map((node) => (
+              <g key={`node-${node.id}`} className="node-group">
+                {node.hub && (
+                  <circle
+                    cx={node.x}
+                    cy={node.y}
+                    r={node.r * 2.2}
+                    className="node-glow-ring"
+                  />
+                )}
+                <circle
+                  cx={node.x}
+                  cy={node.y}
+                  r={node.r}
+                  className="node-vertex"
+                />
+              </g>
+            ))}
+          </g>
         </g>
       </svg>
     </div>

@@ -30,9 +30,7 @@ const Navbar = () => {
       <div className="container nav-container">
         <a href="#home" className="logo">
           <img src={conferenceLogo} alt="I3CTS Logo" className="logo-image" />
-          <span className="logo-text">
-            <span className="logo-highlight">I3CTS</span> 2027
-          </span>
+          <span className="logo-text">I3CTS 2027</span>
         </a>
         
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>

@@ -38,7 +38,7 @@ const Hero = () => {
         </div>
 
         <h1 className="hero-title">
-          <span className="hero-title-main">I3CTS</span> <span className="hero-title-year">2027</span>
+          <span className="hero-wordmark">I3CTS 2027</span>
         </h1>
 
         <h2 className="hero-full-title">

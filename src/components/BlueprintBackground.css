@@ -7,94 +7,84 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  mask-image: radial-gradient(ellipse at 50% 50%, black 25%, transparent 72%);
-  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 25%, transparent 72%);
+  mask-image: radial-gradient(circle at center, black 45%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 80%);
 }
 
 .blueprint-svg {
   width: 100%;
   height: 100%;
-  min-width: 950px;
-  min-height: 650px;
+  min-width: 1050px;
+  min-height: 700px;
   object-fit: cover;
-  animation: ambientDrift 28s ease-in-out infinite alternate;
+  animation: neuralMeshDrift 30s ease-in-out infinite alternate;
   transform-origin: 50% 50%;
 }
 
-.schematic-path {
+/* Subtle Technical Reference Orbital Arcs */
+.neural-orbit-trace {
   fill: none;
-  stroke: rgba(37, 99, 235, 0.10);
-  stroke-width: 1.2px;
+  stroke: rgba(37, 99, 235, 0.08);
+  stroke-width: 1px;
+}
+
+.neural-signal-ring {
+  fill: none;
+  stroke: rgba(37, 99, 235, 0.07);
+  stroke-width: 1px;
+}
+
+.neural-signal-ring.dashed {
+  stroke-dasharray: 4 8;
+  opacity: 0.6;
+}
+
+/* Delicate Neural Synapse Vectors */
+.neural-edge {
+  stroke: rgba(37, 99, 235, 0.12);
+  stroke-width: 1px;
   stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  animation: drawSchematic 4.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  transition: stroke 0.3s ease;
 }
 
-.schematic-path.delay-1 {
-  animation-delay: 0.4s;
+/* Vertices / Compute Nodes */
+.node-vertex {
+  fill: rgba(37, 99, 235, 0.28);
+  stroke: rgba(37, 99, 235, 0.4);
+  stroke-width: 0.5px;
+  transition: transform 0.3s ease;
 }
 
-.schematic-path.delay-2 {
-  animation-delay: 0.8s;
+.node-glow-ring {
+  fill: none;
+  stroke: rgba(37, 99, 235, 0.14);
+  stroke-width: 1px;
+  animation: hubPulse 4s ease-in-out infinite alternate;
 }
 
-.schematic-path.delay-3 {
-  animation-delay: 1.2s;
-}
-
-.schematic-accent {
-  stroke: rgba(2, 132, 199, 0.12);
-  stroke-width: 1.35px;
-}
-
-.schematic-dashed {
-  stroke-dasharray: 4 6 !important;
-  opacity: 0.7;
-}
-
-.schematic-dot {
-  fill: rgba(37, 99, 235, 0.18);
-  stroke: none;
-  opacity: 0;
-  animation: dotFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
-}
-
-@keyframes drawSchematic {
+@keyframes neuralMeshDrift {
   0% {
-    stroke-dashoffset: 100;
-    opacity: 0;
+    transform: scale(1) translate(0, 0) rotate(0deg);
   }
-  15% {
-    opacity: 1;
+  33% {
+    transform: scale(1.025) translate(8px, -6px) rotate(0.8deg);
+  }
+  66% {
+    transform: scale(0.99) translate(-6px, 8px) rotate(-0.6deg);
   }
   100% {
-    stroke-dashoffset: 0;
-    opacity: 1;
+    transform: scale(1.015) translate(4px, 4px) rotate(0.4deg);
   }
 }
 
-@keyframes ambientDrift {
+@keyframes hubPulse {
   0% {
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    transform: scale(1.025) rotate(1deg);
+    transform: scale(0.9);
+    opacity: 0.4;
   }
   100% {
-    transform: scale(1) rotate(0deg);
-  }
-}
-
-@keyframes dotFadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
+    transform: scale(1.2);
+    opacity: 0.9;
   }
 }
 
@@ -102,13 +92,7 @@
   .blueprint-svg {
     animation: none !important;
   }
-  .schematic-path {
+  .node-glow-ring {
     animation: none !important;
-    stroke-dashoffset: 0 !important;
-    opacity: 1 !important;
-  }
-  .schematic-dot {
-    animation: none !important;
-    opacity: 1 !important;
   }
 }
