@@ -30,6 +30,7 @@ const Hero = ({ isLive = false }) => {
         <div className="gradient-sphere sphere-2"></div>
         <div className="grid-overlay"></div>
         <BlueprintBackground isLive={isLive} />
+        <div className="hero-luminance-mask" aria-hidden="true"></div>
       </div>
       
       <div className="container hero-content animate-fade-in">
