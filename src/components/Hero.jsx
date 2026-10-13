@@ -26,9 +26,6 @@ const Hero = ({ isLive = false }) => {
   return (
     <header className="hero" id="home" ref={heroRef}>
       <div className="hero-background">
-        <div className="gradient-sphere sphere-1"></div>
-        <div className="gradient-sphere sphere-2"></div>
-        <div className="grid-overlay"></div>
         <BlueprintBackground isLive={isLive} />
         <div className="hero-luminance-mask" aria-hidden="true"></div>
       </div>

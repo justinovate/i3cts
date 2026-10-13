@@ -18,47 +18,17 @@
   overflow: hidden;
 }
 
-.gradient-sphere {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.2;
-}
-
-.sphere-1 {
-  width: 550px;
-  height: 550px;
-  background: var(--accent-cyan);
-  top: -120px;
-  right: -120px;
-  animation: float 14s infinite alternate;
-}
-
-.sphere-2 {
-  width: 450px;
-  height: 450px;
-  background: var(--primary-blue);
-  bottom: -60px;
-  left: -120px;
-  animation: float 16s infinite alternate-reverse;
-}
-
-/* Inherits Fixed Continuous CAD Drafting Grid from body */
-.grid-overlay {
-  display: none;
-}
-
-/* Radial Backdrop Luminance Isolation (Clears Wireframe Lines Behind Text) */
+/* Ambient Halo Isolation (Ultra-soft White Luminance Mask, No Dark Blobs) */
 .hero-luminance-mask {
   position: absolute;
   top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: min(960px, 94vw);
-  height: min(680px, 88vh);
-  background: radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.75) 45%, rgba(255, 255, 255, 0) 75%);
+  width: min(1040px, 96vw);
+  height: min(720px, 90vh);
+  background: radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.5) 50%, transparent 80%);
   pointer-events: none;
-  z-index: 2;
+  z-index: 1;
 }
 
 .hero-content {
@@ -73,23 +43,23 @@
 }
 
 .hero-logo-container {
-  margin: 0 auto 1.25rem;
+  margin: 0 auto 1.35rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .hero-logo {
-  width: clamp(105px, 12.5vw, 142px);
+  width: clamp(118px, 14vw, 158px);
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 10px 20px rgba(37, 99, 235, 0.16)) drop-shadow(0 2px 6px rgba(15, 23, 42, 0.08));
+  filter: drop-shadow(0 12px 28px rgba(37, 99, 235, 0.22)) drop-shadow(0 4px 8px rgba(15, 23, 42, 0.1));
 }
 
 /* Title Dominance */
 .hero-title {
   font-family: 'Plus Jakarta Sans', var(--font-heading);
-  font-size: clamp(3.2rem, 6.5vw, 5.5rem);
+  font-size: clamp(3.5rem, 7vw, 5.8rem);
   font-weight: 850;
   line-height: 1.05;
   margin-bottom: 1rem;
@@ -97,32 +67,32 @@
 }
 
 .hero-wordmark {
-  background: linear-gradient(135deg, #020617 0%, #1e3a8a 50%, #2563eb 100%);
+  background: linear-gradient(135deg, #020617 0%, #1e3a8a 55%, #2563eb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 4px 16px rgba(37, 99, 235, 0.12));
+  filter: drop-shadow(0 6px 20px rgba(37, 99, 235, 0.15));
 }
 
 /* Conference Full Name */
 .hero-full-title {
-  font-size: clamp(0.82rem, 1.25vw, 0.925rem);
+  font-size: 0.95rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   color: #0f172a;
-  max-width: 680px;
-  margin: 0 auto 0.75rem;
+  max-width: 720px;
+  margin: 0 auto 0.85rem;
   line-height: 1.5;
 }
 
 /* Subtitle Tagline */
 .hero-tagline {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 500;
   color: #334155;
-  margin-bottom: 1.5rem;
-  max-width: 580px;
+  margin-bottom: 1.65rem;
+  max-width: 600px;
   line-height: 1.5;
 }
 
@@ -130,15 +100,15 @@
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.48rem 1.25rem;
-  background: rgba(255, 255, 255, 0.85);
+  gap: 0.6rem;
+  padding: 6px 20px;
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(37, 99, 235, 0.25);
   border-radius: 9999px;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: #0f172a;
   margin-bottom: 2rem;
   box-shadow: 0 2px 10px -2px rgba(15, 23, 42, 0.04);
@@ -146,7 +116,7 @@
 
 .hero-badge i {
   color: #0f172a;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
 }
 
 .hero-buttons {
