@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import Countdown from './Countdown';
+import BlueprintBackground from './BlueprintBackground';
 import './Hero.css';
 import conferenceLogo from '../assets/i3cts-logo.png';
 import { EASYCHAIR_URL } from '../constants';
@@ -28,6 +29,7 @@ const Hero = () => {
         <div className="gradient-sphere sphere-1"></div>
         <div className="gradient-sphere sphere-2"></div>
         <div className="grid-overlay"></div>
+        <BlueprintBackground />
       </div>
       
       <div className="container hero-content animate-fade-in">

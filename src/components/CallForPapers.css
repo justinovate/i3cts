@@ -32,13 +32,15 @@
   }
 }
 
-/* Modern Track Cards */
+/* Modern Minimal Bento Track Cards */
 .topic-card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
   border-radius: 16px;
   padding: 30px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -54,9 +56,9 @@
 
 .interactive-track-card:hover,
 .interactive-track-card:focus-visible {
-  transform: translateY(-4px);
-  border-color: #2563eb;
-  box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.08);
+  transform: translateY(-3px);
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 14px 28px -6px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.15);
 }
 
 .track-card-header {
