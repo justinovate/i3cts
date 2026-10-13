@@ -40,10 +40,10 @@ const Navbar = () => {
           <a href="#dates" onClick={() => setMenuOpen(false)}>Dates</a>
           <a href="#cfp" onClick={() => setMenuOpen(false)}>Call for Papers</a>
           <a href="#committees" onClick={() => setMenuOpen(false)}>Committees</a>
-          <a href="#partners" onClick={() => setMenuOpen(false)}>Partners</a>
+          {/* <a href="#partners" onClick={() => setMenuOpen(false)}>Partners</a> */}
           <a href="#venue" onClick={() => setMenuOpen(false)}>Venue</a>
           <a href="#speakers" onClick={() => setMenuOpen(false)}>Speakers</a>
-          <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+          {/* <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a> */}
           <a href={EASYCHAIR_URL} target="_blank" rel="noopener noreferrer" className="btn btn-highlight nav-btn">
             Submit Paper
           </a>

@@ -6,8 +6,8 @@ import Venue from './components/Venue';
 import CallForPapers from './components/CallForPapers';
 import Speakers from './components/Speakers';
 import Committees from './components/Committees';
-import Partners from './components/Partners';
-import Contact from './components/Contact';
+// import Partners from './components/Partners';
+// import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
@@ -21,8 +21,9 @@ function App() {
       <Speakers />
       <Committees />
       <Venue />
-      <Partners />
-      <Contact />
+      {/* Temporarily commented out until details are finalized */}
+      {/* <Partners /> */}
+      {/* <Contact /> */}
       <Footer />
     </>
   );

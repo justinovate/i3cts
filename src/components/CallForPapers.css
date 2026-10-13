@@ -1,6 +1,7 @@
 .cfp-section {
   background-color: var(--bg-color);
   text-align: center;
+  position: relative;
 }
 
 .cfp-intro {
@@ -33,10 +34,13 @@
 
 .topic-card {
   background: #ffffff;
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(2, 132, 199, 0.16);
   border-radius: 16px;
-  padding: 1.75rem;
-  box-shadow: var(--shadow-md);
+  padding: 1.85rem 1.75rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s var(--ease-blueprint), border-color 0.3s var(--ease-blueprint), box-shadow 0.3s var(--ease-blueprint);
 }
 
 .interactive-track-card {
@@ -45,8 +49,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   outline: none;
 }
 
@@ -54,23 +56,49 @@
 .interactive-track-card:focus-visible {
   transform: translateY(-6px);
   border-top-color: var(--primary-blue);
-  box-shadow: 0 15px 35px rgba(0, 86, 179, 0.12);
-  border-color: var(--primary-blue);
+  border-color: rgba(2, 132, 199, 0.45);
+  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.12);
+}
+
+/* Blueprint Watermark Illustration inside Track Cards */
+.track-blueprint-watermark {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  width: 170px;
+  height: 170px;
+  pointer-events: none;
+  opacity: 0.05;
+  color: var(--blueprint-blue);
+  transition: transform 0.4s var(--ease-blueprint), opacity 0.4s var(--ease-blueprint);
+  z-index: 0;
+}
+
+.interactive-track-card:hover .track-blueprint-watermark {
+  transform: scale(1.06);
+  opacity: 0.13;
+}
+
+.track-blueprint-svg {
+  width: 100%;
+  height: 100%;
 }
 
 .track-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.65rem;
+  position: relative;
+  z-index: 1;
 }
 
 .track-badge {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 0.3rem 0.75rem;
+  padding: 0.28rem 0.75rem;
   border-radius: 20px;
   background: rgba(0, 86, 179, 0.08);
   color: var(--primary-blue);
@@ -78,9 +106,9 @@
 }
 
 .track-icon {
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   color: var(--primary-blue);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s var(--ease-blueprint), color 0.3s ease;
 }
 
 .interactive-track-card:hover .track-icon {
@@ -88,11 +116,26 @@
   color: var(--accent-cyan);
 }
 
+/* Technical Monospace Index Label */
+.track-ref-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--blueprint-blue);
+  opacity: 0.85;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
 .topic-card h4 {
   color: var(--text-main);
   margin-bottom: 1rem;
   font-size: 1.25rem;
   line-height: 1.35;
+  position: relative;
+  z-index: 1;
 }
 
 .track-topics-preview {
@@ -100,18 +143,22 @@
   list-style-type: disc;
   color: var(--text-muted);
   margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .track-topics-preview li {
   margin-bottom: 0.6rem;
-  font-size: 0.95rem;
-  line-height: 1.4;
+  font-size: 0.94rem;
+  line-height: 1.42;
 }
 
 .track-card-footer {
   margin-top: auto;
-  padding-top: 0.75rem;
-  border-top: 1px dashed var(--glass-border);
+  padding-top: 0.85rem;
+  border-top: 1px dashed rgba(2, 132, 199, 0.18);
+  position: relative;
+  z-index: 1;
 }
 
 .click-more-hint {
@@ -121,7 +168,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  transition: gap 0.2s ease;
+  transition: gap 0.2s var(--ease-blueprint), color 0.2s ease;
 }
 
 .interactive-track-card:hover .click-more-hint {
@@ -234,14 +281,14 @@
 
 .resource-row {
   background: #ffffff;
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(2, 132, 199, 0.16);
   border-radius: 14px;
   padding: 1.15rem 1.35rem;
   display: flex;
   align-items: center;
   gap: 1rem;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.25s var(--ease-blueprint), border-color 0.25s var(--ease-blueprint), box-shadow 0.25s var(--ease-blueprint);
 }
 
 .resource-row:hover {
@@ -309,7 +356,7 @@
   background: rgba(0, 86, 179, 0.08);
   color: var(--primary-blue);
   border: 1px solid rgba(0, 86, 179, 0.2);
-  transition: all 0.2s ease;
+  transition: all 0.2s var(--ease-blueprint);
 }
 
 .download-pill:hover {
@@ -355,26 +402,27 @@
 
 .cfp-cta-banner {
   background: #ffffff;
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(2, 132, 199, 0.2);
   border-top: 4px solid var(--accent-highlight);
-  padding: 2.5rem 2rem;
+  padding: 2.75rem 2rem;
   border-radius: 20px;
   box-shadow: var(--shadow-md);
   margin: 0 auto;
   max-width: 850px;
   text-align: center;
+  position: relative;
 }
 
 .cfp-cta-banner h3 {
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   color: var(--text-main);
-  margin-bottom: 0.5rem;
+  margin: 0.4rem 0 0.5rem;
 }
 
 .cfp-cta-banner p {
   font-size: 1rem;
   color: var(--text-muted);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.6rem;
 }
 
 @media (max-width: 992px) {

@@ -2,12 +2,30 @@ import './ImportantDates.css';
 
 const ImportantDates = () => {
   const dates = [
-    { label: "Paper Submission Opens", date: "August 15, 2026", status: "upcoming" },
-    { label: "Paper Submission Deadline (2-Month Window)", date: "October 15, 2026", status: "upcoming" },
-    { label: "Extension Deadline (Optional 1 Month)", date: "November 15, 2026", status: "upcoming" },
-    { label: "Notification of Acceptance", date: "December 20, 2026", status: "upcoming" },
-    { label: "Camera-Ready Deadline", date: "January 30, 2027", status: "upcoming" },
-    { label: "Conference Dates", date: "April 8–10, 2027", status: "highlight" }
+    { 
+      label: "Paper Submission Deadline", 
+      date: "Jan. 25, 2027", 
+      status: "upcoming",
+      refCode: "REF: MILESTONE-01 // SUBMISSION"
+    },
+    { 
+      label: "Notification of Acceptance", 
+      date: "Feb. 18, 2027", 
+      status: "upcoming",
+      refCode: "REF: MILESTONE-02 // NOTIFICATION"
+    },
+    { 
+      label: "Camera Ready Paper", 
+      date: "March 25, 2027", 
+      status: "upcoming",
+      refCode: "REF: MILESTONE-03 // CAMERA-READY"
+    },
+    { 
+      label: "Conference Dates", 
+      date: "April 8–10, 2027", 
+      status: "highlight",
+      refCode: "REF: MILESTONE-04 // CONVENE"
+    }
   ];
 
   return (
@@ -17,16 +35,20 @@ const ImportantDates = () => {
         
         <div className="timeline">
           {dates.map((item, index) => (
-            <div className={`timeline-item ${item.status}`} key={index}>
+            <div className={`timeline-item ${item.status} stagger-reveal`} key={index}>
               <div className="timeline-marker"></div>
-              <div className="glass-card timeline-content">
+              <div className="glass-card timeline-content schematic-box">
+                <span className="corner-mark top-left"></span>
+                <span className="corner-mark top-right"></span>
+                <span className="corner-mark bottom-left"></span>
+                <span className="corner-mark bottom-right"></span>
+                <div className="timeline-meta hud-mono-tag">{item.refCode}</div>
                 <h3 className="timeline-date">{item.date}</h3>
                 <p className="timeline-label">{item.label}</p>
               </div>
             </div>
           ))}
         </div>
-        <p className="timeline-note">Note: Extension period is activated only when formally announced by the conference committee.</p>
       </div>
     </section>
   );

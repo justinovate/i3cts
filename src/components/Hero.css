@@ -109,19 +109,31 @@
   max-width: 650px;
 }
 
+.hero-hud-coords {
+  margin-bottom: 1.25rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(2, 132, 199, 0.06);
+  border: 1px solid rgba(2, 132, 199, 0.2);
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.55rem 1.4rem;
-  background: rgba(0, 86, 179, 0.08);
-  border: 1px solid rgba(0, 86, 179, 0.25);
-  border-radius: 30px;
+  background: rgba(0, 86, 179, 0.06);
+  border: 1px solid rgba(2, 132, 199, 0.22);
+  border-radius: 6px;
   font-weight: 600;
   font-size: 0.92rem;
   color: var(--primary-blue);
   margin-bottom: 2.25rem;
   box-shadow: var(--shadow-sm);
+  position: relative;
 }
 
 .hero-buttons {

@@ -5,10 +5,10 @@
 }
 
 .about-intro-subtitle {
-  max-width: 800px;
+  max-width: 850px;
   margin: -1.5rem auto 3rem;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.12rem;
   color: var(--text-muted);
   line-height: 1.5;
 }
@@ -17,14 +17,14 @@
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 3.5rem;
-  align-items: center;
+  align-items: start;
 }
 
 .about-text {
-  font-size: 1.05rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.02rem;
+  margin-bottom: 1.25rem;
   color: var(--text-muted);
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 .about-cards {
@@ -86,9 +86,104 @@
   margin-bottom: 0;
 }
 
+/* Primary Objectives Styling */
+.about-objectives {
+  margin-top: 4.5rem;
+  padding-top: 3rem;
+  border-top: 1px dashed var(--glass-border);
+}
+
+.objectives-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.objectives-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  background: rgba(0, 86, 179, 0.08);
+  color: var(--primary-blue);
+  border: 1px solid rgba(0, 86, 179, 0.2);
+  margin-bottom: 0.75rem;
+}
+
+.objectives-title {
+  font-size: 1.85rem;
+  color: var(--text-main);
+  margin-bottom: 0;
+}
+
+.objectives-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+}
+
+.objective-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.75rem;
+  background: #ffffff;
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.objective-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-blue);
+  box-shadow: 0 12px 28px rgba(0, 86, 179, 0.1);
+}
+
+.objective-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0, 86, 179, 0.1), rgba(0, 210, 255, 0.1));
+  border: 1px solid rgba(0, 86, 179, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--primary-blue);
+  transition: all 0.3s ease;
+}
+
+.objective-card:hover .objective-icon-wrapper {
+  background: var(--primary-blue);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+.objective-content h4 {
+  font-size: 1.15rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  line-height: 1.35;
+}
+
+.objective-content p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 0;
+}
+
 @media (max-width: 992px) {
   .about-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+
+  .objectives-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 }

@@ -26,16 +26,18 @@ const Footer = () => {
             <li><a href="#dates">Important Dates</a></li>
             <li><a href="#cfp">Call for Papers</a></li>
             <li><a href="#committees">Committees</a></li>
-            <li><a href="#partners">Partner Schools</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#venue">Venue</a></li>
+            <li><a href="#speakers">Speakers</a></li>
+            {/* <li><a href="#partners">Partner Schools</a></li> */}
+            {/* <li><a href="#contact">Contact</a></li> */}
           </ul>
         </div>
         
         <div className="footer-contact">
-          <h4>Contact</h4>
+          <h4>Conference Venue</h4>
           <p>Manila, Philippines</p>
           <p>April 8–10, 2027</p>
-          <p>info@i3cts2027.org</p>
+          {/* <p>info@i3cts2027.org</p> */}
         </div>
       </div>
       

@@ -3,18 +3,24 @@
   --secondary-blue: #003d82;
   --accent-cyan: #0099e6;
   --accent-highlight: #ff9e00;
-  --bg-color: #f8f9fa;
+  --blueprint-blue: #0284c7;
+  --blueprint-line: rgba(2, 132, 199, 0.18);
+  --blueprint-grid-minor: rgba(2, 132, 199, 0.035);
+  --blueprint-grid-major: rgba(2, 132, 199, 0.065);
+  --bg-color: #f8fafc;
   --bg-secondary: #ffffff;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
+  --text-main: #0f172a;
+  --text-muted: #475569;
   --white: #ffffff;
   --glass-bg: #ffffff;
-  --glass-border: rgba(0, 86, 179, 0.12);
-  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 10px 25px rgba(0, 86, 179, 0.08);
-  --grid-color: rgba(0, 86, 179, 0.04);
+  --glass-border: rgba(2, 132, 199, 0.16);
+  --shadow-sm: 0 4px 6px rgba(2, 132, 199, 0.04);
+  --shadow-md: 0 10px 25px -5px rgba(2, 132, 199, 0.08);
+  --shadow-glow: 0 10px 25px -5px rgba(2, 132, 199, 0.14);
   --font-heading: 'Inter', sans-serif;
   --font-body: 'Roboto', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Roboto Mono', monospace;
+  --ease-blueprint: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -27,6 +33,13 @@ body {
   font-family: var(--font-body);
   color: var(--text-main);
   background-color: var(--bg-color);
+  background-image: 
+    linear-gradient(var(--blueprint-grid-minor) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blueprint-grid-minor) 1px, transparent 1px),
+    linear-gradient(var(--blueprint-grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blueprint-grid-major) 1px, transparent 1px);
+  background-size: 10px 10px, 10px 10px, 50px 50px, 50px 50px;
+  background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
   line-height: 1.6;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -41,7 +54,7 @@ h1, h2, h3, h4, h5, h6 {
 a {
   text-decoration: none;
   color: inherit;
-  transition: color 0.3s ease;
+  transition: color 0.3s var(--ease-blueprint);
 }
 
 ul {
@@ -65,6 +78,7 @@ ul {
   color: var(--primary-blue);
   margin-bottom: 3rem;
   position: relative;
+  letter-spacing: -0.02em;
 }
 
 .section-title::after {
@@ -84,7 +98,7 @@ ul {
   font-family: var(--font-heading);
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s var(--ease-blueprint);
   border: none;
   text-align: center;
 }
@@ -111,17 +125,43 @@ ul {
   color: var(--white);
 }
 
+/* Submit Paper Button with Luminous Sheen / Shimmer */
 .btn-highlight {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(135deg, #FF9E00 0%, #FF6B00 100%);
   color: #ffffff;
   box-shadow: 0 4px 15px rgba(255, 158, 0, 0.35);
   border: none;
 }
 
+.btn-highlight::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -80%;
+  width: 45%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  transition: none;
+}
+
 .btn-highlight:hover {
   background: linear-gradient(135deg, #FFAB1A 0%, #FF7A1A 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 158, 0, 0.5);
+  box-shadow: 0 6px 22px rgba(255, 158, 0, 0.55);
+}
+
+.btn-highlight:hover::after {
+  left: 140%;
+  transition: left 0.75s ease-in-out;
 }
 
 /* Modern Clean Cards */
@@ -131,13 +171,72 @@ ul {
   border-radius: 15px;
   padding: 2rem;
   box-shadow: var(--shadow-md);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s var(--ease-blueprint), box-shadow 0.3s var(--ease-blueprint), border-color 0.3s var(--ease-blueprint);
 }
 
 .glass-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 15px 30px rgba(0, 86, 179, 0.1);
-  border-color: var(--primary-blue);
+  box-shadow: var(--shadow-glow);
+  border-color: var(--blueprint-blue);
+}
+
+/* Corner Drafting Registration Marks */
+.schematic-box {
+  position: relative;
+}
+
+.corner-mark {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-color: rgba(2, 132, 199, 0.4);
+  pointer-events: none;
+  transition: all 0.3s var(--ease-blueprint);
+}
+
+.corner-mark.top-left {
+  top: 7px;
+  left: 7px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+
+.corner-mark.top-right {
+  top: 7px;
+  right: 7px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+}
+
+.corner-mark.bottom-left {
+  bottom: 7px;
+  left: 7px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+}
+
+.corner-mark.bottom-right {
+  bottom: 7px;
+  right: 7px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+}
+
+.schematic-box:hover .corner-mark {
+  border-color: var(--blueprint-blue);
+  width: 12px;
+  height: 12px;
+}
+
+/* Monospace Blueprint Technical Badges */
+.hud-mono-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blueprint-blue);
+  opacity: 0.85;
 }
 
 /* Animations */
@@ -147,7 +246,58 @@ ul {
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: fadeIn 0.8s var(--ease-blueprint) forwards;
+}
+
+@keyframes blueprintReveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-reveal {
+  opacity: 0;
+  animation: blueprintReveal 0.6s var(--ease-blueprint) forwards;
+}
+
+.stagger-reveal:nth-child(1) { animation-delay: 0ms; }
+.stagger-reveal:nth-child(2) { animation-delay: 80ms; }
+.stagger-reveal:nth-child(3) { animation-delay: 160ms; }
+.stagger-reveal:nth-child(4) { animation-delay: 240ms; }
+.stagger-reveal:nth-child(5) { animation-delay: 320ms; }
+
+/* Radar Concentric Pulse Ring */
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(2, 132, 199, 0.45);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(2, 132, 199, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(2, 132, 199, 0);
+  }
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .btn-highlight::after {
+    display: none;
+  }
 }
 
 /* Responsive */
