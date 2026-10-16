@@ -59,6 +59,21 @@
   z-index: 1;
 }
 
+/* Soft Radial Luminance Backdrop Isolation (Safeguards Title Contrast) */
+.hero-content::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -48%);
+  width: 120%;
+  height: 115%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.55) 45%, rgba(255, 255, 255, 0) 75%);
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(20px);
+}
+
 .hero-logo-container {
   margin: 0 auto 1.25rem;
   display: flex;

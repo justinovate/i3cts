@@ -11,6 +11,18 @@
   -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
 }
 
+/* Cursor Parallax Depth Wrapper */
+.blueprint-parallax-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(calc(var(--mouse-x, 0px) * 0.35), calc(var(--mouse-y, 0px) * 0.35));
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
 .blueprint-svg {
   width: 100%;
   height: 100%;
@@ -21,6 +33,7 @@
 }
 
 /* Base Hairline Blueprint Stroke Styling */
+.blueprint-path,
 .blueprint-hairline-circle,
 .blueprint-hairline-line,
 .blueprint-orbit-path,
@@ -46,8 +59,8 @@
 .cubesat-antenna-stem,
 .cubesat-divider {
   fill: none;
-  stroke: rgba(37, 99, 235, 0.12);
-  stroke-width: 1.1px;
+  stroke: rgba(37, 99, 235, 0.14);
+  stroke-width: 1px;
 }
 
 /* Centerline Engineering Drafting Axis */
@@ -61,7 +74,7 @@
 /* Dashed Drafting Variations */
 .dashed {
   stroke-dasharray: 4 6;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 /* Orbit Path Accent */
@@ -96,20 +109,144 @@
 }
 
 /* =========================================================================
-   Resting Ambient Floating Motion (22s Loop)
+   1. Vector Blueprint Self-Drawing Animation (Page Load)
    ========================================================================= */
+@keyframes drawSchematic {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes drawDashedSchematic {
+  0% {
+    stroke-dashoffset: 600;
+  }
+  99% {
+    stroke-dasharray: 600;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 4 6;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Stagger 1: Fuselage & Central Probe Outline (Traces First) */
+.blueprint-path-fuselage {
+  stroke-dasharray: 1800;
+  stroke-dashoffset: 1800;
+  animation: drawSchematic 3.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s forwards;
+}
+
+/* Stagger 2: Fins & Aerodynamic Stabilizers */
+.blueprint-path-fin {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: drawSchematic 2.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.45s forwards;
+}
+
+.blueprint-path-fin.dashed {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: drawDashedSchematic 2.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.45s forwards;
+}
+
+/* Stagger 3: Internal Rib Ellipses & Longitudinal Stringers */
+.blueprint-path-ring,
+.blueprint-path-stringer {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: drawSchematic 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.75s forwards;
+}
+
+.blueprint-path-ring.dashed {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: drawDashedSchematic 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.75s forwards;
+}
+
+/* Stagger 4: Engine Bells & Thruster Contours */
+.blueprint-path-engine {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: drawSchematic 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) 1.05s forwards;
+}
+
+.blueprint-path-engine.dashed {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: drawDashedSchematic 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) 1.05s forwards;
+}
+
+/* Stagger 5: Internal Cubesat, Truss & Witness Guidelines */
+.blueprint-path-detail {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: drawSchematic 2.0s cubic-bezier(0.2, 0.8, 0.2, 1) 1.25s forwards;
+}
+
+/* Stagger 6: Dimensions & Annotations Fade In */
+.blueprint-dimensions,
+.blueprint-schematic-text {
+  opacity: 0;
+  animation: fadeInDrafting 1.8s ease 1.5s forwards;
+}
+
+@keyframes fadeInDrafting {
+  to {
+    opacity: 1;
+  }
+}
+
+/* =========================================================================
+   2. Ambient "Living Schematic" Motion (Continuous Idle State)
+   ========================================================================= */
+
+/* Slow Ambient Elevation Float (14s Loop) */
 .blueprint-rocket-schematic {
-  transform-origin: 600px 500px;
-  animation: rocketRestingFloat 22s ease-in-out infinite alternate;
+  transform-origin: 600px 450px;
+  animation: ambientFloat 14s ease-in-out infinite alternate;
   will-change: transform;
 }
 
-@keyframes rocketRestingFloat {
-  0% {
+@keyframes ambientFloat {
+  from {
     transform: translateY(0px);
   }
-  100% {
-    transform: translateY(-12px);
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+/* Telemetry Current Energy Pulse Line (Periodic traveling energy trace) */
+.blueprint-telemetry-pulse {
+  fill: none;
+  stroke: #38bdf8;
+  stroke-width: 1.8px;
+  stroke-dasharray: 100 680;
+  stroke-dashoffset: 680;
+  stroke-linecap: round;
+  opacity: 0;
+  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.7));
+  animation: telemetryPulseSweep 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  animation-delay: 3.5s;
+}
+
+@keyframes telemetryPulseSweep {
+  0% {
+    stroke-dashoffset: 680;
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.2;
+  }
+  32% {
+    stroke-dashoffset: -100;
+    opacity: 0.2;
+  }
+  38%, 100% {
+    stroke-dashoffset: -100;
+    opacity: 0;
   }
 }
 
@@ -188,23 +325,30 @@
 }
 
 /* =========================================================================
-   Event-Day / Simulated Liftoff State Execution
+   3. Event-Day / Simulated Liftoff State Execution
    ========================================================================= */
 .is-liftoff .blueprint-rocket-schematic {
   animation: none;
-  transform: translateY(-160px) scale(1.04);
-  transition: transform 3.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(-240px) scale(1.05);
+  opacity: 0.15;
+  transition: transform 3s cubic-bezier(0.16, 1, 0.3, 1), opacity 3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.is-liftoff .blueprint-telemetry-pulse {
+  animation: none;
+  opacity: 0;
 }
 
 .is-liftoff .rocket-thrust-plume {
   opacity: 1;
-  transform: scaleY(1);
+  transform: scaleY(1.15);
+  transition: opacity 1.2s ease, transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .is-liftoff .launch-origin-glow {
   opacity: 1;
-  transform: translate(-50%, 50%) scale(1.3);
-  animation: launchPadGlowPulse 3s ease-in-out infinite alternate;
+  transform: translate(-50%, 50%) scale(1.4);
+  animation: launchPadGlowPulse 2.5s ease-in-out infinite alternate;
 }
 
 @keyframes launchPadGlowPulse {
@@ -219,19 +363,50 @@
 }
 
 /* =========================================================================
-   Accessibility: Reduced Motion
+   4. Accessibility: Reduced Motion
    ========================================================================= */
 @media (prefers-reduced-motion: reduce) {
+  .blueprint-path,
+  .blueprint-path-fuselage,
+  .blueprint-path-fin,
+  .blueprint-path-ring,
+  .blueprint-path-stringer,
+  .blueprint-path-engine,
+  .blueprint-path-detail,
+  .blueprint-dimensions,
+  .blueprint-schematic-text {
+    animation: none !important;
+    stroke-dashoffset: 0 !important;
+    opacity: 1 !important;
+  }
+
+  .blueprint-path-ring.dashed,
+  .blueprint-path-fin.dashed,
+  .blueprint-path-engine.dashed {
+    stroke-dasharray: 4 6 !important;
+  }
+
   .blueprint-rocket-schematic {
     animation: none !important;
   }
+
+  .blueprint-telemetry-pulse {
+    display: none !important;
+  }
+
+  .blueprint-parallax-wrapper {
+    transform: none !important;
+    transition: none !important;
+  }
+
   .shock-diamond,
   .thrust-streamline,
   .launch-origin-glow {
     animation: none !important;
   }
+
   .is-liftoff .blueprint-rocket-schematic {
     transition: none !important;
-    transform: translateY(-160px) scale(1.04);
+    transform: translateY(-240px) scale(1.05);
   }
 }
