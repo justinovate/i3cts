@@ -15,7 +15,7 @@ const committeeGroups = [
         affiliation: 'TBA'
       },
       {
-        role: 'Vice General Chair',
+        role: 'General Co-Chair',
         name: 'Engr. Noel Linsangan',
         affiliation: 'Mapúa University'
       }
@@ -37,20 +37,10 @@ const committeeGroups = [
     ]
   },
   {
-    title: 'Publication Committee',
-    members: [
-      {
-        role: 'Publication Chair',
-        name: 'Engr. Ethyl Joy I. Badiang',
-        affiliation: 'Mapúa University'
-      }
-    ]
-  },
-  {
     title: 'Publicity & Media Committee',
     members: [
       {
-        role: 'Publicity Chair',
+        role: 'Chair',
         name: 'Dave Anthony De Jesus',
         affiliation: 'Bulacan State University'
       },
@@ -67,22 +57,37 @@ const committeeGroups = [
       {
         role: 'Creatives',
         name: 'TBA',
-        affiliation: 'TBA'
+        affiliation: 'Bulacan State University'
       }
     ]
   },
   {
-    title: 'Program & Logistics Committee',
+    title: 'Publication & Program Committee',
     members: [
+      {
+        role: 'Publication Chair',
+        name: 'Engr. Ethyl Joy I. Badiang',
+        affiliation: 'Mapúa University'
+      },
       {
         role: 'Program Chair',
         name: 'Dr. John Paul Cruz',
         affiliation: 'Mapúa University'
+      }
+    ]
+  },
+  {
+    title: 'Logistics Committee',
+    members: [
+      {
+        role: 'Logistics Chair',
+        name: 'Dr. Analyn N. Yumang',
+        affiliation: 'Mapúa University'
       },
       {
-        role: 'Logistics',
-        name: 'TBA',
-        affiliation: 'TBA'
+        role: 'Logistics Vice-Chair',
+        name: 'Dr. Charmaine C. Paglinawan',
+        affiliation: 'Mapúa University'
       }
     ]
   }
@@ -98,44 +103,51 @@ const Committees = () => {
         </p>
 
         <div className="committee-directory">
-          {committeeGroups.map((group) => (
-            <div className="committee-group" key={group.title}>
-              <div className="committee-group-header">
-                <h3 className="group-title">{group.title}</h3>
-                <div className="group-hairline-accent" aria-hidden="true" />
-              </div>
+          {committeeGroups.map((group) => {
+            const isTwoCol = group.members.length <= 2;
 
-              <div className="committee-roster-grid" role="list">
-                {group.members.map((member, idx) => {
-                  const isNameTba = member.name === 'TBA';
-                  const isAffiliationTba = member.affiliation === 'TBA' || !member.affiliation;
+            return (
+              <div className="committee-group" key={group.title}>
+                <div className="committee-group-header">
+                  <h3 className="group-title">{group.title}</h3>
+                  <div className="group-hairline-accent" aria-hidden="true" />
+                </div>
 
-                  return (
-                    <div
-                      className={`roster-entry ${isNameTba ? 'is-tba' : ''}`}
-                      key={`${group.title}-${member.role}-${idx}`}
-                      role="listitem"
-                    >
-                      <span className="entry-role-tag">{member.role}</span>
-                      <h4 className={`entry-name ${isNameTba ? 'is-tba' : ''}`}>
-                        {isNameTba ? 'TBA' : member.name}
-                      </h4>
-                      <p className="entry-affiliation">
-                        {isAffiliationTba ? (
-                          <span className="affiliation-tba">Affiliation TBA</span>
-                        ) : (
-                          <>
-                            <i className="fas fa-landmark affiliation-icon" aria-hidden="true" />
-                            <span className="affiliation-text">{member.affiliation}</span>
-                          </>
-                        )}
-                      </p>
-                    </div>
-                  );
-                })}
+                <div
+                  className={`committee-roster-grid ${isTwoCol ? 'grid-2-cols' : 'grid-3-cols'}`}
+                  role="list"
+                >
+                  {group.members.map((member, idx) => {
+                    const isNameTba = member.name === 'TBA';
+                    const isAffiliationTba = member.affiliation === 'TBA' || !member.affiliation;
+
+                    return (
+                      <div
+                        className={`roster-entry ${isNameTba ? 'is-tba' : ''}`}
+                        key={`${group.title}-${member.role}-${idx}`}
+                        role="listitem"
+                      >
+                        <span className="entry-role-tag">{member.role}</span>
+                        <h4 className={`entry-name ${isNameTba ? 'is-tba' : ''}`}>
+                          {isNameTba ? 'TBA' : member.name}
+                        </h4>
+                        <p className="entry-affiliation">
+                          {isAffiliationTba ? (
+                            <span className="affiliation-tba">Affiliation TBA</span>
+                          ) : (
+                            <>
+                              <i className="fas fa-landmark affiliation-icon" aria-hidden="true" />
+                              <span className="affiliation-text">{member.affiliation}</span>
+                            </>
+                          )}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

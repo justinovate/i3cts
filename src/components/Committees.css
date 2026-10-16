@@ -15,15 +15,14 @@
 }
 
 /* =========================================================================
-   Architectural Directory Layout (No Floating Cards)
-   Inspired by IEEE, ACM Symposia, and Stripe Events
+   Architectural Directory Layout (Balanced Academic Roster)
    ========================================================================= */
 .committee-directory {
   max-width: 1140px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 3.75rem;
+  gap: 3.5rem;
 }
 
 /* Individual Committee Operational Group */
@@ -31,38 +30,39 @@
   position: relative;
 }
 
-/* Two-Tier Group Header */
+/* Section Header: Clean Monospace Title with Hairline Divider */
 .committee-group-header {
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .group-title {
-  font-size: 1.15rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.14em;
   color: #0f172a;
   margin: 0;
   text-transform: uppercase;
+  flex-shrink: 0;
 }
 
 .group-hairline-accent {
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, rgba(37, 99, 235, 0.22) 0%, transparent 100%);
+  background: rgba(226, 232, 240, 0.85);
 }
 
 /* Roster Grid Matrix */
 .committee-roster-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 1.25rem 2rem;
+  gap: 1.5rem 2rem;
 }
 
+/* 2-Column Responsive Grid (Balanced for sections with <= 2 members) */
 @media (min-width: 640px) {
   .committee-roster-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -70,39 +70,45 @@
 }
 
 @media (min-width: 1024px) {
-  .committee-roster-grid {
+  .committee-roster-grid.grid-3-cols {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem 2.5rem;
+  }
+
+  .committee-roster-grid.grid-2-cols {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 880px;
+    gap: 1.5rem 3.5rem;
   }
 }
 
 /* Individual Personnel Roster Item */
 .roster-entry {
   position: relative;
-  padding: 1rem 1.25rem 1rem 1.1rem;
-  border-left: 2px solid transparent;
-  border-radius: 0 8px 8px 0;
   background: transparent;
-  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.65);
+  padding: 0.75rem 0.85rem 1rem 0.85rem;
+  margin: 0 -0.85rem;
+  border-radius: 8px;
+  transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
   display: flex;
   flex-direction: column;
 }
 
 .roster-entry:hover {
-  border-left-color: #2563eb;
-  padding-left: 1.45rem;
-  background: rgba(37, 99, 235, 0.035);
+  background-color: rgba(37, 99, 235, 0.035);
+  border-bottom-color: transparent;
 }
 
 /* Role Monospace Tag */
 .entry-role-tag {
   font-family: var(--font-mono, monospace);
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: 0.6875rem; /* 11px */
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #2563eb;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.3rem;
   display: inline-block;
   user-select: none;
 }
@@ -114,7 +120,7 @@
   color: #0f172a;
   line-height: 1.35;
   margin: 0 0 0.35rem 0;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   transition: color 0.2s ease;
 }
 
@@ -127,17 +133,16 @@
   color: #94a3b8;
   font-style: italic;
   font-weight: 500;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
 }
 
 .roster-entry.is-tba {
-  opacity: 0.75;
+  opacity: 0.8;
 }
 
 .roster-entry.is-tba:hover {
   opacity: 1;
-  border-left-color: #94a3b8;
-  background: rgba(148, 163, 184, 0.04);
+  background-color: rgba(148, 163, 184, 0.04);
 }
 
 .roster-entry.is-tba:hover .entry-name.is-tba {
@@ -146,10 +151,10 @@
 
 /* Institutional Affiliation */
 .entry-affiliation {
-  font-size: 0.88rem;
-  color: #475569;
+  font-size: 0.875rem;
+  color: #64748b;
   line-height: 1.45;
-  margin: 0;
+  margin: 0.2rem 0 0;
   display: flex;
   align-items: center;
   gap: 0.45rem;
@@ -163,7 +168,7 @@
 }
 
 .affiliation-text {
-  color: #334155;
+  color: #475569;
   font-weight: 500;
 }
 
@@ -178,26 +183,21 @@
    ========================================================================= */
 @media (max-width: 768px) {
   .committee-directory {
-    gap: 3rem;
+    gap: 2.75rem;
   }
 
   .committee-group-header {
-    flex-wrap: wrap;
     gap: 0.75rem;
-    padding-bottom: 0.75rem;
     margin-bottom: 1.25rem;
   }
 
   .group-title {
-    font-size: 1rem;
-  }
-
-  .group-hairline-accent {
-    display: none;
+    font-size: 0.76rem;
   }
 
   .roster-entry {
-    padding: 0.85rem 1rem 0.85rem 0.95rem;
+    padding: 0.65rem 0.75rem 0.85rem 0.75rem;
+    margin: 0 -0.75rem;
   }
 
   .entry-name {
@@ -219,9 +219,5 @@
 @media (prefers-reduced-motion: reduce) {
   .roster-entry {
     transition: none !important;
-  }
-
-  .roster-entry:hover {
-    padding-left: 1.1rem !important;
   }
 }
