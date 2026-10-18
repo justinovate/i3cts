@@ -14,6 +14,11 @@ const committeeGroups = [
         name: 'TBA',
         affiliation: 'TBA'
       },
+{
+        role: 'General Co-Chair',
+        name: 'Dr. Jennifer Dela Cruz',
+        affiliation: 'Mapúa University'
+      }, 
       {
         role: 'General Co-Chair',
         name: 'Engr. Noel Linsangan',
