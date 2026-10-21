@@ -49,8 +49,13 @@ const Hero = ({ isLive = false }) => {
           Advancing Scientific Innovation & Computational Excellence
         </p>
 
-        <div className="hero-badge">
-          <i className="fas fa-calendar-alt"></i> April 8–10, 2027 • Manila, Philippines
+        <div className="hero-meta-badges">
+          <div className="hero-badge">
+            <i className="fas fa-calendar-alt"></i> April 8–10, 2027 • Manila, Philippines
+          </div>
+          <span className="hero-xplore-badge">
+            <i className="fas fa-certificate" aria-hidden="true"></i> IEEE Xplore Eligible
+          </span>
         </div>
 
         <div className="hero-buttons">

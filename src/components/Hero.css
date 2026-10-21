@@ -126,7 +126,16 @@
   line-height: 1.5;
 }
 
-/* Minimal Inline Date & Location Tag */
+/* Minimal Inline Date, Location & IEEE Xplore Badges */
+.hero-meta-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 2rem;
+}
+
 .hero-badge {
   display: inline-flex;
   align-items: center;
@@ -140,13 +149,36 @@
   font-weight: 500;
   font-size: 0.85rem;
   color: #334155;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   box-shadow: none;
 }
 
 .hero-badge i {
   color: #2563eb;
   font-size: 0.85rem;
+}
+
+.hero-xplore-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.38rem 0.9rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 600;
+  color: #2563eb; /* text-blue-600 */
+  background: rgba(239, 246, 255, 0.85); /* bg-blue-50/80 */
+  border: 1px solid rgba(191, 219, 254, 0.75); /* border-blue-200/60 */
+  border-radius: 9999px; /* rounded-full */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+.hero-xplore-badge i {
+  color: #2563eb;
+  font-size: 0.72rem;
 }
 
 .hero-buttons {

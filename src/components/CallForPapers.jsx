@@ -183,6 +183,17 @@ const CallForPapers = () => {
           ))}
         </div>
 
+        {/* Official IEEE Xplore Publication Notice Strip */}
+        <div className="cfp-xplore-callout">
+          <div className="cfp-xplore-tag">
+            <i className="fas fa-file-contract" aria-hidden="true"></i>
+            <span>INDEXING // IEEE XPLORE</span>
+          </div>
+          <p className="cfp-xplore-statement">
+            Accepted papers will be submitted for inclusion in IEEE Xplore, subject to meeting IEEE Xplore's scope and quality requirements.
+          </p>
+        </div>
+
         {/* Open 2-Column Split: Guidelines & Templates */}
         <div className="cfp-split-container">
           {/* Left: Guidelines */}
