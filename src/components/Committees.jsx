@@ -3,10 +3,11 @@ import './Committees.css';
 const committeeGroups = [
   {
     title: 'General Leadership & Organizing Committee',
+    gridClass: 'grid-4-cols',
     members: [
       {
         role: 'General Chair',
-        name: 'Dr. Jocelyn Villaverde',
+        name: 'Dr. Jocelyn F. Villaverde',
         affiliation: 'Bulacan State University / IEEE CTSoc'
       },
       {
@@ -14,20 +15,21 @@ const committeeGroups = [
         name: 'TBA',
         affiliation: 'TBA'
       },
-{
-        role: 'General Co-Chair',
-        name: 'Dr. Jennifer Dela Cruz',
-        affiliation: 'Mapúa University'
-      }, 
       {
         role: 'General Co-Chair',
-        name: 'Engr. Noel Linsangan',
+        name: 'Dr. Jennifer C. Dela Cruz',
+        affiliation: 'Mapúa University'
+      },
+      {
+        role: 'General Co-Chair',
+        name: 'Engr. Noel B. Linsangan',
         affiliation: 'Mapúa University'
       }
     ]
   },
   {
     title: 'Technical Program Committee',
+    gridClass: 'grid-2-cols',
     members: [
       {
         role: 'TPC Chair',
@@ -36,13 +38,51 @@ const committeeGroups = [
       },
       {
         role: 'TPC Co-Chair',
-        name: 'Dr. Mark Purio',
+        name: 'Dr. Mark Angelo C. Purio',
         affiliation: 'Adamson University'
       }
     ]
   },
   {
+    title: 'Publication Committee',
+    gridClass: 'grid-2-cols',
+    members: [
+      {
+        role: 'Publication Chair',
+        name: 'Engr. Ethyl Joy I. Badiang',
+        affiliation: 'Mapúa University'
+      },
+      {
+        role: 'Publication Co-Chair',
+        name: 'Dr. Reggie P. Gustilo',
+        affiliation: 'TBA'
+      }
+    ]
+  },
+  {
+    title: 'Program & Logistics Committee',
+    gridClass: 'grid-3-cols',
+    members: [
+      {
+        role: 'Program Chair',
+        name: 'Dr. John Paul T. Cruz',
+        affiliation: 'Mapúa University'
+      },
+      {
+        role: 'Logistics Chair',
+        name: 'Dr. Analyn N. Yumang',
+        affiliation: 'Mapúa University'
+      },
+      {
+        role: 'Logistics Vice-Chair',
+        name: 'Dr. Charmaine C. Paglinawan',
+        affiliation: 'Mapúa University'
+      }
+    ]
+  },
+  {
     title: 'Publicity & Media Committee',
+    gridClass: 'grid-4-cols',
     members: [
       {
         role: 'Chair',
@@ -65,36 +105,6 @@ const committeeGroups = [
         affiliation: 'Bulacan State University'
       }
     ]
-  },
-  {
-    title: 'Publication & Program Committee',
-    members: [
-      {
-        role: 'Publication Chair',
-        name: 'Engr. Ethyl Joy I. Badiang',
-        affiliation: 'Mapúa University'
-      },
-      {
-        role: 'Program Chair',
-        name: 'Dr. John Paul Cruz',
-        affiliation: 'Mapúa University'
-      }
-    ]
-  },
-  {
-    title: 'Logistics Committee',
-    members: [
-      {
-        role: 'Logistics Chair',
-        name: 'Dr. Analyn N. Yumang',
-        affiliation: 'Mapúa University'
-      },
-      {
-        role: 'Logistics Vice-Chair',
-        name: 'Dr. Charmaine C. Paglinawan',
-        affiliation: 'Mapúa University'
-      }
-    ]
   }
 ];
 
@@ -109,8 +119,6 @@ const Committees = () => {
 
         <div className="committee-directory">
           {committeeGroups.map((group) => {
-            const isTwoCol = group.members.length <= 2;
-
             return (
               <div className="committee-group" key={group.title}>
                 <div className="committee-group-header">
@@ -119,7 +127,7 @@ const Committees = () => {
                 </div>
 
                 <div
-                  className={`committee-roster-grid ${isTwoCol ? 'grid-2-cols' : 'grid-3-cols'}`}
+                  className={`committee-roster-grid ${group.gridClass}`}
                   role="list"
                 >
                   {group.members.map((member, idx) => {
@@ -138,7 +146,7 @@ const Committees = () => {
                         </h4>
                         <p className="entry-affiliation">
                           {isAffiliationTba ? (
-                            <span className="affiliation-tba">Affiliation TBA</span>
+                            <span className="affiliation-tba">TBA</span>
                           ) : (
                             <>
                               <i className="fas fa-landmark affiliation-icon" aria-hidden="true" />

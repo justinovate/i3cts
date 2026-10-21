@@ -55,30 +55,46 @@
   background: rgba(226, 232, 240, 0.85);
 }
 
-/* Roster Grid Matrix */
+/* Roster Grid Matrix - Base Mobile (grid-cols-1, gap-6) */
 .committee-roster-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 1.5rem 2rem;
+  gap: 1.5rem; /* gap-6 */
 }
 
-/* 2-Column Responsive Grid (Balanced for sections with <= 2 members) */
+/* Tablet (sm: 640px) */
 @media (min-width: 640px) {
   .committee-roster-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* sm:grid-cols-2 */
+    gap: 1.5rem;
   }
 }
 
+/* Medium Desktop (md: 768px) */
+@media (min-width: 768px) {
+  .committee-roster-grid.grid-2-cols {
+    grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+    max-width: 56rem; /* max-w-4xl (896px) */
+    gap: 1.5rem;
+  }
+}
+
+/* Large Desktop (lg: 1024px) */
 @media (min-width: 1024px) {
+  .committee-roster-grid.grid-4-cols {
+    grid-template-columns: repeat(4, 1fr); /* lg:grid-cols-4 */
+    gap: 1.5rem;
+  }
+
   .committee-roster-grid.grid-3-cols {
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem 2.5rem;
+    gap: 1.5rem 2rem;
   }
 
   .committee-roster-grid.grid-2-cols {
     grid-template-columns: repeat(2, 1fr);
-    max-width: 880px;
-    gap: 1.5rem 3.5rem;
+    max-width: 56rem; /* max-w-4xl */
+    gap: 1.5rem 2.5rem;
   }
 }
 
@@ -86,9 +102,8 @@
 .roster-entry {
   position: relative;
   background: transparent;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.65);
-  padding: 0.75rem 0.85rem 1rem 0.85rem;
-  margin: 0 -0.85rem;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+  padding: 0.85rem 0.85rem 1.15rem 0.85rem;
   border-radius: 8px;
   transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
   display: flex;
@@ -108,7 +123,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #2563eb;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.35rem;
   display: inline-block;
   user-select: none;
 }
@@ -128,16 +143,16 @@
   color: #1e40af;
 }
 
-/* Subdued TBA Indicator */
+/* Subdued TBA Indicator (italic text-slate-400 font-medium) */
 .entry-name.is-tba {
-  color: #94a3b8;
+  color: #94a3b8; /* text-slate-400 */
   font-style: italic;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-weight: 500; /* font-medium */
+  letter-spacing: 0.01em;
 }
 
 .roster-entry.is-tba {
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .roster-entry.is-tba:hover {
@@ -172,10 +187,12 @@
   font-weight: 500;
 }
 
+/* Unassigned Affiliation (italic text-slate-400 font-medium) */
 .affiliation-tba {
-  color: #94a3b8;
+  color: #94a3b8; /* text-slate-400 */
   font-style: italic;
-  font-size: 0.82rem;
+  font-weight: 500; /* font-medium */
+  font-size: 0.84rem;
 }
 
 /* =========================================================================
@@ -196,8 +213,7 @@
   }
 
   .roster-entry {
-    padding: 0.65rem 0.75rem 0.85rem 0.75rem;
-    margin: 0 -0.75rem;
+    padding: 0.75rem 0.65rem 0.95rem 0.65rem;
   }
 
   .entry-name {
