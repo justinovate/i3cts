@@ -61,14 +61,6 @@ const Hero = ({ isLive = false }) => {
             Learn More
           </a>
         </div>
-        
-        {/* Primary Highlight: Official IEEE Xplore Publication Notice */}
-        <div className="hero-notice-banner">
-          <i className="fas fa-bookmark hero-notice-icon" aria-hidden="true" />
-          <span className="hero-notice-text">
-            Accepted papers will be submitted for inclusion in IEEE Xplore, subject to meeting IEEE Xplore's scope and quality requirements.
-          </span>
-        </div>
 
         <Countdown isLive={isLive} />
       </div>

@@ -142,10 +142,10 @@ const CallForPapers = () => {
       <div className="container">
         <h2 className="section-title">Call for Papers</h2>
 
-        {/* Contextual Highlight: Official IEEE Xplore Publication Notice */}
-        <div className="cfp-statement-banner">
-          <i className="fas fa-bookmark cfp-statement-icon" aria-hidden="true" />
-          <p className="cfp-statement-text">
+        {/* Standardized IEEE Xplore Publication Notice */}
+        <div className="notice-callout-strip">
+          <i className="fas fa-bookmark notice-callout-icon" aria-hidden="true" />
+          <p className="notice-callout-text">
             Accepted papers will be submitted for inclusion in IEEE Xplore, subject to meeting IEEE Xplore's scope and quality requirements.
           </p>
         </div>
@@ -154,12 +154,12 @@ const CallForPapers = () => {
           We invite original research contributions, work-in-progress papers, and industry case studies across five comprehensive technical tracks.
         </p>
 
-        {/* 5 Technical Tracks Grid */}
+        {/* 5 Technical Tracks Architectural Grid */}
         <div className="cfp-topics-grid">
           {tracks.map((track) => (
             <div
               key={track.id}
-              className="topic-card interactive-track-card stagger-reveal"
+              className="topic-card interactive-track-card"
               onClick={() => setSelectedTrack(track)}
               role="button"
               tabIndex={0}
@@ -170,22 +170,20 @@ const CallForPapers = () => {
                 }
               }}
             >
-              <div className="track-card-header">
-                <span className="track-badge">Track {track.id}</span>
-                <i className={`fas ${track.icon} track-icon`}></i>
+              <div>
+                <span className="track-indicator">Track 0{track.id}</span>
+                <h4 className="track-title">{track.title}</h4>
+
+                <ul className="track-topics-preview">
+                  {track.shortTopics.map((topic, i) => (
+                    <li key={i}>{topic}</li>
+                  ))}
+                </ul>
               </div>
-
-              <h4 className="track-title">{track.title}</h4>
-
-              <ul className="track-topics-preview">
-                {track.shortTopics.map((topic, i) => (
-                  <li key={i}>{topic}</li>
-                ))}
-              </ul>
 
               <div className="track-card-footer">
                 <span className="explore-track-link">
-                  Explore Track Topics <i className="fas fa-arrow-right"></i>
+                  Explore Track Topics <i className="fas fa-arrow-right" aria-hidden="true" />
                 </span>
               </div>
             </div>
