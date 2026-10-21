@@ -75,7 +75,13 @@
   .committee-roster-grid.grid-2-cols {
     grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
     max-width: 56rem; /* max-w-4xl (896px) */
-    gap: 1.5rem;
+    gap: 1.5rem; /* gap-6 */
+  }
+
+  .committee-roster-grid.grid-3-cols {
+    grid-template-columns: repeat(3, 1fr); /* md:grid-cols-3 */
+    max-width: 64rem; /* max-w-5xl (1024px) */
+    gap: 1.5rem; /* gap-6 */
   }
 }
 
@@ -83,11 +89,12 @@
 @media (min-width: 1024px) {
   .committee-roster-grid.grid-4-cols {
     grid-template-columns: repeat(4, 1fr); /* lg:grid-cols-4 */
-    gap: 1.5rem;
+    gap: 1.5rem; /* gap-6 */
   }
 
   .committee-roster-grid.grid-3-cols {
     grid-template-columns: repeat(3, 1fr);
+    max-width: 64rem; /* max-w-5xl */
     gap: 1.5rem 2rem;
   }
 

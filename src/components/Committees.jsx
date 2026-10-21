@@ -34,7 +34,7 @@ const committeeGroups = [
       {
         role: 'TPC Chair',
         name: 'Dr. Gabriel Sampedro',
-        affiliation: 'TBA'
+        affiliation: 'Philippine Coding Camp / KICS PH'
       },
       {
         role: 'TPC Co-Chair',
@@ -45,7 +45,7 @@ const committeeGroups = [
   },
   {
     title: 'Publication Committee',
-    gridClass: 'grid-2-cols',
+    gridClass: 'grid-3-cols',
     members: [
       {
         role: 'Publication Chair',
@@ -55,7 +55,12 @@ const committeeGroups = [
       {
         role: 'Publication Co-Chair',
         name: 'Dr. Reggie P. Gustilo',
-        affiliation: 'TBA'
+        affiliation: 'De La Salle University'
+      },
+      {
+        role: 'Publication Co-Chair',
+        name: 'Dr. Cecille A. Venal',
+        affiliation: 'National University'
       }
     ]
   },
