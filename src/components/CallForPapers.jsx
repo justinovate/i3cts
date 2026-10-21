@@ -141,6 +141,15 @@ const CallForPapers = () => {
     <section className="section cfp-section" id="cfp">
       <div className="container">
         <h2 className="section-title">Call for Papers</h2>
+
+        {/* Contextual Highlight: Official IEEE Xplore Publication Notice */}
+        <div className="cfp-statement-banner">
+          <i className="fas fa-bookmark cfp-statement-icon" aria-hidden="true" />
+          <p className="cfp-statement-text">
+            Accepted papers will be submitted for inclusion in IEEE Xplore, subject to meeting IEEE Xplore's scope and quality requirements.
+          </p>
+        </div>
+
         <p className="cfp-intro">
           We invite original research contributions, work-in-progress papers, and industry case studies across five comprehensive technical tracks.
         </p>
@@ -181,17 +190,6 @@ const CallForPapers = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Official IEEE Xplore Publication Notice Strip */}
-        <div className="cfp-xplore-callout">
-          <div className="cfp-xplore-tag">
-            <i className="fas fa-file-contract" aria-hidden="true"></i>
-            <span>INDEXING // IEEE XPLORE</span>
-          </div>
-          <p className="cfp-xplore-statement">
-            Accepted papers will be submitted for inclusion in IEEE Xplore, subject to meeting IEEE Xplore's scope and quality requirements.
-          </p>
         </div>
 
         {/* Open 2-Column Split: Guidelines & Templates */}

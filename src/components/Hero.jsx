@@ -49,13 +49,8 @@ const Hero = ({ isLive = false }) => {
           Advancing Scientific Innovation & Computational Excellence
         </p>
 
-        <div className="hero-meta-badges">
-          <div className="hero-badge">
-            <i className="fas fa-calendar-alt"></i> April 8–10, 2027 • Manila, Philippines
-          </div>
-          <span className="hero-xplore-badge">
-            <i className="fas fa-certificate" aria-hidden="true"></i> IEEE Xplore Eligible
-          </span>
+        <div className="hero-badge">
+          <i className="fas fa-calendar-alt"></i> April 8–10, 2027 • Manila, Philippines
         </div>
 
         <div className="hero-buttons">
@@ -67,6 +62,14 @@ const Hero = ({ isLive = false }) => {
           </a>
         </div>
         
+        {/* Primary Highlight: Official IEEE Xplore Publication Notice */}
+        <div className="hero-notice-banner">
+          <i className="fas fa-bookmark hero-notice-icon" aria-hidden="true" />
+          <span className="hero-notice-text">
+            Accepted papers will be submitted for inclusion in IEEE Xplore, subject to meeting IEEE Xplore's scope and quality requirements.
+          </span>
+        </div>
+
         <Countdown isLive={isLive} />
       </div>
     </header>
