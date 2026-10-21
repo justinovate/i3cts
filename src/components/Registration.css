@@ -42,28 +42,43 @@
 
 /* Spacing between first and second table block */
 .mt-table-block {
-  margin-top: 3rem; /* mt-12 */
+  margin-top: 3.25rem; /* mt-12 */
 }
 
-/* Clean Category Table Heading */
+/* Clean Category Table Heading with Blueprint Navy & Left Theme Accent */
 .table-heading {
   font-size: 1.25rem; /* text-xl */
   font-weight: 700;
-  color: #0f172a;
+  color: #0f2b48; /* Deep blueprint navy */
   margin: 0 0 1rem 0;
   letter-spacing: -0.015em;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
 }
 
-/* Responsive Table Shell */
+.table-heading::before {
+  content: '';
+  display: inline-block;
+  width: 3.5px;
+  height: 1.1rem;
+  background: #2563eb; /* Conference royal blue */
+  border-radius: 2px;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
+/* Responsive Table Shell with Blueprint Undertones */
 .table-responsive-wrapper {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(226, 232, 240, 0.85);
+  border: 1px solid rgba(203, 213, 225, 0.8);
   border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(15, 43, 72, 0.03);
 }
 
 .fee-matrix-table {
@@ -78,11 +93,11 @@
   padding: 1rem 1.5rem;
   font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #475569;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
-  background: rgba(248, 250, 252, 0.7);
+  border-bottom: 1px solid rgba(203, 213, 225, 0.85);
+  background: rgba(248, 250, 252, 0.75);
   user-select: none;
 }
 
@@ -90,8 +105,10 @@
   width: 44%;
 }
 
+/* Subtle Theme Blue Accent on IEEE Member Column Header */
 .fee-matrix-table th.col-ieee {
   width: 28%;
+  color: #1d4ed8; /* Distinct theme blue accent */
   background: rgba(37, 99, 235, 0.035);
 }
 
@@ -99,10 +116,10 @@
   width: 28%;
 }
 
-/* Table Body Cells */
+/* Table Body Cells & Blueprint Dividing Hairlines */
 .fee-matrix-table td {
   padding: 1.15rem 1.5rem;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.65);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7); /* Subtle dividing hairline */
   vertical-align: middle;
 }
 
@@ -115,28 +132,28 @@
 }
 
 .fee-row:hover {
-  background-color: rgba(248, 250, 252, 0.75);
+  background-color: rgba(248, 250, 252, 0.8);
 }
 
-/* Subtle IEEE Member column reward tint */
+/* Subtle Blueprint Tint on IEEE Member Column */
 .cell-ieee {
-  background: rgba(37, 99, 235, 0.025);
+  background: rgba(37, 99, 235, 0.02);
 }
 
 .fee-row:hover .cell-ieee {
-  background: rgba(37, 99, 235, 0.05);
+  background: rgba(37, 99, 235, 0.045);
 }
 
-/* Category Cell Typography */
+/* Category Cell Typography with Deep Navy Tint */
 .cell-category {
-  color: #0f172a;
+  color: #0f2b48;
 }
 
 .tier-name {
   font-size: 0.98rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: #0f172a;
+  color: #0f2b48; /* Deep blueprint navy */
   display: inline-block;
 }
 
@@ -149,7 +166,7 @@
   margin-left: 0.35rem;
 }
 
-/* Currency & Price Formatting (ISO 4217) */
+/* Currency & Price Formatting (Dark Technical Navy) */
 .price-tag {
   display: inline-flex;
   align-items: baseline;
@@ -159,20 +176,22 @@
   font-feature-settings: 'tnum';
 }
 
+/* Small Currency Labels: Muted Steel/Slate Blue */
 .currency-code {
   font-family: var(--font-mono, monospace);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: #64748b;
+  color: #475569; /* Muted steel slate */
   user-select: none;
 }
 
+/* Price Digits: Dark Technical Navy */
 .currency-amount {
   font-family: var(--font-mono, monospace);
   font-size: 1.05rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #1e3a5f; /* Dark technical navy */
   letter-spacing: -0.02em;
 }
 
@@ -182,37 +201,6 @@
   font-weight: 600;
   color: #94a3b8;
   padding-left: 0.5rem;
-}
-
-/* Footnote / Policy Disclaimer */
-.registration-footnote {
-  margin-top: 3.5rem;
-  padding: 1.25rem 1.75rem;
-  background: rgba(248, 250, 252, 0.85);
-  border: 1px solid rgba(226, 232, 240, 0.85);
-  border-radius: 12px;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
-}
-
-.footnote-icon {
-  color: #2563eb;
-  font-size: 1.05rem;
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-.footnote-text {
-  font-size: 0.875rem;
-  color: #475569;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.footnote-text strong {
-  color: #0f172a;
 }
 
 /* Responsive Design */
@@ -248,14 +236,5 @@
 
   .currency-amount {
     font-size: 0.95rem;
-  }
-
-  .registration-footnote {
-    padding: 1rem 1.25rem;
-    margin-top: 2.5rem;
-  }
-
-  .footnote-text {
-    font-size: 0.82rem;
   }
 }

@@ -54,7 +54,7 @@ const Registration = () => {
   return (
     <section className="section registration-section" id="registration">
       <div className="container registration-container">
-        {/* Main Section Header (Clean, No Decorative Eyebrow) */}
+        {/* Main Section Header */}
         <div className="registration-header">
           <h2 className="section-title registration-title">Registration Fees</h2>
           <p className="registration-subtitle">
@@ -130,16 +130,6 @@ const Registration = () => {
               </table>
             </div>
           </div>
-        </div>
-
-        {/* Footnote / Policy Disclaimer */}
-        <div className="registration-footnote">
-          <div className="footnote-icon">
-            <i className="fas fa-info-circle" aria-hidden="true" />
-          </div>
-          <p className="footnote-text">
-            <strong>* Registration Note:</strong> Covers conference kit, access to all technical sessions, coffee breaks, and official certificates of participation unless otherwise noted (e.g., Student Listener excludes banquet admission).
-          </p>
         </div>
       </div>
     </section>
