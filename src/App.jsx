@@ -5,6 +5,7 @@ import About from './components/About';
 import ImportantDates from './components/ImportantDates';
 import Venue from './components/Venue';
 import CallForPapers from './components/CallForPapers';
+import Registration from './components/Registration';
 import Speakers from './components/Speakers';
 import Committees from './components/Committees';
 // import Partners from './components/Partners';
@@ -19,7 +20,7 @@ function App() {
 
   useEffect(() => {
     const targets = document.querySelectorAll(
-      '.section-title, .about-intro-subtitle, .about-stepper-open, .objectives-matrix, .timeline-item, .cfp-intro, .topic-card, .speakers-notice-banner, .speaker-card, .committee-group, .roster-entry, .venue-info, .venue-map'
+      '.section-title, .about-intro-subtitle, .about-stepper-open, .objectives-matrix, .timeline-item, .cfp-intro, .topic-card, .registration-table-block, .registration-footnote, .speakers-notice-banner, .speaker-card, .committee-group, .roster-entry, .venue-info, .venue-map'
     );
 
     targets.forEach((el) => {
@@ -56,8 +57,9 @@ function App() {
       <About />
       <ImportantDates />
       <CallForPapers />
-      <Speakers />
+      <Registration />
       <Committees />
+      <Speakers />
       <Venue />
       {/* Temporarily commented out until details are finalized */}
       {/* <Partners /> */}

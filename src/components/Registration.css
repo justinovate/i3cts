@@ -1,0 +1,326 @@
+.registration-section {
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
+  padding: 5rem 0;
+}
+
+.registration-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Header & Eyebrow Styling */
+.registration-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.registration-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #2563eb;
+  margin-bottom: 0.75rem;
+  user-select: none;
+}
+
+.registration-title {
+  margin-bottom: 0.85rem;
+}
+
+.registration-subtitle {
+  font-size: 1.125rem;
+  color: #475569;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+/* Tables Stack Container */
+.registration-tables-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.registration-table-block {
+  width: 100%;
+}
+
+/* Table Block Header */
+.table-block-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.table-title-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.table-code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.08);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  user-select: none;
+}
+
+.table-heading {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.table-subheading {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #64748b;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Responsive Table Shell */
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  border-radius: 12px;
+}
+
+.fee-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 580px;
+}
+
+/* Table Headings */
+.fee-matrix-table th {
+  padding: 1rem 1.5rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #475569;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+  background: rgba(248, 250, 252, 0.7);
+  user-select: none;
+}
+
+.fee-matrix-table th.col-category {
+  width: 44%;
+}
+
+.fee-matrix-table th.col-ieee {
+  width: 28%;
+  background: rgba(37, 99, 235, 0.04);
+}
+
+.fee-matrix-table th.col-non-ieee {
+  width: 28%;
+}
+
+.th-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ieee-highlight-tag {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #2563eb;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 0.15rem 0.45rem;
+  border-radius: 9999px;
+  line-height: 1.2;
+}
+
+/* Table Body Cells */
+.fee-matrix-table td {
+  padding: 1.15rem 1.5rem;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.65);
+  vertical-align: middle;
+}
+
+.fee-row:last-child td {
+  border-bottom: none;
+}
+
+.fee-row {
+  transition: background-color 0.15s ease;
+}
+
+.fee-row:hover {
+  background-color: rgba(248, 250, 252, 0.75);
+}
+
+/* Subtle IEEE Member column reward tint */
+.cell-ieee {
+  background: rgba(37, 99, 235, 0.025);
+}
+
+.fee-row:hover .cell-ieee {
+  background: rgba(37, 99, 235, 0.05);
+}
+
+/* Category Cell Typography */
+.cell-category {
+  color: #0f172a;
+}
+
+.tier-name {
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #0f172a;
+  display: inline-block;
+}
+
+.tier-condition {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #64748b;
+  margin-left: 0.35rem;
+}
+
+/* Currency & Price Formatting (ISO 4217) */
+.price-tag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-feature-settings: 'tnum';
+  font-feature-settings: 'tnum';
+}
+
+.currency-code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  user-select: none;
+}
+
+.currency-amount {
+  font-family: var(--font-mono, monospace);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.price-dash {
+  font-family: var(--font-mono, monospace);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #94a3b8;
+  padding-left: 0.5rem;
+}
+
+/* Footnote / Policy Note */
+.registration-footnote {
+  margin-top: 3.5rem;
+  padding: 1.25rem 1.75rem;
+  background: rgba(248, 250, 252, 0.85);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+}
+
+.footnote-icon {
+  color: #2563eb;
+  font-size: 1.05rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.footnote-text {
+  font-size: 0.875rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footnote-text strong {
+  color: #0f172a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .registration-section {
+    padding: 4rem 0;
+  }
+
+  .registration-header {
+    margin-bottom: 2.75rem;
+  }
+
+  .registration-subtitle {
+    font-size: 1rem;
+  }
+
+  .table-block-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .fee-matrix-table th,
+  .fee-matrix-table td {
+    padding: 0.85rem 1rem;
+  }
+
+  .tier-name {
+    font-size: 0.9rem;
+  }
+
+  .currency-amount {
+    font-size: 0.95rem;
+  }
+
+  .registration-footnote {
+    padding: 1rem 1.25rem;
+    margin-top: 2.5rem;
+  }
+
+  .footnote-text {
+    font-size: 0.82rem;
+  }
+}

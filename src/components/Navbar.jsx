@@ -37,6 +37,7 @@ const Navbar = () => {
           <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
           <a href="#dates" onClick={() => setMenuOpen(false)}>Dates</a>
           <a href="#cfp" onClick={() => setMenuOpen(false)}>Call for Papers</a>
+          <a href="#registration" onClick={() => setMenuOpen(false)}>Registration</a>
           <a href="#committees" onClick={() => setMenuOpen(false)}>Committees</a>
           {/* <a href="#partners" onClick={() => setMenuOpen(false)}>Partners</a> */}
           <a href="#venue" onClick={() => setMenuOpen(false)}>Venue</a>
