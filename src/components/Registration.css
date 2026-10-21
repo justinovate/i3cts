@@ -11,22 +11,10 @@
   padding: 0 1.5rem;
 }
 
-/* Header & Eyebrow Styling */
+/* Header Styling */
 .registration-header {
   text-align: center;
   margin-bottom: 3.5rem;
-}
-
-.registration-eyebrow {
-  display: inline-block;
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #2563eb;
-  margin-bottom: 0.75rem;
-  user-select: none;
 }
 
 .registration-title {
@@ -46,59 +34,24 @@
 .registration-tables-grid {
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
 }
 
 .registration-table-block {
   width: 100%;
 }
 
-/* Table Block Header */
-.table-block-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
-  padding-bottom: 0.75rem;
-  margin-bottom: 1.25rem;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+/* Spacing between first and second table block */
+.mt-table-block {
+  margin-top: 3rem; /* mt-12 */
 }
 
-.table-title-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.table-code {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: #2563eb;
-  background: rgba(37, 99, 235, 0.08);
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  border: 1px solid rgba(37, 99, 235, 0.15);
-  user-select: none;
-}
-
+/* Clean Category Table Heading */
 .table-heading {
-  font-size: 1.2rem;
+  font-size: 1.25rem; /* text-xl */
   font-weight: 700;
   color: #0f172a;
-  margin: 0;
+  margin: 0 0 1rem 0;
   letter-spacing: -0.015em;
-}
-
-.table-subheading {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: #64748b;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 /* Responsive Table Shell */
@@ -123,10 +76,9 @@
 /* Table Headings */
 .fee-matrix-table th {
   padding: 1rem 1.5rem;
-  font-family: var(--font-mono, monospace);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #475569;
   border-bottom: 1px solid rgba(226, 232, 240, 0.9);
@@ -140,30 +92,11 @@
 
 .fee-matrix-table th.col-ieee {
   width: 28%;
-  background: rgba(37, 99, 235, 0.04);
+  background: rgba(37, 99, 235, 0.035);
 }
 
 .fee-matrix-table th.col-non-ieee {
   width: 28%;
-}
-
-.th-content {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.ieee-highlight-tag {
-  font-size: 0.625rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #2563eb;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  padding: 0.15rem 0.45rem;
-  border-radius: 9999px;
-  line-height: 1.2;
 }
 
 /* Table Body Cells */
@@ -251,7 +184,7 @@
   padding-left: 0.5rem;
 }
 
-/* Footnote / Policy Note */
+/* Footnote / Policy Disclaimer */
 .registration-footnote {
   margin-top: 3.5rem;
   padding: 1.25rem 1.75rem;
@@ -296,10 +229,12 @@
     font-size: 1rem;
   }
 
-  .table-block-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
+  .mt-table-block {
+    margin-top: 2.5rem;
+  }
+
+  .table-heading {
+    font-size: 1.125rem;
   }
 
   .fee-matrix-table th,

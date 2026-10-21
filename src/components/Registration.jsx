@@ -54,11 +54,8 @@ const Registration = () => {
   return (
     <section className="section registration-section" id="registration">
       <div className="container registration-container">
-        {/* Header & Monospace Eyebrow */}
+        {/* Main Section Header (Clean, No Decorative Eyebrow) */}
         <div className="registration-header">
-          <span className="registration-eyebrow">
-            CONFERENCE ADMISSION // REGISTRATION TIERS
-          </span>
           <h2 className="section-title registration-title">Registration Fees</h2>
           <p className="registration-subtitle">
             Official registration rates for authors, researchers, students, and attendees.
@@ -69,25 +66,14 @@ const Registration = () => {
         <div className="registration-tables-grid">
           {/* Table 1: Authors & Presenters */}
           <div className="registration-table-block">
-            <div className="table-block-header">
-              <div className="table-title-meta">
-                <span className="table-code">TIER // 01</span>
-                <h3 className="table-heading">Authors & Presenters</h3>
-              </div>
-              <span className="table-subheading">Full Paper Registration</span>
-            </div>
+            <h3 className="table-heading">Authors & Presenters</h3>
 
             <div className="table-responsive-wrapper">
               <table className="fee-matrix-table">
                 <thead>
                   <tr>
                     <th scope="col" className="col-category">Category / Tier</th>
-                    <th scope="col" className="col-ieee">
-                      <div className="th-content">
-                        <span>IEEE Member</span>
-                        <span className="ieee-highlight-tag">Discounted</span>
-                      </div>
-                    </th>
+                    <th scope="col" className="col-ieee">IEEE Member</th>
                     <th scope="col" className="col-non-ieee">Non-IEEE Member</th>
                   </tr>
                 </thead>
@@ -111,26 +97,15 @@ const Registration = () => {
           </div>
 
           {/* Table 2: Attendees & Listeners */}
-          <div className="registration-table-block">
-            <div className="table-block-header">
-              <div className="table-title-meta">
-                <span className="table-code">TIER // 02</span>
-                <h3 className="table-heading">Attendees & Listeners</h3>
-              </div>
-              <span className="table-subheading">Non-Presenting Delegates</span>
-            </div>
+          <div className="registration-table-block mt-table-block">
+            <h3 className="table-heading">Attendees & Listeners</h3>
 
             <div className="table-responsive-wrapper">
               <table className="fee-matrix-table">
                 <thead>
                   <tr>
                     <th scope="col" className="col-category">Category / Tier</th>
-                    <th scope="col" className="col-ieee">
-                      <div className="th-content">
-                        <span>IEEE Member</span>
-                        <span className="ieee-highlight-tag">Discounted</span>
-                      </div>
-                    </th>
+                    <th scope="col" className="col-ieee">IEEE Member</th>
                     <th scope="col" className="col-non-ieee">Non-IEEE Member</th>
                   </tr>
                 </thead>
@@ -157,7 +132,7 @@ const Registration = () => {
           </div>
         </div>
 
-        {/* Footnote / Disclaimer Policy */}
+        {/* Footnote / Policy Disclaimer */}
         <div className="registration-footnote">
           <div className="footnote-icon">
             <i className="fas fa-info-circle" aria-hidden="true" />
