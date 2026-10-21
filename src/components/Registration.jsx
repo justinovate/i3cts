@@ -19,7 +19,7 @@ const authorFees = [
   {
     category: 'International Student Author',
     ieee: { currency: 'USD', amount: '300' },
-    nonIeee: null
+    nonIeee: { currency: 'USD', amount: '350' }
   }
 ];
 
