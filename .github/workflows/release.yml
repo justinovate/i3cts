@@ -1,0 +1,123 @@
+name: Build deployment release
+run-name: '[Build] - ${{ inputs.tag }}'
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: New release tag, e.g. v1.0.0
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: release-${{ inputs.tag }}
+  cancel-in-progress: false
+env:
+  RELEASE_TAG: ${{ inputs.tag }}
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Validate tag
+        run: |
+          [[ "$RELEASE_TAG" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$ ]]
+          git check-ref-format "refs/tags/$RELEASE_TAG"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Build website
+        run: npm ci && npm run build
+      - name: Package public_html
+        run: |
+          test -z "$(find dist -mindepth 1 ! -type f ! -type d -print -quit)"
+          mv dist public_html
+          mkdir release
+          zip -qr release/website.zip public_html
+          tar -czf release/website.tar.gz public_html
+          cd release
+          sha256sum website.zip > website.zip.sha256
+          sha256sum website.tar.gz > website.tar.gz.sha256
+          jq -n --arg repository "$GITHUB_REPOSITORY" --arg tag "$RELEASE_TAG" \
+            --arg commit "$GITHUB_SHA" --arg run_id "$GITHUB_RUN_ID" \
+            '{repository:$repository, tag:$tag, commit:$commit, run_id:$run_id}' > release.json
+      - name: Verify packages
+        run: &verify |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          cd release
+          test "$(find . -mindepth 1 -maxdepth 1 | wc -l)" -eq 5
+          for file in website.zip website.tar.gz; do
+            sha256sum "$file" | cmp - "$file.sha256"
+            sha256sum --check --strict "$file.sha256"
+          done
+          jq -e --arg repository "$GITHUB_REPOSITORY" --arg tag "$RELEASE_TAG" \
+            --arg commit "$GITHUB_SHA" --arg run_id "$GITHUB_RUN_ID" \
+            '. == {repository:$repository, tag:$tag, commit:$commit, run_id:$run_id}' release.json
+          check=$(mktemp -d)
+          unzip -Z1 website.zip | sort > "$check/zip-list"
+          tar -tzf website.tar.gz | sort > "$check/tar-list"
+          diff -u "$check/zip-list" "$check/tar-list"
+          test -z "$(uniq -d "$check/zip-list")"
+          test -z "$(grep -v '^public_html/' "$check/zip-list")"
+          excluded='(^|/)(\.\.?|\.env[^/]*|\.git[^/]*|\.npm[^/]*|node_modules|vendor|src|logs?|storage|runtime|cache|caches|coverage|secrets?([._-][^/]*)?|credentials?([._-][^/]*)?|package(-lock)?\.json|composer\.(json|lock)|release\.json)(/|$)'
+          excluded+='|\\|\.(sha256|log|local|sql|sqlite3?|db|pem|key|p12|pfx|map)$'
+          if grep -Ei "$excluded" "$check/zip-list"; then exit 1; fi
+          unzip -Z -l website.zip | awk '/^[bclps]/ {bad=1} END {exit bad}'
+          tar -tvzf website.tar.gz | awk 'substr($0,1,1) !~ /[-d]/ {bad=1} END {exit bad}'
+          mkdir "$check/zip" "$check/tar"
+          unzip -q website.zip -d "$check/zip"
+          tar -xzf website.tar.gz -C "$check/tar" --no-same-owner --no-same-permissions
+          diff -r "$check/zip" "$check/tar"
+          test -f "$check/zip/public_html/index.html"
+          test -f "$check/zip/public_html/.htaccess"
+          compgen -G "$check/zip/public_html/assets/*.js"
+          compgen -G "$check/zip/public_html/assets/*.css"
+          if [[ -d ../public_html ]]; then diff -r ../public_html "$check/zip/public_html"; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: deployment-package
+          path: release/*
+          if-no-files-found: error
+
+  publish:
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: deployment-package
+          path: release
+      - name: Verify downloaded packages
+        run: *verify
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          api="repos/$GITHUB_REPOSITORY"
+          gh api "$api/git/matching-refs/tags/$RELEASE_TAG" |
+            jq -e --arg ref "refs/tags/$RELEASE_TAG" 'all(.[]; .ref != $ref)'
+          gh api --paginate --slurp "$api/releases?per_page=100" |
+            jq -e --arg tag "$RELEASE_TAG" 'all(.[][]; .tag_name != $tag)'
+          gh api --method POST "$api/git/refs" -f ref="refs/tags/$RELEASE_TAG" -f sha="$GITHUB_SHA"
+          gh release create "$RELEASE_TAG" release/* --repo "$GITHUB_REPOSITORY" \
+            --verify-tag --target "$GITHUB_SHA" --title "$RELEASE_TAG" --generate-notes --draft
+          gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" \
+            --json assets --jq '.assets[].name' | sort > "$RUNNER_TEMP/assets"
+          diff <(find release -maxdepth 1 -type f -printf '%f\n' | sort) "$RUNNER_TEMP/assets"
+          gh release edit "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --draft=false
