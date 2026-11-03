@@ -106,12 +106,12 @@ const committeeGroups = [
       },
       {
         role: 'Social Media',
-        name: 'Glen Justine Batis',
+        name: 'Dave Anthony De Jesus',
         affiliation: 'Bulacan State University'
       },
       {
         role: 'Creatives',
-        name: 'TBA',
+        name: 'Glen Justine Batis',
         affiliation: 'Bulacan State University'
       }
     ]
