@@ -68,9 +68,8 @@ const Registration = () => {
           <div className="registration-table-block">
             <h3 className="table-heading">Authors & Presenters</h3>
 
-            {/* Desktop Table View */}
-            <div className="registration-desktop-view hidden md:block w-full overflow-x-auto table-responsive-wrapper">
-              <table className="fee-matrix-table w-full border-collapse">
+            <div className="w-full overflow-x-auto rounded-xl border border-slate-200/80 bg-white/70 backdrop-blur-sm shadow-sm table-responsive-wrapper">
+              <table className="w-full text-left border-collapse min-w-[580px] fee-matrix-table">
                 <thead>
                   <tr>
                     <th scope="col" className="col-category">Category / Tier</th>
@@ -95,40 +94,14 @@ const Registration = () => {
                 </tbody>
               </table>
             </div>
-
-            {/* Mobile Card List View */}
-            <div className="registration-mobile-view block md:hidden mobile-card-list">
-              {authorFees.map((row, idx) => (
-                <div key={idx} className="mobile-fee-card border border-slate-200/80 bg-white/70 rounded-lg p-4 mb-3 space-y-2">
-                  <div className="mobile-card-title text-sm font-bold text-slate-900">
-                    {row.category}
-                  </div>
-                  <div className="mobile-card-rates space-y-2">
-                    <div className="mobile-rate-row flex justify-between items-center text-xs text-slate-600">
-                      <span className="mobile-rate-label is-ieee">IEEE Member</span>
-                      <span className="mobile-rate-price font-semibold text-slate-900">
-                        {renderPrice(row.ieee)}
-                      </span>
-                    </div>
-                    <div className="mobile-rate-row flex justify-between items-center text-xs text-slate-600">
-                      <span className="mobile-rate-label">Non-IEEE Member</span>
-                      <span className="mobile-rate-price font-semibold text-slate-900">
-                        {renderPrice(row.nonIeee)}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Table 2: Attendees & Listeners */}
           <div className="registration-table-block mt-table-block">
             <h3 className="table-heading">Attendees & Listeners</h3>
 
-            {/* Desktop Table View */}
-            <div className="registration-desktop-view hidden md:block w-full overflow-x-auto table-responsive-wrapper">
-              <table className="fee-matrix-table w-full border-collapse">
+            <div className="w-full overflow-x-auto rounded-xl border border-slate-200/80 bg-white/70 backdrop-blur-sm shadow-sm table-responsive-wrapper">
+              <table className="w-full text-left border-collapse min-w-[580px] fee-matrix-table">
                 <thead>
                   <tr>
                     <th scope="col" className="col-category">Category / Tier</th>
@@ -155,34 +128,6 @@ const Registration = () => {
                   ))}
                 </tbody>
               </table>
-            </div>
-
-            {/* Mobile Card List View */}
-            <div className="registration-mobile-view block md:hidden mobile-card-list">
-              {attendeeFees.map((row, idx) => (
-                <div key={idx} className="mobile-fee-card border border-slate-200/80 bg-white/70 rounded-lg p-4 mb-3 space-y-2">
-                  <div className="mobile-card-title text-sm font-bold text-slate-900">
-                    <span>{row.category}</span>
-                    {row.condition && (
-                      <span className="tier-condition"> ({row.condition})</span>
-                    )}
-                  </div>
-                  <div className="mobile-card-rates space-y-2">
-                    <div className="mobile-rate-row flex justify-between items-center text-xs text-slate-600">
-                      <span className="mobile-rate-label is-ieee">IEEE Member</span>
-                      <span className="mobile-rate-price font-semibold text-slate-900">
-                        {renderPrice(row.ieee)}
-                      </span>
-                    </div>
-                    <div className="mobile-rate-row flex justify-between items-center text-xs text-slate-600">
-                      <span className="mobile-rate-label">Non-IEEE Member</span>
-                      <span className="mobile-rate-price font-semibold text-slate-900">
-                        {renderPrice(row.nonIeee)}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
