@@ -29,7 +29,7 @@ const tracks = [
   },
   {
     id: 2,
-    title: 'Computing Systems & Artificial Intelligence',
+    title: 'Emerging Technologies & Artificial Intelligence',
     icon: 'fa-brain',
     shortTopics: [
       'Artificial Intelligence & Machine Learning',

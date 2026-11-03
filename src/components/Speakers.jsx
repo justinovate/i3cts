@@ -17,7 +17,7 @@ const speakersList = [
     role: 'Plenary Speaker',
     name: 'To Be Announced',
     affiliation: 'Official announcement forthcoming',
-    track: 'Computing Systems & Artificial Intelligence',
+    track: 'Emerging Technologies & Artificial Intelligence',
     photo: null,
     topic: ''
   },
