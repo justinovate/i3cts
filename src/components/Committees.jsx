@@ -32,17 +32,17 @@ const committeeGroups = [
     gridClass: 'grid-3-cols',
     members: [
       {
-        role: 'TPC Chair',
+        role: 'Technical Program Chair',
         name: 'Dr. Gabriel Sampedro',
         affiliation: 'Philippine Coding Camp / KICS PH'
       },
       {
-        role: 'TPC Co-Chair',
+        role: 'Technical Program Co-Chair',
         name: 'Dr. Mark Angelo C. Purio',
         affiliation: 'Adamson University'
       },
       {
-        role: 'TPC Co-Chair',
+        role: 'Technical Program Co-Chair',
         name: 'Dr. Arjay Alba R. Alba',
         affiliation: 'Bulacan State University'
       }
