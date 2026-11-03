@@ -8,12 +8,12 @@ const committeeGroups = [
       {
         role: 'General Chair',
         name: 'Dr. Jocelyn F. Villaverde',
-        affiliation: 'Bulacan State University / IEEE CTSoc'
+        affiliation: 'Bulacan State University / IEEE CTSoc Philippine Section'
       },
       {
         role: 'International Chair',
-        name: 'TBA',
-        affiliation: 'TBA'
+        name: 'Hwa Chiang Leo',
+        affiliation: 'Director - IEEE Asia-Pacific Ltd.'
       },
       {
         role: 'General Co-Chair',
@@ -29,7 +29,7 @@ const committeeGroups = [
   },
   {
     title: 'Technical Program Committee',
-    gridClass: 'grid-2-cols',
+    gridClass: 'grid-3-cols',
     members: [
       {
         role: 'TPC Chair',
@@ -40,6 +40,11 @@ const committeeGroups = [
         role: 'TPC Co-Chair',
         name: 'Dr. Mark Angelo C. Purio',
         affiliation: 'Adamson University'
+      },
+      {
+        role: 'TPC Co-Chair',
+        name: 'Dr. Arjay Alba R. Alba',
+        affiliation: 'Bulacan State University'
       }
     ]
   },
@@ -90,9 +95,9 @@ const committeeGroups = [
     gridClass: 'grid-4-cols',
     members: [
       {
-        role: 'Chair',
-        name: 'Dave Anthony De Jesus',
-        affiliation: 'Bulacan State University'
+        role: 'Publicity and Public Relations Chair',
+        name: 'Engr. Ericson D. Dimaunahan',
+        affiliation: 'Mapúa University'
       },
       {
         role: 'Webmaster',

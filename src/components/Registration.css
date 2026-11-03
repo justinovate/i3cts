@@ -204,7 +204,123 @@
 }
 
 /* Responsive Design */
+.registration-desktop-view {
+  display: block;
+  width: 100%;
+}
+
+.registration-mobile-view {
+  display: none;
+  width: 100%;
+}
+
+/* Mobile Fee Card List Styling */
+.mobile-card-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mobile-fee-card {
+  border: 1px solid rgba(226, 232, 240, 0.8); /* border border-slate-200/80 */
+  background: rgba(255, 255, 255, 0.7); /* bg-white/70 */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 0.5rem; /* rounded-lg (8px) */
+  padding: 1rem; /* p-4 */
+  margin-bottom: 0.75rem; /* mb-3 */
+  box-shadow: 0 1px 3px rgba(15, 43, 72, 0.02);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.mobile-fee-card:last-child {
+  margin-bottom: 0;
+}
+
+.mobile-fee-card:hover {
+  border-color: rgba(37, 99, 235, 0.35);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.mobile-card-title {
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 700; /* font-bold */
+  color: #0f172a; /* text-slate-900 */
+  line-height: 1.35;
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.01em;
+}
+
+.mobile-card-title .tier-condition {
+  font-size: 0.78rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #64748b;
+  margin-left: 0.25rem;
+}
+
+.mobile-card-rates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* space-y-2 */
+}
+
+.mobile-rate-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem; /* text-xs */
+  color: #475569; /* text-slate-600 */
+  padding: 0.35rem 0;
+  border-top: 1px dashed rgba(226, 232, 240, 0.7);
+}
+
+.mobile-rate-row:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.mobile-rate-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+.mobile-rate-label.is-ieee {
+  color: #1d4ed8; /* Blue accent */
+  font-weight: 600;
+}
+
+.mobile-rate-price {
+  font-weight: 600; /* font-semibold */
+  color: #0f172a; /* text-slate-900 */
+  text-align: right;
+}
+
+.mobile-rate-price .currency-code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #475569;
+  margin-right: 0.25rem;
+}
+
+.mobile-rate-price .currency-amount {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e3a5f; /* Dark technical navy */
+}
+
 @media (max-width: 768px) {
+  .registration-desktop-view {
+    display: none !important;
+  }
+
+  .registration-mobile-view {
+    display: flex !important;
+  }
+
   .registration-section {
     padding: 4rem 0;
   }
